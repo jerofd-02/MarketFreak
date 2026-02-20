@@ -12,3 +12,15 @@ h1 {
     font-size: 24px;
     font-weight: bolder;
 }
+
+.image_container {
+    float: left;
+}
+
+.nav_bar {
+    float: left;
+}
+
+.registration_login {
+    float: right;
+}
