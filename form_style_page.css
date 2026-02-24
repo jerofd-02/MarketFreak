@@ -3,21 +3,45 @@ body {
 }
 
 h1 {
-    margin-left: 10px;
+    margin: 0 10px 0 10px;
     font-size: 30px;
+    text-align: center;
 }
 
 label {
-    margin-left: 10px;
-    margin-right: 20px;
-    font-size: 20px;
+    margin: 0 10px 20px 5px;
+    font-size: 18px;
+}
+
+input {
+    border-radius: 8px;
+    padding: 10px;
+    align-content: center;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .form_container {
     background-color: #D9D9D9;
+    width: 30%;
+    margin: 50px auto;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .button {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 10px auto;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
