@@ -1,5 +1,4 @@
 body {
-    background-color: #D9D9D9;
     font-family: Helvetica, sans-serif;
 }
 
@@ -13,14 +12,41 @@ h1 {
     font-weight: bolder;
 }
 
-.image_container {
+.image_container img {
     float: left;
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    
 }
 
-.nav_bar {
+.nav_bar input{
     float: left;
+    width: 44.44%;
+    margin: 3px 0 0 0;
+    padding: 5px 0 5px 0;
 }
 
 .registration_login {
     float: right;
+    margin-right: 5px;
+    padding: 2px 0 0 0;
+}
+
+button {
+    float: right;
+    margin-right: 5px;
+    padding: 5px 0 05px 0;
+}
+
+header {
+    display: flex;
+    background-color: #D9D9D9;
+    padding: 5px 5px 5px 5px;
+}
+
+footer {
+    display: flex;
+    background-color: #D9D9D9;
+    padding: 5px 5px 5px 5px;
 }
