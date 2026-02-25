@@ -13,30 +13,49 @@ h1 {
 }
 
 .image_container img {
-    float: left;
     width: 35px;
     height: 35px;
     margin-right: 5px;
     
 }
 
+.nav_bar {
+    flex: 1;
+    margin: 3px 0 0 13px;
+    position: relative;
+}
+
 .nav_bar input{
-    float: left;
-    width: 44.44%;
-    margin: 3px 0 0 0;
-    padding: 5px 0 5px 0;
+    width: 80%;
+    padding: 5px 5px 5px 25px;
+    border-radius: 10px;
+}
+
+.nav_bar i {
+    position: absolute;
+    margin: 5px 0 0 6px;
+    color: gray;
 }
 
 .registration_login {
-    float: right;
     margin-right: 5px;
     padding: 2px 0 0 0;
+    margin-left: auto;
 }
 
 button {
-    float: right;
-    margin-right: 5px;
-    padding: 5px 0 05px 0;
+    margin: 2px 5px 0 0;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+.login_button {
+    color: black;
+    border-radius: 10px;
+}
+.register_button {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
 }
 
 header {
@@ -46,7 +65,5 @@ header {
 }
 
 footer {
-    display: flex;
     background-color: #D9D9D9;
-    padding: 5px 5px 5px 5px;
 }
