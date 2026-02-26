@@ -61,6 +61,11 @@ textarea {
     cursor: pointer;
 }
 
+.register_password_forgot {
+    display: block;
+    text-align: center;
+}
+
 .element {
     display: flex;
     flex-direction: column;

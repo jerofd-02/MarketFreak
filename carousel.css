@@ -1,0 +1,48 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 15px 77px 15px 77px;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel_viewport {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    animation: slide 12s infinite linear;
+}
+
+.carousel_viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel_slide {
+    flex: 1 0 100%;
+    height: 400px;
+    scroll-snap-align: start;
+}
+
+.carousel_slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel_navigation {
+    text-align: center;
+    margin: 10px;
+}
+
+.carousel_navigation-button {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: #333;
+    border-radius: 50%;
+    margin: 5px;
+}
