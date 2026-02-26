@@ -13,6 +13,17 @@ h1 {
     font-weight: bolder;
 }
 
+.text_element {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0 0 5px;
+}
+
+.price_element {
+    font-size: 15px;
+    margin: 5px 0 0 5px;
+}
+
 .image_container img {
     width: 35px;
     height: 35px;

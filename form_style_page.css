@@ -77,6 +77,10 @@ textarea {
     gap: 5px;
 }
 
+.row .element {
+    flex: 1;
+}
+
 #file_charge {
     display: flex;
     flex-direction: column;
