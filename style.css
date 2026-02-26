@@ -5,6 +5,7 @@ body {
 .column {
     float: left;
     width: 33.33%;
+    padding: 10px;
 }
 
 h1 {
@@ -71,6 +72,7 @@ header {
 
 footer {
     background-color: #D9D9D9;
+    display: flex;
 }
 
 .photo_row {
@@ -82,4 +84,16 @@ footer {
 .photo_row img {
     width: 210px;
     height: 210px;
+}
+
+.footer_photo {
+    width: 16px;
+    height: 16px;
+}
+
+.footer_item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
 }
