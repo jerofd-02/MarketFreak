@@ -90,7 +90,7 @@ footer {
     display: flex;
     gap: 30px;
     justify-content: center;
-    margin: 0 15px 15px 15px;
+    margin: 10px 15px 15px 15px;
 }
 
 .photo_row img {
