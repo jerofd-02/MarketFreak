@@ -4,6 +4,7 @@ body {
 }
 
 .carousel {
+    margin-top: 10px;
     width: 100%;
     overflow: hidden;
 }

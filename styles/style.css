@@ -90,6 +90,7 @@ footer {
     display: flex;
     gap: 30px;
     justify-content: center;
+    margin: 0 15px 15px 15px;
 }
 
 .photo_row img {
@@ -107,4 +108,19 @@ footer {
     align-items: center;
     gap: 8px;
     margin-bottom: 5px;
+}
+
+.wish_bar {
+    margin: 30px 0 10px 15px;
+}
+.wish_bar input {
+    width: 200px;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.wish_bar select {
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 4px;
 }

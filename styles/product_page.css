@@ -1,0 +1,42 @@
+.product_container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.product_side {
+    display: flex;
+    flex-direction: column;
+}
+
+.product_buttons {
+    text-decoration: none;
+    display: flex;
+    gap: 300px;
+    margin-top: 20px;
+}
+
+.product_buttons a {
+    text-decoration: none;
+}
+
+.buy_button {
+    background: black;
+    color: white;
+    border: none;
+    width: 200px;
+    text-align: center; 
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.wishlist_button {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
