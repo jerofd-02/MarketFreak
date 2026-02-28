@@ -91,3 +91,13 @@ textarea {
     border: none;
     margin: 10px auto;
 }
+
+select {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    align-content: center;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+    <script src="xlu-include-file.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header id="header" xlu-include-file="templates/header.html"></header>
+    <div class="profile-row">
+        <div class="profile-column">
+            <img src="images/placeholder_image.png" alt="">
+        </div>
+        <div class="profile-column">
+            <section id="information" xlu-include-file="templates/product_information.html"></section>
+            <a href="update_profile.html" class="profile-button">Lorem Ipsum</a>
+        </div>
+    </div>
+    <h1>Lorem Ipsum</h1>
+    <a href="upload_product.html" class="add-profile-button">
+        <i class="fa fa-plus"></i>
+        Lorem Ipsum
+    </a>
+    <section id="products" xlu-include-file="templates/photo_row.html"></section>
+    <footer id="footer" xlu-include-file="templates/footer.html"></footer>
+    <script>
+        xLuIncludeFile();
+    </script>
+</body>
+</html>

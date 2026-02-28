@@ -1,0 +1,47 @@
+.profile-column {
+    margin: 10px;
+    float: left;
+    width: 50%;
+}
+
+.profile-row:after {
+    display: table;
+    clear: both;
+}
+
+.profile-row {
+    display: flex;
+}
+
+.profile-row img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.profile-column:last-child {
+    position: relative;
+}
+
+.profile-button {
+    position: absolute;
+    top: 20px;
+    left: 175px;
+    background-color: #D9D9D9;
+    color: black;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.add-profile-button {
+    background-color: #D9D9D9;
+    color: black;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 15px;
+    position: fixed;
+    bottom: 20vh;
+    left: 15%;
+    transform: translateX(-50%);
+}
