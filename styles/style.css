@@ -124,3 +124,7 @@ footer {
     border-radius: 10px;
     padding: 4px;
 }
+
+#section {
+    border-bottom: solid 5px darkgray;
+}

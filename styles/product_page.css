@@ -2,6 +2,7 @@
     display: flex;
     gap: 40px;
     align-items: flex-start;
+    border-bottom: solid 5px darkgray;
 }
 
 .product_side {

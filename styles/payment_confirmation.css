@@ -1,0 +1,46 @@
+.page_container {
+    background-color: #D9D9D9;
+    width: 1000px;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 50px;
+}
+
+.product_information {
+    display: flex;
+    border-bottom: solid 5px darkgray;
+    gap: 70px;
+}
+
+.information {
+    flex: 1;
+}
+
+#description {
+    max-width: 500px;
+}
+
+.photo {
+    flex: 0 0 500px;
+}
+
+.photo img {
+    width: 300px;
+    height: 300px;
+    margin-left: 100px;
+}
+
+.category_title {
+    font-weight: bold;
+}
+
+.confirm_button {
+    display: block;
+    margin: 30px auto 0 auto;
+    padding: 12px 25px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+

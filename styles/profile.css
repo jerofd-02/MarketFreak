@@ -11,6 +11,7 @@
 
 .profile-row {
     display: flex;
+    border-bottom: solid 5px darkgray;
 }
 
 .profile-row img {
