@@ -10,6 +10,26 @@
     flex-direction: column;
 }
 
+.user_reference {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.user_reference img {
+    width: 45px; 
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user_reference a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
 .product_buttons {
     text-decoration: none;
     display: flex;

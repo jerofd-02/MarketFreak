@@ -39,7 +39,7 @@ h1 {
 
 .nav_bar input {
     width: 80%;
-    padding: 10px 10px 10px 25px;
+    padding: 10px 10px 10px 30px;
     border-radius: 10px;
     background-color: transparent;
     color: #ebd4cbff;
@@ -90,12 +90,14 @@ header {
     display: flex;
     background-color: #b6465fff;
     padding: 5px 5px 5px 5px;
+    margin: -8px -8px 0 -8px;
 }
 
 footer {
     background-color: #890620ff;
     display: flex;
     color: #ebd4cbff;
+    margin: 0 -8px -8px -8px;
 }
 
 footer a {
