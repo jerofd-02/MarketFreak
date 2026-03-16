@@ -1,6 +1,6 @@
 body {
     font-family: Helvetica, sans-serif;
-    background-color: #fff9ecff;
+    background-color: #f5e4e9;
 }
 
 .column {
@@ -64,26 +64,27 @@ h1 {
 .registration_login {
     margin: 15px 0 0 0;
     gap: 10px;
-    padding: 2px 0 0 0;
+    padding: 6px 0 0 0;
 }
 
 .registration_login a {
     font-size: 15px;
     text-decoration: none;
-    padding: 5px;
+    padding: 8px;
     border-radius: 10px;
 }
 
 .login_button {
-    color: #ebd4cbff;
-    border: solid 1px #ebd4cbff;
+    color: #d6abac;
+    border: solid 1px #d6abac;
     border-radius: 10px;
 }
 
 .register_button {
-    background-color: #ebd4cbff;
+    background-color: #d6abac;
     color: #2c0703ff;
     border-radius: 10px;
+    margin-right: 10px;
 }
 
 header {
@@ -135,7 +136,7 @@ footer a {
 .wish_bar input {
     width: 200px;
     border-radius: 10px;
-    padding: 4px;
+    padding: 6px 4px 6px 30px;
 }
 
 .wish_bar select {
@@ -144,8 +145,18 @@ footer a {
     padding: 4px;
 }
 
+.wish_bar i {
+    position: absolute;
+    margin: 5px 0 0 6px;
+    color: gray;
+}
+
+.wish_bar .fa-search {
+    margin-top: 7px;
+}
+
 #section {
-    border-bottom: solid 5px darkgray;
+    border-bottom: solid 5px #890620ff;
 }
 
 i {

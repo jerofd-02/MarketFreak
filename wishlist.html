@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wishlist</title>
-    <script src="js/xlu-include-file.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
-<header id="header" xlu-include-file="templates/header.html"></header>
+<header id="header"></header>
 <div class="wish_bar">
+    <i class="fa fa-search"></i>
     <input type="text" placeholder="Lorem ipsum dolor sit amet">
     <form>
         <label for="opciones"></label>
@@ -21,11 +21,10 @@
         </select>
     </form>
 </div>
-<section class="photo_row" xlu-include-file="templates/photo_row.html"></section>
-<section class="photo_row" xlu-include-file="templates/photo_row.html"></section>
-<footer id="footer" xlu-include-file="templates/footer.html"></footer>
-<script>
-    xLuIncludeFile();
-</script>
+<div id="photo_row"></div>
+<footer id="footer"></footer>
+
+<script src="js/common.js"></script>
+<script src="js/wishlist.js"></script>
 </body>
 </html>

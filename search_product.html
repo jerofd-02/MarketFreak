@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>wishlist</title>
-  <script src="js/xlu-include-file.js"></script>
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
   <link rel="stylesheet" href="styles/search_product.css">
 </head>
 <body>
-<header id="header" xlu-include-file="templates/header.html"></header>
+<header id="header"></header>
 <div class="main_content">
   <div class="sidebar">
     <div class="category">
@@ -69,14 +68,13 @@
   </div>
 
   <div class="product_section">
-    <section class="photo_row" xlu-include-file="templates/photo_row.html"></section>
-    <section class="photo_row" xlu-include-file="templates/photo_row.html"></section>
+    <div id="photo_row"></div>
   </div>
 </div>
 
-<footer id="footer" xlu-include-file="templates/footer.html"></footer>
-<script>
-  xLuIncludeFile();
-</script>
+<footer id="footer"></footer>
+
+<script src="js/common.js"></script>
+<script src="js/search_product.js"></script>
 </body>
 </html>
