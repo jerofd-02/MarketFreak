@@ -2,7 +2,7 @@
     display: flex;
     gap: 40px;
     align-items: flex-start;
-    border-bottom: solid 5px darkgray;
+    border-bottom: solid 5px #890620ff;
 }
 
 .product_side {
@@ -42,9 +42,9 @@
 }
 
 .buy_button {
-    background: black;
-    color: white;
-    border: none;
+    background: #d6abac;
+    color: black;
+    border: solid 1px #d6abac;
     width: 200px;
     text-align: center;
     padding: 12px 20px;
@@ -54,9 +54,9 @@
 
 
 .wishlist_button {
-    background: white;
-    color: black;
-    border: 1px solid black;
+    background: #b6465fff;
+    color: #ebd4cbff;
+    border: 1px solid #ebd4cbff;
     padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;

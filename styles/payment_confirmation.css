@@ -1,5 +1,5 @@
 .page_container {
-    background-color: #D9D9D9;
+    background-color: #da9f93ff;
     width: 1000px;
     max-width: 1000px;
     margin: 60px auto;
@@ -8,7 +8,7 @@
 
 .product_information {
     display: flex;
-    border-bottom: solid 5px darkgray;
+    border-bottom: solid 5px #890620ff;
     gap: 70px;
 }
 
@@ -38,8 +38,9 @@
     display: block;
     margin: 30px auto 0 auto;
     padding: 12px 25px;
-    background-color: black;
-    color: white;
-    border-radius: 8px;
+    background: #b6465fff;
+    color: #ebd4cbff;
+    border: 1px solid #ebd4cbff;
+    border-radius: 10px;
     cursor: pointer;
 }

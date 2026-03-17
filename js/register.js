@@ -1,6 +1,6 @@
 async function main() {
     await loadCommonTemplates();
-    await loadTemplate('photo_row', 'photo_row')
+    await loadTemplate('register-template', 'register');
 }
 
 main()

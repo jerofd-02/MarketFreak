@@ -1,6 +1,6 @@
 async function main() {
     await loadCommonTemplates();
-    await loadTemplate('form_style_page', 'contact_form' )
+    await loadTemplate('faq-template', 'faq-section');
 }
 
 main()

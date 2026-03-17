@@ -3,7 +3,7 @@ body {
     background-color: #f5e4e9;
 }
 
-h1 {
+.header-text {
     margin: 0 10px 0 10px;
     font-size: 30px;
     text-align: center;
@@ -54,10 +54,10 @@ textarea {
 
 .button {
     margin: 10px auto;
-    background-color: black;
-    color: white;
+    background: #b6465fff;
+    color: #ebd4cbff;
+    border: 1px solid #ebd4cbff;
     border-radius: 10px;
-    border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
