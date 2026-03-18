@@ -1,5 +1,3 @@
-async function main() {
+document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
-}
-
-main()
+});

@@ -1,6 +1,4 @@
-async function main() {
+document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
     await loadTemplate('login-template', 'login');
-}
-
-main()
+});

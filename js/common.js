@@ -15,3 +15,14 @@ async function loadCommonTemplates() {
     await loadTemplate('footer', 'footer');
 }
 
+// Obtener datos del JSON
+async function fetchData(jsonName) {
+    try {
+        const response = await fetch(`../data/${jsonName}.json`);
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+    }
+}
+
