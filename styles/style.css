@@ -107,6 +107,7 @@ footer a {
 
 .photo_row {
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
     margin: 10px 15px 15px 15px;

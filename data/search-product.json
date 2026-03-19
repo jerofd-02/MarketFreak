@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto Uno",
+      "price": "19,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 2,
+      "name": "Producto Dos",
+      "price": "34,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 3,
+      "name": "Producto Tres",
+      "price": "12,50€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 4,
+      "name": "Producto Cuatro",
+      "price": "59,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 5,
+      "name": "Producto Cinco",
+      "price": "8,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 6,
+      "name": "Producto Seis",
+      "price": "44,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 7,
+      "name": "Producto Siete",
+      "price": "27,50€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 8,
+      "name": "Producto Ocho",
+      "price": "99,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 9,
+      "name": "Producto Nueve",
+      "price": "15,00€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    },
+    {
+      "id": 10,
+      "name": "Producto Diez",
+      "price": "74,99€",
+      "image": "../images/logo_filter.png",
+      "alt": "Descripción de la imagen"
+    }
+  ]
+}
