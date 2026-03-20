@@ -1,0 +1,13 @@
+{
+  "searchPlaceholder": "Buscar entre favoritos...",
+  "sortOptions": [
+    {
+      "value": "price_asc",
+      "label": "Precio: menor a mayor"
+    },
+    {
+      "value": "price_desc",
+      "label": "Precio: mayor a menor"
+    }
+  ]
+}
