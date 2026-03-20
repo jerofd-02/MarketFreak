@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "seller": "Vendedor A",
+      "name": "Carlos García",
+      "location": "Madrid, España",
+      "description": "Coleccionista apasionado desde hace más de 15 años, especializado en figuras de acción y cómics de edición limitada. Todos mis artículos están en perfecto estado y proceden de mi colección personal. Envío a toda España con embalaje seguro y número de seguimiento."
+    },
+    {
+      "seller": "Vendedor B",
+      "name": "Laura Martínez",
+      "location": "Barcelona, España",
+      "description": "Especialista en monedas antiguas y billetes de colección. Cada pieza que vendo ha sido verificada y catalogada con su correspondiente certificado de autenticidad. Llevo más de 10 años en el mundo del coleccionismo numismático y ofrezco asesoramiento gratuito a compradores interesados."
+    },
+    {
+      "seller": "Vendedor C",
+      "name": "Pedro Sánchez",
+      "location": "Valencia, España",
+      "description": "Coleccionista de sellos y postales antiguas con más de 20 años de experiencia. Mi colección abarca piezas de todo el mundo, con especial énfasis en sellos españoles del siglo XX. Ofrezco descripciones detalladas y fotografías de alta calidad en todos mis anuncios."
+    }
+  ]
+}

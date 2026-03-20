@@ -13,6 +13,25 @@ async function loadTemplate(templateName, targetElementId) {
 async function loadCommonTemplates() {
     await loadTemplate('header', 'header');
     await loadTemplate('footer', 'footer');
+
+    const data = await fetchData('common');
+    if (!data) return false;
+
+    const footer = document.getElementById('footer');
+
+    data.footer.social.forEach((item, index) => {
+        const items = footer.querySelectorAll('.footer_item');
+        items[index].querySelector('i').className = item.icon;
+        items[index].querySelector('a').textContent = item.name;
+        items[index].querySelector('a').href = item.url;
+    });
+
+    const columns = footer.querySelectorAll('.column:not(:first-child)');
+    data.footer.columns.forEach((column, index) => {
+        columns[index].querySelector('h1').textContent = column.title;
+        columns[index].querySelector('a').textContent = column.links[0].label;
+        columns[index].querySelector('a').href = column.links[0].url;
+    });
 }
 
 // Obtener datos del JSON

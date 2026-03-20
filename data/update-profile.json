@@ -1,0 +1,42 @@
+{
+  "updateProfile": {
+    "fields": [
+      {
+        "name": "avatar",
+        "label": "Foto de perfil",
+        "type": "file"
+      },
+      {
+        "name": "username",
+        "label": "Nombre de usuario",
+        "type": "text",
+        "placeholder": "Introduce tu nombre de usuario..."
+      },
+      {
+        "name": "location",
+        "label": "Ubicación",
+        "type": "text",
+        "placeholder": "Ciudad, País..."
+      },
+      {
+        "name": "category",
+        "label": "Categoría principal",
+        "type": "select",
+        "options": [
+          { "value": "figures", "label": "Figuras y estatuillas" },
+          { "value": "coins", "label": "Monedas y billetes" },
+          { "value": "stamps", "label": "Sellos y postales" },
+          { "value": "comics", "label": "Cómics y libros" },
+          { "value": "cards", "label": "Cartas coleccionables" }
+        ]
+      },
+      {
+        "name": "description",
+        "label": "Descripción",
+        "type": "textarea",
+        "placeholder": "Cuéntanos sobre ti y tu colección..."
+      }
+    ],
+    "submitLabel": "Guardar cambios"
+  }
+}
