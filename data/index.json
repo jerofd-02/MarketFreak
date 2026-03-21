@@ -1,0 +1,15 @@
+{
+  "image-loader": [
+    {
+      "id": "1",
+      "name": "Carrusel image",
+      "alt": "Foto del carrusel",
+      "images": [
+        "images/logo_filter.png",
+        "images/logo_filter.png",
+        "images/logo_filter.png"
+      ]
+    }
+  ],
+  "main_title": "Productos"
+}
