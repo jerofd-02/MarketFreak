@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const seller = params.get('seller');
 
-    const productsData = await fetchData('product-page');
+    const productsData = await fetchData('products');
     if (!productsData) return false;
 
     const sellerProducts = productsData.products.filter(p => p.seller === seller);

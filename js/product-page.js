@@ -6,8 +6,6 @@ function getProductId() {
 
 // Rellenamos la template de información
 function fillProductInfo(container, product) {
-    const [title, price, category] = container.querySelectorAll('p, h1');
-
     container.querySelector('h1').textContent = product.name;
     const paragraphs = container.querySelectorAll('p');
     paragraphs[0].textContent = product.price;
@@ -61,20 +59,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await fetchData('product-page');
     if (!data) return;
 
+    document.querySelector('.wishlist_button').textContent = data.ui.wishlistButton;
+    document.querySelector('.buy_button').textContent = data.ui.buyButton;
+    document.getElementById('related_title').textContent = data.ui.relatedTitle;
+
+    const productsData = await fetchData('products');
+    if (!productsData) return;
+
     const id = getProductId();
-    const product = data.products.find(p => p.id === id);
+    const product = productsData.products.find(p => p.id === id);
 
     if (!product) {
         console.error('Producto no encontrado:', id);
         return;
     }
 
+    document.querySelector('.user_reference a').textContent = product.seller;
+
     fillProductInfo(document.getElementById('product_info'), product);
     fillCarousel(document.getElementById('carousel'), product);
-    fillRelatedProducts(document.querySelector('.photo_row'), data.products, product);
-
-    document.querySelector('.user_reference a').textContent = product.seller;
-    document.querySelector('.wishlist_button').textContent = data.ui.wishlistButton;
-    document.querySelector('.buy_button').textContent = data.ui.buyButton;
-    document.getElementById('related_title').textContent = data.ui.relatedTitle;
+    fillRelatedProducts(document.querySelector('.photo_row'), productsData.products, product);
 });
