@@ -17,6 +17,12 @@ async function loadCommonTemplates() {
     const data = await fetchData('common');
     if (!data) return false;
 
+    document.querySelector('.logo img').src = data.header.image.src;
+    document.querySelector('.logo img').alt = data.header.image.alt;
+    document.querySelector('.nav_bar input').placeholder = data.header.nav_bar;
+    document.querySelector('.login_button').textContent = data.header.login_button.label;
+    document.querySelector('.register_button').textContent = data.header.register_button.label;
+
     const footer = document.getElementById('footer');
 
     data.footer.social.forEach((item, index) => {

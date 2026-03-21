@@ -1,4 +1,17 @@
 {
+  "header": {
+    "image": {
+      "src": "/images/logo_filter.png",
+      "alt": "Logo de MarketFreak"
+    },
+    "nav_bar": "Busca tu artículo friki",
+    "login_button": {
+      "label": "Iniciar Sesión"
+    },
+    "register_button": {
+      "label": "Registrarse"
+    }
+  },
   "footer": {
     "social": [
       {
