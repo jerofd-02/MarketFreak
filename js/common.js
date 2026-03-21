@@ -23,6 +23,13 @@ async function loadCommonTemplates() {
     document.querySelector('.login_button').textContent = data.header.login_button.label;
     document.querySelector('.register_button').textContent = data.header.register_button.label;
 
+    const searchInput = document.querySelector('.nav_bar input');
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && searchInput.value.trim()) {
+            window.location.href = `search-product.html?q=${encodeURIComponent(searchInput.value.trim())}`;
+        }
+    });
+
     const footer = document.getElementById('footer');
 
     data.footer.social.forEach((item, index) => {
@@ -50,4 +57,5 @@ async function fetchData(jsonName) {
         return null;
     }
 }
+
 
