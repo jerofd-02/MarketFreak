@@ -2,17 +2,17 @@
     <form class="form_group" action="#" method="POST">
         <div class="element">
             <label for="field_1">Lorem Ipsum</label>
-            <input type="text" id="field_1" placeholder="Lorem ipsum dolor sit amet...">
+            <input type="text" id="field_1" placeholder="Lorem ipsum dolor sit amet..." required>
         </div>
         <div class="row">
             <div class="element">
                 <label for="field_2">Lorem Ipsum</label>
-                <input type="text" id="field_2" placeholder="Lorem ipsum dolor sit amet...">
+                <input type="text" id="field_2" placeholder="Lorem ipsum dolor sit amet..." required>
             </div>
 
             <div class="element">
                 <label for="field_3">Lorem Ipsum</label>
-                <input type="text" id="field_3" placeholder="Lorem ipsum dolor sit amet...">
+                <input type="text" id="field_3" placeholder="Lorem ipsum dolor sit amet..." required>
             </div>
         </div>
 
@@ -27,11 +27,12 @@
 
         <div class="element">
             <label for="field_5">Lorem Ipsum</label>
-            <textarea id="field_5" placeholder="Lorem ipsum dolor sit amet..."></textarea>
+            <textarea id="field_5" placeholder="Lorem ipsum dolor sit amet..." required></textarea>
         </div>
 
         <div id="file_charge">
-            <input type="file" placeholder="Lorem ipsum dolor sit amet...">
+            <input type="file" id="file_input" multiple>
+            <div id="file_preview"></div>
         </div>
         <button class="button">Lorem Ipsum</button>
     </form>

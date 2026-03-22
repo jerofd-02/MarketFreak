@@ -1,0 +1,34 @@
+{
+  "form": {
+    "fields": {
+      "product_name": {
+        "label": "Nombre del producto",
+        "placeholder": "Escriba el nombre del producto..."
+      },
+      "price": {
+        "label": "Precio",
+        "placeholder": "Introduzca el precio del producto..."
+      },
+      "category": {
+        "label": "Categoría del producto",
+        "options": [
+          { "value": "", "label": "Selecciona una categoría", "disabled": true },
+          { "value": "figures", "label": "Figuras y estatuillas" },
+          { "value": "coins", "label": "Monedas y billetes" },
+          { "value": "stamps", "label": "Sellos y postales" },
+          { "value": "comics", "label": "Cómics y libros" },
+          { "value": "cards", "label": "Cartas coleccionables" },
+          { "value": "others", "label": "Otros" }
+        ]
+      },
+      "description": {
+        "label": "Descripción",
+        "placeholder": "Introduzca una descripción para el producto..."
+      },
+      "image": {
+        "placeholder": "Adjunta una imagen si es necesario"
+      }
+    },
+    "submitButton": "Enviar consulta"
+  }
+}
