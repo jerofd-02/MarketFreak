@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const information = document.getElementById('information');
 
     information.querySelector('h1').textContent = user.name;
-    information.querySelector('p:nth-child(2)').textContent = user.seller;
+    information.querySelector('p:nth-child(2)').textContent = `@${user.seller}`;
     information.querySelector('p:nth-child(3)').textContent = user.location;
     information.querySelector('#description').textContent = user.description;
 });

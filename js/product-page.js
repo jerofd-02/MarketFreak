@@ -74,7 +74,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    document.querySelector('.user_reference a').textContent = product.seller;
+    document.querySelector('.user_reference a').textContent = `@${product.seller}`;
+    document.querySelector('.user_reference a').href = `profile.html?seller=${product.seller}`;
 
     fillProductInfo(document.getElementById('product_info'), product);
     fillCarousel(document.getElementById('carousel'), product);

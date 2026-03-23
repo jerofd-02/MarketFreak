@@ -6,7 +6,7 @@
       "price": "19,99€",
       "category": "Cómics y libros",
       "description": "Descripción detallada del producto uno. Este es un artículo de alta calidad disponible en nuestra tienda.",
-      "seller": "Vendedor A",
+      "seller": "Vendedor_A",
       "dateAdded": "2026-03-22",
       "image": "../images/logo_filter.png",
       "images": [
@@ -23,7 +23,7 @@
       "price": "34,99€",
       "category": "Cómics y libros",
       "description": "Descripción detallada del producto dos. Excelente relación calidad-precio.",
-      "seller": "Vendedor A",
+      "seller": "Vendedor_A",
       "dateAdded": "2026-03-21",
       "image": "../images/logo_filter.png",
       "images": [
@@ -40,7 +40,7 @@
       "price": "12,50€",
       "category": "Otros",
       "description": "Descripción detallada del producto tres. Ideal para uso diario.",
-      "seller": "Vendedor A",
+      "seller": "Vendedor_A",
       "dateAdded": "2026-03-18",
       "image": "../images/logo_filter.png",
       "images": [
@@ -57,7 +57,7 @@
       "price": "59,99€",
       "category": "Cartas coleccionables",
       "description": "Descripción detallada del producto cuatro. Producto premium de larga duración.",
-      "seller": "Vendedor B",
+      "seller": "Vendedor_B",
       "dateAdded": "2026-03-15",
       "image": "../images/logo_filter.png",
       "images": [
@@ -74,7 +74,7 @@
       "price": "8,99€",
       "category": "Cartas coleccionables",
       "description": "Descripción detallada del producto cinco. Pequeño y práctico.",
-      "seller": "Vendedor B",
+      "seller": "Vendedor_B",
       "dateAdded": "2026-03-22",
       "image": "../images/logo_filter.png",
       "images": [
@@ -91,7 +91,7 @@
       "price": "44,99€",
       "category": "Figuras y estatuillas",
       "description": "Descripción detallada del producto seis. Muy valorado por nuestros clientes.",
-      "seller": "Vendedor B",
+      "seller": "Vendedor_B",
       "dateAdded": "2026-03-10",
       "image": "../images/logo_filter.png",
       "images": [
@@ -108,7 +108,7 @@
       "price": "27,50€",
       "category": "Otros",
       "description": "Descripción detallada del producto siete. Diseño moderno y funcional.",
-      "seller": "Vendedor C",
+      "seller": "Vendedor_C",
       "dateAdded": "2026-03-20",
       "image": "../images/logo_filter.png",
       "images": [
@@ -125,7 +125,7 @@
       "price": "99,99€",
       "category": "Otros",
       "description": "Descripción detallada del producto ocho. El más completo de nuestra colección.",
-      "seller": "Vendedor C",
+      "seller": "Vendedor_C",
       "dateAdded": "2026-03-01",
       "image": "../images/logo_filter.png",
       "images": [
@@ -142,7 +142,7 @@
       "price": "15,00€",
       "category": "Monedas y billetes",
       "description": "Descripción detallada del producto nueve. Perfecto como regalo.",
-      "seller": "Vendedor C",
+      "seller": "Vendedor_C",
       "dateAdded": "2026-03-19",
       "image": "../images/logo_filter.png",
       "images": [
@@ -159,7 +159,7 @@
       "price": "74,99€",
       "category": "Sellos y postales",
       "description": "Descripción detallada del producto diez. Calidad garantizada.",
-      "seller": "Vendedor A",
+      "seller": "Vendedor_A",
       "dateAdded": "2026-02-28",
       "image": "../images/logo_filter.png",
       "images": [
