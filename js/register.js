@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     data.register.fields.forEach(field => {
         const input = container.querySelector(`input[name="${field.name}"]`);
         if (!input) return false;
-        input.closest('label').firstChild.textContent = field.label + ' ';
+        const label = container.querySelector(`label[for="${field.name}"]`);
+        if (label) label.firstChild.textContent = field.label + ' ';
         if (field.placeholder) input.placeholder = field.placeholder;
     });
 
