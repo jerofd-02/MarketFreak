@@ -30,6 +30,30 @@ async function loadCommonTemplates() {
         }
     });
 
+    const user = getLoggedUser();
+
+    const loginButton = document.querySelector('.login_button');
+    const registerButton = document.querySelector('.register_button');
+
+    if (user) {
+        loginButton.textContent = user.nombre;
+        loginButton.href = '#';
+
+        registerButton.textContent = 'Cerrar sesión';
+        registerButton.href = '#';
+
+        registerButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            logout();
+        });
+    } else {
+        loginButton.textContent = 'Iniciar sesión';
+        loginButton.href = 'login.html';
+
+        registerButton.textContent = 'Registrarse';
+        registerButton.href = 'register.html';
+    }
+
     const footer = document.getElementById('footer');
 
     data.footer.social.forEach((item, index) => {
@@ -58,4 +82,24 @@ async function fetchData(jsonName) {
     }
 }
 
+function getLoggedUser() {
+    return JSON.parse(sessionStorage.getItem('loggedUser'));
+}
 
+function logout() {
+    sessionStorage.removeItem('loggedUser');
+    window.location.href = 'login.html';
+}
+
+function requireAuth() {
+    const user = getLoggedUser();
+    if (!user) {
+        window.location.href = 'login.html';
+    }
+}
+
+function checkAuth() {
+    if(!getLoggedUser()) {
+        window.location.href = 'login.html';
+    }
+}
