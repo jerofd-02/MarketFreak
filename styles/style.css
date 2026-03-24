@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Helvetica, sans-serif;
     background-color: #f5e4e9;
@@ -162,4 +168,71 @@ footer a {
 
 i {
     color: #ebd4cbff;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .nav_bar input {
+        width: 100%;
+    }
+
+    .registration_login {
+        margin: 0;
+        padding: 0;
+    }
+
+    .photo_row img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 479px) {
+
+    header {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .nav_bar {
+        flex: 1 1 60%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .nav_bar input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .registration_login {
+        margin: 0;
+        padding: 0;
+        gap: 6px;
+    }
+
+    .registration_login a {
+        font-size: 13px;
+        padding: 6px;
+        white-space: nowrap;
+    }
+
+    .register_button {
+        margin-right: 0;
+    }
+
+    .photo_row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 8px;
+        justify-content: unset;
+    }
+
+    .photo_row img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
 }
