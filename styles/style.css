@@ -68,9 +68,18 @@ h1 {
 }
 
 .registration_login {
-    margin: 15px 0 0 0;
+    display: flex;
+    align-items: flex-start;
     gap: 10px;
-    padding: 6px 0 0 0;
+    margin: 10px;
+}
+
+.register_button,
+.login_button {
+    margin-top: 0;
+    padding: 6px 12px;
+    height: auto;
+    line-height: normal;
 }
 
 .registration_login a {
@@ -84,20 +93,32 @@ h1 {
     color: #d6abac;
     border: solid 1px #d6abac;
     border-radius: 10px;
+    margin: 3px 0 0 10px;
 }
 
 .register_button {
+    border: solid 1px #d6abac;
     background-color: #d6abac;
     color: #2c0703ff;
     border-radius: 10px;
-    margin-right: 10px;
+    margin: 3px 0 0 10px;
 }
 
 header {
     display: flex;
+    justify-content: space-between;
     background-color: #b6465fff;
-    padding: 5px 5px 5px 5px;
+    padding: 5px;
     margin: -8px -8px 0 -8px;
+}
+
+.header_profile_photo {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
 footer {

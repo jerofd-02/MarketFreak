@@ -34,10 +34,14 @@ async function loadCommonTemplates() {
 
     const loginButton = document.querySelector('.login_button');
     const registerButton = document.querySelector('.register_button');
+    const profileButton = document.querySelector('.header_profile_photo');
 
     if (user) {
-        loginButton.textContent = user.nombre;
-        loginButton.href = '#';
+        loginButton.style.display = 'none';
+
+        profileButton.src = user.photo || '../images/placeholder.png';
+        profileButton.style.display = 'inline-block';
+        profileButton.title = user.name;
 
         registerButton.textContent = 'Cerrar sesión';
         registerButton.href = '#';
@@ -47,11 +51,14 @@ async function loadCommonTemplates() {
             logout();
         });
     } else {
+        loginButton.style.display = 'inline-block';
         loginButton.textContent = 'Iniciar sesión';
         loginButton.href = 'login.html';
 
         registerButton.textContent = 'Registrarse';
         registerButton.href = 'register.html';
+
+        profileButton.style.display = 'none';
     }
 
     const footer = document.getElementById('footer');
