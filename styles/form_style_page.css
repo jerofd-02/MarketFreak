@@ -36,6 +36,7 @@ textarea {
     box-sizing: border-box;
     min-height: 160px;
     resize: vertical;
+    width: 100%;
 }
 
 .form_group {
@@ -46,8 +47,9 @@ textarea {
 
 .form_container {
     background-color: #da9f93ff;
-    width: 30%;
-    margin: 50px auto;
+    width: 95%;
+    max-width: 420px;
+    margin: 30px auto;
     padding: 10px;
     border-radius: 10px;
 }
@@ -138,4 +140,90 @@ select {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .form_container {
+        width: 75%;
+        max-width: 560px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    label {
+        font-size: 17px;
+    }
+
+    .row {
+        gap: 10px;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .form_container {
+        width: 90%;
+        max-width: 480px;
+        margin: 30px auto;
+        padding: 16px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    .row {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 479px) {
+
+    .form_container {
+        width: 95%;
+        max-width: 100%;
+        margin: 16px auto;
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    .header-text {
+        font-size: 22px;
+    }
+
+    label {
+        font-size: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .row .element {
+        margin-bottom: 12px;
+    }
+
+    .button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .preview_item {
+        width: 80px;
+        height: 80px;
+    }
+
+    .preview_item img {
+        width: 80px;
+        height: 80px;
+    }
 }
