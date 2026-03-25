@@ -110,3 +110,19 @@ function checkAuth() {
         window.location.href = 'login.html';
     }
 }
+
+// Control de errores
+function showError(input, message) {
+    clearError(input);
+    const error = document.createElement('span');
+    error.classList = 'input_error';
+    error.textContent = message;
+    input.classList.add('input_error_active');
+    input.insertAdjacentElement('afterend', error);
+}
+
+function clearError(input) {
+    const existing = input.parentElement.querySelector('.input_error');
+    if (existing) existing.remove();
+    input.classList.remove('input_error_active');
+}

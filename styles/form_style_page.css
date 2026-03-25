@@ -142,6 +142,18 @@ select {
     justify-content: center;
 }
 
+.input_error {
+    color: #e53e3e;
+    font-size: .8em;
+    margin: 4px 0 4px 5px;
+    display: block;
+}
+
+.input_error_active {
+    border-color: #e53e3e;
+    outline-color: #e53e3e;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
 
     .form_container {

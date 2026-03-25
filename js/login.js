@@ -35,27 +35,43 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar usuarios: ', error);
     }
 
+    const localUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    users = [...users, ...localUsers];
+
     const form = container.querySelector('.form_group');
+    const emailInput = container.querySelector('input[name="email"]');
+    const passwordInput = container.querySelector('input[name="password"]');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const emailInput = container.querySelector('input[name="email"]').value.trim();
-        const passwordInput = container.querySelector('input[name="password"]').value.trim();
+        const emailVal = emailInput.value.trim();
+        const passwordVal = passwordInput.value.trim();
 
-        if (!emailInput || !passwordInput) {
-            showError(form, "Completa todos los campos");
-            return;
+        let valid = true;
+
+        if (!emailVal) {
+            showError(emailInput, "El email es obligatorio.");
+            valid = false;
+        }
+        if (!passwordVal) {
+            showError(passwordInput, "La contraseña es obligatoria.");
+            valid = false;
+        } else if (passwordVal.length < 8) {
+            showError(passwordInput, "La contraseña debe tener al menos 8 caracteres.");
+            valid = false;
         }
 
-        const user = users.find(u => u.email === emailInput && u.password === passwordInput);
+        if (!valid) return false;
+
+        const user = users.find(u => u.email === emailVal && u.password === passwordVal);
 
         if (user) {
             sessionStorage.setItem('loggedUser', JSON.stringify(user));
 
             window.location.href = user.redirect || 'index.html';
         } else {
-            showError(form, data.login.errorMessage || 'Email o contraseña incorrectos.');
+            showError(passwordInput, "Email o contraseña incorrectos.");
         }
     });
 });
