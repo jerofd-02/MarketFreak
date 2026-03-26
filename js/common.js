@@ -24,8 +24,13 @@ async function loadCommonTemplates() {
     document.querySelector('.register_button').textContent = data.header.register_button.label;
 
     const searchInput = document.querySelector('.nav_bar input');
+
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q');
+    if (query) searchInput.value = decodeURIComponent(query);
+
     searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && searchInput.value.trim()) {
+        if (e.key === 'Enter') {
             window.location.href = `search-product.html?q=${encodeURIComponent(searchInput.value.trim())}`;
         }
     });
