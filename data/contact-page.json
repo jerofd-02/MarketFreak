@@ -16,13 +16,35 @@
       "problem": {
         "label": "Tipo de problema",
         "options": [
-          { "value": "", "label": "Selecciona una opción", "disabled": true },
-          { "value": "payment", "label": "Problemas con el pago" },
-          { "value": "shipping", "label": "Envío o entrega" },
-          { "value": "product", "label": "Producto dañado o incorrecto" },
-          { "value": "account", "label": "Problemas con la cuenta" },
-          { "value": "seller", "label": "Reclamación sobre un vendedor" },
-          { "value": "other", "label": "Otro" }
+          {
+            "value": "",
+            "label": "Selecciona una opción",
+            "disabled": true
+          },
+          {
+            "value": "payment",
+            "label": "Problemas con el pago"
+          },
+          {
+            "value": "shipping",
+            "label": "Envío o entrega"
+          },
+          {
+            "value": "product",
+            "label": "Producto dañado o incorrecto"
+          },
+          {
+            "value": "account",
+            "label": "Problemas con la cuenta"
+          },
+          {
+            "value": "seller",
+            "label": "Reclamación sobre un vendedor"
+          },
+          {
+            "value": "other",
+            "label": "Otro"
+          }
         ]
       },
       "description": {

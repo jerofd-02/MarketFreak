@@ -15,14 +15,62 @@ function fillProductInfo(container, product) {
 
 // Rellenamos el carrusel con las imagenes
 function fillCarousel(container, product) {
-    const slides = container.querySelectorAll('.carousel_slide');
-    const navButtons = container.querySelectorAll('.carousel_navigation-button');
+    const viewport = container.querySelector('.carousel_viewport');
+    const navigation = container.querySelector('.carousel_navigation');
+
+    viewport.innerHTML = '';
+    navigation.innerHTML = '';
 
     product.images.forEach((imgSrc, i) => {
-        if (!slides[i]) return;
-        slides[i].querySelector('img').src = imgSrc;
-        slides[i].querySelector('img').alt = product.alt;
+        const slideId = `slide${i + 1}`;
+
+        const slide = document.createElement('div');
+        slide.id = slideId;
+        slide.classList.add('carousel_slide');
+
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = product.alt;
+
+        slide.appendChild(img);
+        viewport.appendChild(slide);
+
+        const navButton = document.createElement('a');
+        navButton.href = `#${slideId}`;
+        navButton.classList.add('carousel_navigation-button');
+        navigation.appendChild(navButton);
     });
+
+    const slides = container.querySelectorAll('.carousel_slide');
+    const navButtons = navigation.querySelectorAll('.carousel_navigation-button');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const index = [...slides].indexOf(entry.target);
+                navButtons.forEach((btn) => btn.classList.remove('active'));
+                navButtons[index].classList.add('active');
+            }
+        });
+    }, {
+        root: viewport,
+        threshold: 0.5,
+    });
+    slides.forEach(slide => observer.observe(slide));
+    startAutoplay(viewport, slides);
+}
+
+// Carrousel con animaciones
+function startAutoplay(viewport, slides, intervalMs = 3000) {
+    let current = 0;
+
+    setInterval(() => {
+        current = (current + 1) % slides.length;
+        viewport.scrollTo({
+            left: viewport.offsetWidth * current,
+            behavior: 'smooth',
+        });
+    }, intervalMs);
 }
 
 // Rellenamos los otros productos del vendedor

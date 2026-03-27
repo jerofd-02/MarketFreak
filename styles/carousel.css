@@ -14,7 +14,6 @@ body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    animation: slide 12s infinite linear;
 }
 
 .carousel_viewport::-webkit-scrollbar {
@@ -50,5 +49,9 @@ body {
 .carousel_navigation-button:focus,
 .carousel_navigation-button:active,
 .carousel_navigation-button:hover {
-    background-color: black;
+    background-color: #d6abac;
+}
+
+.carousel_navigation-button.active {
+    background-color: #9a3850;
 }
