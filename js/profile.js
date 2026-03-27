@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const user = usersData.users.find(u => u.seller === seller);
     const information = document.getElementById('information');
 
+    document.querySelector('.profile-column img').src = user.photo;
     information.querySelector('h1').textContent = user.name;
     information.querySelector('p:nth-child(2)').textContent = `@${user.seller}`;
     information.querySelector('p:nth-child(3)').textContent = user.location;

@@ -87,7 +87,15 @@ async function loadCommonTemplates() {
 async function fetchData(jsonName) {
     try {
         const response = await fetch(`../data/${jsonName}.json`);
-        return await response.json();
+        const data = await response.json();
+
+        // Si hemos creado productos en localStorage, se mezclarán con los del products.json
+        if (jsonName === 'products') {
+            const stored = JSON.parse(localStorage.getItem('products') || '[]');
+            data.products = [...data.products, ...stored];
+        }
+
+        return data;
     } catch (error) {
         console.error('Error fetching data:', error);
         return null;
