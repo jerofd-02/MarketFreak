@@ -8,6 +8,10 @@ body {
     overflow: hidden;
 }
 
+.carousel-divider {
+    border-bottom: solid 5px #890620ff;
+}
+
 .carousel_viewport {
     display: flex;
     overflow-x: auto;

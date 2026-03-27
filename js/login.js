@@ -45,26 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const emailVal = emailInput.value.trim();
-        const passwordVal = passwordInput.value.trim();
-
-        let valid = true;
-
-        if (!emailVal) {
-            showError(emailInput, "El email es obligatorio.");
-            valid = false;
-        }
-        if (!passwordVal) {
-            showError(passwordInput, "La contraseña es obligatoria.");
-            valid = false;
-        } else if (passwordVal.length < 8) {
-            showError(passwordInput, "La contraseña debe tener al menos 8 caracteres.");
-            valid = false;
-        }
-
-        if (!valid) return false;
-
-        const user = users.find(u => u.email === emailVal && u.password === passwordVal);
+        const user = users.find(u => u.email === emailInput.value.trim() && u.password === passwordInput.value);
 
         if (user) {
             sessionStorage.setItem('loggedUser', JSON.stringify(user));

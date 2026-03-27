@@ -3,23 +3,24 @@
     <form class="form_group" action="#" method="POST">
         <div class="form_field">
             <label for="name">Lorem ipsum</label>
-            <input type="text" name="name" id="name"/>
+            <input type="text" name="name" id="name" required/>
         </div>
         <div class="form_field">
             <label for="username">Lorem ipsum</label>
-            <input type="text" name="username" id="username"/>
+            <input type="text" name="username" id="username" required minlength="3" maxlength="20"
+                   pattern="[a-zA-Z0-9]+"/>
         </div>
         <div class="form_field">
             <label for="email">Lorem ipsum</label>
-            <input type="email" name="email" id="email"/>
+            <input type="email" name="email" id="email" required/>
         </div>
         <div class="form_field">
             <label for="password">Lorem ipsum</label>
-            <input type="password" name="password" id="password"/>
+            <input type="password" name="password" id="password" required minlength="8"/>
         </div>
         <div class="form_field">
             <label for="password_confirm">Lorem ipsum</label>
-            <input type="password" name="password_confirm" id="password_confirm"/>
+            <input type="password" name="password_confirm" id="password_confirm" required minlength="8"/>
         </div>
         <button class="button">Lorem Ipsum</button>
     </form>

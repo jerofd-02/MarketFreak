@@ -30,47 +30,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     container.querySelector('form').addEventListener('submit', (e) => {
         e.preventDefault();
 
-        [nameInput, usernameInput, emailInput, passwordInput, passwordConfirmInput].forEach(clearError);
-
-        let valid = true;
-
-        if (!nameInput.value.trim()) {
-            showError(nameInput, "El nombre es obligatorio.");
-            valid = false;
-        }
-
-        if (!usernameInput.value.trim()) {
-            showError(usernameInput, "El nombre de usuario es obligatorio.")
-            valid = false;
-        }
-
-        if (!emailInput.value.trim()) {
-            showError(emailInput, "El email es obligatorio.");
-            valid = false;
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-            showError(emailInput, "El email no es válido.");
-            valid = false;
-        }
-
-        if (!passwordInput.value.trim()) {
-            showError(passwordInput, "La contraseña es obligatoria.");
-            valid = false;
-        } else if (!passwordInput.value.trim() || !passwordConfirmInput.value.trim()) {
-            showError(passwordInput, "La contraseña debe tener al menos 8 caracteres.");
-            valid = false;
-        }
-
-        if (!passwordConfirmInput.value.trim()) {
-            showError(passwordConfirmInput, "Confirma tu contraseña.");
-            valid = false;
-        } else if (passwordInput.value.trim() !== passwordConfirmInput.value.trim()) {
+        if (passwordInput.value !== passwordConfirmInput.value) {
             showError(passwordConfirmInput, "Las contraseñas no coinciden.");
-            valid = false;
+            return false;
         }
-
-        if (!valid) return false;
 
         const users = JSON.parse(localStorage.getItem('users') || '[]');
+
         if (users.some(u => u.email === emailInput.value.trim())) {
             showError(emailInput, "Ya existe una cuenta con ese email.");
             return false;
