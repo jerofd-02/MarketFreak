@@ -187,7 +187,7 @@ i {
     color: #ebd4cbff;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 
     .nav_bar input {
         width: 100%;
@@ -201,6 +201,12 @@ i {
     .photo_row img {
         width: 160px;
         height: 160px;
+    }
+
+    .login_button,
+    .register_button,
+    .header_profile_photo {
+        display: none !important;
     }
 }
 
@@ -251,5 +257,11 @@ i {
         height: auto;
         aspect-ratio: 1 / 1;
         object-fit: cover;
+    }
+
+    .login_button,
+    .register_button,
+    .header_profile_photo {
+        display: none !important;
     }
 }
