@@ -1,18 +1,3 @@
-function createProductItem(product) {
-    const div = document.createElement('div');
-    div.className = 'photo_item';
-
-    div.innerHTML = `
-        <a href="product-page.html?id=${product.id}" class="img">
-          <img src="${product.image}" alt="${product.alt}">
-        </a>
-        <p class="text_element">${product.name}</p>
-        <p class="price_element">${product.price}</p>
-    `;
-
-    return div;
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
 
