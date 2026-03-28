@@ -157,7 +157,7 @@ function fillFilters(filters, products, row, query) {
             const minLabel = rangeDiv.querySelector('#range_min_label');
             const maxLabel = rangeDiv.querySelector('#range_max_label');
 
-            const gray   = '#bbbfbf';
+            const gray = '#bbbfbf';
             const active = '#b6465f';
 
             function updateRange() {
@@ -186,7 +186,7 @@ function fillFilters(filters, products, row, query) {
                     ${active} 0%, ${active} ${maxPct}%,
                     ${gray} ${maxPct}%, ${gray} 100%)`;
 
-                activeFilters.priceRange = { min, max };
+                activeFilters.priceRange = {min, max};
                 applyFilters();
             }
 

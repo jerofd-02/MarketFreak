@@ -14,30 +14,32 @@
 <main>
     <div class="form_container">
         <form class="form_group" action="#" method="POST">
-            <label>Lorem Ipsum</label>
-            <div id="file_charge">
-                <input type="file" placeholder="Lorem ipsum dolor sit amet...">
+            <label for="avatar">Lorem Ipsum</label>
+            <div class="add-photo" id="file_charge">
+                <i></i>
+                <p>Lorem ipsum dolor sit amet</p>
+                <input id="avatar" type="file" accept="image/*">
+                <div class="avatar-preview"></div>
             </div>
             <div class="element">
-                <label>Lorem Ipsum</label>
-                <input type="text" placeholder="Lorem ipsum dolor sit amet...">
+                <label for="username">Lorem Ipsum</label>
+                <input id="username" type="text" placeholder="Lorem ipsum dolor sit amet..." required>
             </div>
             <div class="element">
-                <label>Lorem Ipsum</label>
-                <input type="text" placeholder="Lorem ipsum dolor sit amet...">
-
+                <label for="location">Lorem Ipsum</label>
+                <input id="location" type="text" placeholder="Lorem ipsum dolor sit amet..." required>
             </div>
             <div class="element">
-                <label>Lorem Ipsum</label>
-                <select>
+                <label for="province">Lorem Ipsum</label>
+                <select id="province" required>
                     <option value="Lorem Ipsum">Lorem ipsum dolor sit amet...</option>
                 </select>
             </div>
             <div class="element">
-                <label>Lorem Ipsum</label>
-                <textarea type="text" placeholder="Lorem ipsum dolor sit amet..."></textarea>
+                <label for="description">Lorem Ipsum</label>
+                <textarea id="description" placeholder="Lorem ipsum dolor sit amet..."></textarea>
             </div>
-            <button class="button">Lorem Ipsum</button>
+            <button type="submit" class="button">Lorem Ipsum</button>
         </form>
     </div>
 </main>

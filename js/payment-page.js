@@ -36,16 +36,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     ]);
     if (!pageData || !productsData) return;
 
-    const { paymentMethods, shipmentMethods, submitButton } = pageData.payment;
+    const {paymentMethods, shipmentMethods, submitButton} = pageData.payment;
 
-    const id      = parseInt(new URLSearchParams(window.location.search).get('id'));
+    const id = parseInt(new URLSearchParams(window.location.search).get('id'));
     const product = productsData.products.find(p => p.id === id);
 
     if (product) {
         fillProductInfo(document.querySelector('.product_information'), product);
     }
 
-    fillOptions(document.querySelector('.payment_method'),  'payment',  paymentMethods.title,  paymentMethods.options);
+    fillOptions(document.querySelector('.payment_method'), 'payment', paymentMethods.title, paymentMethods.options);
     fillOptions(document.querySelector('.shipment_method'), 'shipment', shipmentMethods.title, shipmentMethods.options);
 
     document.querySelector('.confirm_button').textContent = submitButton;

@@ -139,7 +139,7 @@ footer {
 
 footer a {
     color: #ebd4cbff;
-    text-underline: none;
+    text-decoration: none;
 }
 
 .photo_row {

@@ -104,11 +104,11 @@ function initHamburgerMenu() {
         <ul>
             <li><a href="index.html">Inicio</a></li>
             ${user
-                ? `<li><a>${user.name}</a></li>
+        ? `<li><a>${user.name}</a></li>
                    <li><a href="login.html" id="mobile_logout">Cerrar sesión</a></li>`
-                : `<li><a href="login.html">Iniciar sesión</a></li>
+        : `<li><a href="login.html">Iniciar sesión</a></li>
                     <li><a href="register.html">Registrarse</a></li>`
-            }
+    }
         </ul>
     `;
     document.body.appendChild(mobileMenu);
