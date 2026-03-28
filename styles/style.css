@@ -516,4 +516,33 @@ i {
     footer .column:nth-child(1) i {
         font-size: 1.4rem;
     }
+
+    .wish_bar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 15px 8px;
+        position: relative;
+    }
+
+    .wish_bar i {
+        position: absolute;
+        top: 10px;
+        left: 6px;
+    }
+
+    .wish_bar input {
+        width: 100%;
+        padding-left: 30px;
+    }
+
+    .wish_bar form {
+        width: 100%;
+    }
+
+    .wish_bar select {
+        width: 100%;
+        margin-top: 0;
+    }
 }
