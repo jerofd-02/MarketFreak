@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.querySelector('.user_reference a').textContent = `@${product.seller}`;
     document.querySelector('.user_reference a').href = `profile.html?seller=${product.seller}`;
+    document.querySelector('.buy_button').href = `payment-page.html?id=${product.id}`;
 
     fillProductInfo(document.getElementById('product_info'), product);
     fillCarousel(document.getElementById('carousel'), product);
