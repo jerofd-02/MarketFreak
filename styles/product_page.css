@@ -62,6 +62,17 @@
     cursor: pointer;
 }
 
+.edit_button {
+    background: #b6465f;
+    color: #ebd4cbff;
+    border: 1px solid #ebd4cbff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
 
     .product_container {

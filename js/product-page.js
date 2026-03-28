@@ -101,18 +101,16 @@ function fillRelatedProducts(container, products, currentProduct) {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadCommonTemplates();
     await loadTemplate('carousel', 'carousel');
-    await loadTemplate('product-information', 'product_info')
-    await loadTemplate('photo-row', 'photo_row')
+    await loadTemplate('product-information', 'product_info');
+    await loadTemplate('photo-row', 'photo_row');
 
-    const data = await fetchData('product-page');
-    if (!data) return;
+    const [data, productsData] = await Promise.all([
+        fetchData('product-page'),
+        fetchData('products')
+    ]);
+    if (!data || !productsData) return;
 
-    document.querySelector('.wishlist_button').textContent = data.ui.wishlistButton;
-    document.querySelector('.buy_button').textContent = data.ui.buyButton;
     document.getElementById('related_title').textContent = data.ui.relatedTitle;
-
-    const productsData = await fetchData('products');
-    if (!productsData) return;
 
     const id = getProductId();
     const product = productsData.products.find(p => p.id === id);
@@ -124,7 +122,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.querySelector('.user_reference a').textContent = `@${product.seller}`;
     document.querySelector('.user_reference a').href = `profile.html?seller=${product.seller}`;
-    document.querySelector('.buy_button').href = `payment-page.html?id=${product.id}`;
+
+    const user = getLoggedUser();
+    const productButtons = document.querySelector('.product_buttons');
+
+    if (user && user.seller === product.seller) {
+        productButtons.innerHTML = `
+            <a class="edit_button" href="upload-product.html?id=${product.id}">Editar producto</a>
+        `;
+    } else {
+        document.querySelector('.wishlist_button').textContent = data.ui.wishlistButton;
+        document.querySelector('.buy_button').textContent = data.ui.buyButton;
+        document.querySelector('.buy_button').href = `payment-page.html?id=${product.id}`;
+    }
 
     fillProductInfo(document.getElementById('product_info'), product);
     fillCarousel(document.getElementById('carousel'), product);
