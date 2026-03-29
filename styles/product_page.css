@@ -8,6 +8,7 @@
 .product_side {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .user_reference {
@@ -85,7 +86,21 @@
     }
 
     .product_buttons {
-        gap: 40px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .buy_button {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+
+    .wishlist_button {
+        order: 2;
+        width: 100%;
+        text-align: center;
     }
 }
 

@@ -168,3 +168,25 @@
         text-align: center;
     }
 }
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .sidebar {
+        width: 300px;
+    }
+
+    .product_section .photo_row {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .category_title {
+        font-size: 25px;
+    }
+
+    .checkbox_item label {
+        font-size: 20px;
+    }
+
+    .range_labels {
+        font-size: 20px;
+    }
+}

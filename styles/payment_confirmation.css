@@ -4,6 +4,7 @@
     max-width: 1000px;
     margin: 60px auto;
     padding: 50px;
+    border-radius: 8px;
 }
 
 .product_information {
@@ -27,7 +28,7 @@
 .photo img {
     width: 300px;
     height: 300px;
-    margin-left: 100px;
+    margin: 0 0 20px 100px;
 }
 
 .category_title {

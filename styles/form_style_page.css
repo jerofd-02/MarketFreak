@@ -230,7 +230,7 @@ select {
     }
 }
 
-@media (min-width: 480px) and (max-width: 767px) {
+@media (max-width: 767px) {
 
     .form_container {
         width: 90%;
