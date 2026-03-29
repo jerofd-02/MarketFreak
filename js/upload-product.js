@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     });
-
+/*
     document.querySelector('.form_group').addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -115,4 +115,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         window.location.href = `product-page.html?id=${product.id}`;
     });
+    */
 });

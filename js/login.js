@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar usuarios: ', error);
     }
 
-    const localUsers = JSON.parse(localStorage.getItem('users') || '[]');
-    users = [...users, ...localUsers];
+    /*const localUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    users = [...users, ...localUsers];^*/
 
     const form = container.querySelector('.form_group');
     const emailInput = container.querySelector('input[name="email"]');

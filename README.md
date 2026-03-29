@@ -1,4 +1,7 @@
 # MarketFreak
+<div align="center">
+    <img src="images/misc/logo_filter_with_transparency.png" alt="Logo de MarketFreak" style="width: 200px; height: auto; align-content: center"/>
+</div>
 
 ## Nombre del proyecto
 MarketFreak
@@ -10,115 +13,67 @@ El proyecto consiste en el diseño y la programación de una página web orienta
 - Jerónimo Omar Falcón Dávila - [@jerofd-02](https://github.com/jerofd-02)
 - Néstor Lucas Deníz González - [@Neestoor13](https://github.com/Neestoor13)
 
-## Requisitos funcionales
-Básicamente, el sistema debe permitir que cualquier usuario se registre en el sitio web para crear una cuenta personal y por tanto, un perfil. También debe permitir que los usuarios inicien sesión para acceder a su perfil y que puedan modificar su información personal con el fin de mantener sus datos actualizados.
+## Mockups
+Los mockups se dividen en subcarpetas, según el dispositivo:
+- Los de **escritorio** ubicados en [mockups/desktop](mockups/desktop), que representa la visualización en ordenadores y pantallas grandes.
+- Los de **móvil** ubicados en [mockups/mobile](mockups/mobile), que representa la visualización en dispositivos móviles.
+-  Los de **tablet** ubicados en [mockups/tablet](mockups/tablet), que representa la visualización en dispositivos móviles.
 
-Los usuarios deben poder publicar productos para ponerlos a la venta, así como editar los productos que hayan subido para modificar su información cuando sea necesario.
-
-Los compradores deben poder visualizar el nombre, el precio, la descripción y la categoría de los productos antes de adquirirlos. Así mismo, deben poder comprar los productos que les interesen y disponer de al menos un método de pago que les permita realizar las transacciones.
-
-El sistema también debe permitir que los usuarios añadan productos a una lista de deseos para guardarlos y comprarlos más adelante. Además, debe ofrecer una barra de búsqueda para encontrar productos fácilmente y la posibilidad de filtrarlos por categoría para mostrar únicamente aquellos que resulten de interés.
-
-Por último, los usuarios deben poder contactar con el servicio de soporte mediante un formulario para resolver dudas o problemas, y acceder a una página de preguntas frecuentes y políticas donde se explique el funcionamiento del sitio web.
-
-## Storyboards y mockups
-Se puede ver en el repo un [PDF](mockups/Storyboards_Mokcups.pdf), que contiene el Storyboard y los Mockups. También están las imágenes de todos los mockups en el siguente [directorio](mockups)
+Cada una, tiene su PDF, para facilitar la visualización.
 
 ## Lista de páginas
-- [index.html](index.html): Página principal. El mockup es [01_Index.png](mockups/01_Index.png)
-![01_Index.png](mockups/01_Index.png)
-Esta página contiene el header que dirige a la búsqueda, inicio de sesión y registro.
-Luego en el body, implementa un carrusel y una lista de productos.
-El footer tiene tres columnas, una para las redes sociales, una para la página de contacto/soporte y el último para FAQ.
-**El header y el footer se repiten en todas las páginas así que se da por hecho que está explicado.**
+- [index.html](index.html): Página principal.
+- [search_product.html](search-product.html): Página de búsqueda de producto.
+- [login.html](login.html): Página de inicio de sesión.
+- [register.html](register.html): Página de registro.
+- [contact_page.html](contact-page.html): Página de contacto / Soporte.
+- [faq.html](faq.html): Página de preguntas frecuentes / Políticas.
+- [product_page.html](product-page.html): Página de producto.
+- [payment_page.html](payment-page.html): Página de pago del producto.
+- [confirmation.html](confirmation.html): Página de confirmación del pago.
+- [wishlist.html](wishlist.html): Lista de deseos personal del usuario.
+- [profile.html](profile.html): Página del perfil. 
+- [update_profile.html](update-profile.html): Página para modificar el perfil.
+- [upload_product.html](upload-product.html): Página para subir / modificar producto.
 
-- [search_product.html](search-product.html): Página de búsqueda de producto. El mockup es [02_Búsqueda_de_productos.png](mockups/02_Búsqueda_de_productos.png)
-![02_Búsqueda_de_productos.png](mockups/02_Búsqueda_de_productos.png)
-El body, tiene un sidebar e implementa los productos como la fila que vimos antes, solo que duplicada.
+### Responsive
+Todas las páginas siguen el diseño responsive típico. Destacan:
+- El **header** cuando detecta que la pantalla es muy pequeña, muestra un icono de hamburguesa, que contiene los elementos que estaban dentro del header cuando la pantalla era grande, y este a su vez, despliega el menú con todos los contenidos, y una lupa de búsqueda a la derecha, ya que también contrae la búsqueda que tiene el header.
+- El **footer**, por otro lado, mueve los iconos de las redes sociales abajo al centro, sin texto, y conserva las dos columnas que están más a la derecha arriba.
 
-- [login.html](login.html): Página de inicio de sesión. El mockup es [03_Inicio_de_Sesión.png](mockups/03_Inicio_de_Sesión.png)
-![03_Inicio_de_Sesión.png](mockups/03_Inicio_de_Sesión.png)
-Esta página implementa un formulario para iniciar sesión mediante email y contraseña.
+Se indica el header y el footer porque son los contenidos comunes a todas las páginas. Luego, cada elemento que está en el contenido principal se adapta a la pantalla, según el tamaño.
 
-- [register.html](register.html): Página de registro. El mockup es [04_Registro.png](mockups/04_Registro.png)
-![04_Registro.png](mockups/04_Registro.png)
-Esta página implementa un formulario para registrarse en la página con los campos:
-- Nombre de usuario
-- Email
-- Contraseña
-- Confirmar contraseña
-- Fecha de nacimiento
-- Entre otros...
+Se muestra un ejemplo de la página web principal con los distintos diseños:
+- Escritorio:<br>![Index escritorio](mockups/desktop/01_Index.png)
+- Tablet:<br>![Index Tablet](mockups/tablet/01_Index_tablet.png)
+- Móvil:<br><div align="center">![Index móvil](mockups/mobile/01_Index_mobile.png)</div>
 
-- [contact_page.html](contact-page.html): Página de contacto / Soporte. El mockup es [05_Contacto-Soporte.png](mockups/05_Contacto-Soporte.png)
-![05_Contacto-Soporte.png](mockups/05_Contacto-Soporte.png)
-Esta página implementa un formulario para contactar con soporte con los campos:
-- Email
-- Nombre
-- Apellidos
-- Categoría del problema
-- Descripción del problema
-- Subida de ficheros
-- Entre otros...
+### Carga de templates y contenido JSON
+La carga de templates se ubican en el directorio [js](js), generalmente está controlado en el [common.js](js/common.js)
 
-- [faq.html](faq.html): Página de preguntas frecuentes / Políticas. El mockup es [06_FAQ-Políticas.png](mockups/06_FAQ-Políticas.png)
-![06_FAQ-Políticas.png](mockups/06_FAQ-Políticas.png)
-Esta página implementa unos textos que hablan sobre las preguntas frecuentes que puedan tener los usuarios.
+Este tiene dos funciones:
+- ```loadCommonTemplates()```: Que carga el header y el footer (que son los los templates comunes a todas las páginas).
+- ```loadTemplate()```: Que carga una o varias templates concretas del directorio templates para que la página lo cargue. No todas las páginas cargan templates a parte del header y el footer, pero las que lo requieren, lo cargan de esa forma.
 
-- [product_page.html](product-page.html): Página de producto. El mockup es [07_Página_del_producto.png](mockups/07_Página_del_producto.png)
-![07_Página_del_producto.png](mockups/07_Página_del_producto.png)
-Esta página implementa el carrusel y una descripción, junto a los botones de lista de deseos y comprar, también como el index, está la fila de productos llevará a otros productos del usuario.
+El fichero common.js también encapsula las funciones que controlan el menú hamburguesa con ```initHamburgerMenu()``` o la lectura de los datos de JSON con ```fetchData()``` entre otros.
 
-- [payment_page.html](payment-page.html): Página de pago del producto. El mockup es [08_Pago_del_producto.png](mockups/08_Pago_del_producto.png)
-![08_Pago_del_producto.png](mockups/08_Pago_del_producto.png)
-Esta página implementa un formulario, con la descripción del producto, forma de pago, tipo de envío, entre otros...
+### Páginas con formularios y validaciones
+Las páginas que utilizan formularios y validaciones son:
+- [login.html](login.html): Utiliza **required** para comprobar que email y password no estén vacíos. También comprueba que la password **comprueba que sea mayor de 8 caracteres**.
+- [register.html](register.html): Utiliza **required** para comprobar que el name, username, email y password y password_confirm no estén vacíos. También comprueba que la password y password_confirm **comprueba que sea mayor de 8 caracteres**.
+- [contact_page.html](contact-page.html): Utiliza **required** para comprobar que ningún campo esté vacío. También en **file_charge** se comprueba que realmente se sube con **accept="image/*"** y también usa la opción **multiple** para subir varias imágenes a la vez.
+- [payment_page.html](payment-page.html): Utiliza JavaScript para comprobar que ningún campo esté vacío.
+- [confirmation.html](confirmation.html): Solo confirma el pago si todo salido bien, pero no realiza ninguna validación.
+- [update_profile.html](update-profile.html): Utiliza **required** para comprobar que ningún campo esté vacío, excepto la descripción. También en **file_charge** se comprueba que realmente se sube con **accept="image/*"**.
+- [upload_product.html](upload-product.html): Utiliza **required** para comprobar que ningún campo esté vacío. También en **file_charge** se comprueba que realmente se sube con **accept="image/*"** y también usa la opción **multiple** para subir varias imágenes a la vez.
 
-- [confirmation.html](confirmation.html): Página de confirmación del pago. El mockup es [09_Pantalla_de_confirmación.png](mockups/09_Pantalla_de_confirmación.png)
-![09_Pantalla_de_confirmación.png](mockups/09_Pantalla_de_confirmación.png)
-Esta página, es muy parecida a la anterior, implementa un formulario, con la descripción del producto, forma de pago seleccionada, tipo de envío seleccioinado, e información del vendedor, entre otros...
+Usuario de prueba:
+- Email: armin.keenan@example.com
+- Contraseña: validacionformulario
 
-- [wishlist.html](wishlist.html): Lista de deseos personal del usuario. El mockup es [10_Lista_de_deseos.png](mockups/10_Lista_de_deseos.png)
-![10_Lista_de_deseos.png](mockups/10_Lista_de_deseos.png)
-Esta página, implementa un filtro y dos filas de productos.
+Se ha comentado el evento que hacia submit en el **register.html** y en el **upload-product.html** ya que se usaba localStorage como probar la funcionalidad de el registro y la subida del producto, respectivamente, en futuros sprints se planteará la solución correcta.
 
-- [profile.html](profile.html): Página del perfil. El mockup es [11_Perfil_del_usuario.png](mockups/11_Perfil_del_usuario.png)
-![11_Perfil_del_usuario.png](mockups/11_Perfil_del_usuario.png)
-Esta página, implementa una foto, la descripción con un botón para modificar el perfil, en la parte de abajo, un botón para añadir producto, junto la fila de productos del perfil.
+Tanto como en **wishlist.html** como en **search-product.html** tienen la funcionalidad de filtrado y se hace correctamente.
 
-- [update_profile.html](update-profile.html): Página para modificar el perfil. El mockup es:[12_Editar_perfil_configuración_cuenta.png](mockups/12_Editar_perfil_configuración_cuenta.png)
-![12_Editar_perfil_configuración_cuenta.png](mockups/12_Editar_perfil_configuración_cuenta.png)Esta página implementa un formulario para modificar el template con los campos:
-- Subida de la foto de perfil
-- Usuario
-- País
-- Descripción
-- Entre otros...
-
-- [upload_product.html](upload-product.html): Página para subir / modificar producto. El mockup es [13_Edición_del_producto.png](mockups/13_Edición_del_producto.png)
-![13_Edición_del_producto.png](mockups/13_Edición_del_producto.png)
-Esta página implementa un formulario para modificar el template con los campos:
-- Nombre
-- Precio
-- Descripción
-- Subida de fotos del producto
-- Entre otros...
-
-## Templates
-- [carousel.html](templates/carousel.html): Plantilla de un carrusel de imagenes en index.html y product.html.
-- [faq-template.html](templates/faq-template.html): Plantilla de la sección de preguntas frequentes en faq.html.
-- [footer.html](templates/footer.html): Plantilla de el footer o pie de página en todas y cada una de las páginas.
-- [form_style_page.html](templates/form-style-page.html): Plantilla de formulario en contact_page.html
-- [header.html](templates/header.html): Plantilla de el header o encabezado de página en todas y cada una de las páginas.
-- [login-template.html](templates/login-template.html): Plantilla de la sección de inicio de sesión en login.html.
-- [payment_confirmation.html](templates/payment-confirmation.html): Plantilla de la sección pago en payment_page.html.
-- [photo_row.html](templates/photo-row.html): Plantilla que es una fila de imagenes que llevan a un producto en el index.html, search_product.html, wishlist.html y profile.html.
-- [product_information.html](templates/product-information.html): Plantilla que es una descripción del producto con nombre, categoría, en el product_page.html, profile.html.
-- [product_information.html](templates/register-template.html): Plantilla de la sección de registro de usuario en register.html.
-
-## Directorios
-El repositorio tiene la siguiente estructura de directorios:
-- **images/:** Imágenes que se usan en las páginas durante el proyecto.
-- **mockups/:** Imágenes de los mockups hechos en Figma.
-- **styles/:** Hoja de estilos en cascada o CSS usados en el proyecto.
-- **templates/:** Planitllas o partes reutilizables a través de distintas páginas web.
-
-La raíz del directorio **contiene las páginas completas** usando templates (en caso de haberlos).
+## Contenido JSON
+Todo el contenido del JSON se encuentra en el directorio [data](data) y se maneja de forma local. Estos ficheros tienen desde el texto de las páginas hasta los datos de los usuarios y funcionan como una pequeña base de datos al no tener backend aún y se cargan con JavaScript.

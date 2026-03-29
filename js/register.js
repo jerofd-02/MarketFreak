@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     container.querySelector('.button').textContent = data.register.submitLabel;
     container.querySelector('a[href="login.html"]').textContent = data.register.loginLink.linkText;
     container.querySelector('.register_password_forgot').firstChild.textContent = data.register.loginLink.text;
-
+    
+    /*
     const nameInput = container.querySelector('input[name="name"]');
     const usernameInput = container.querySelector('input[name="username"]');
     const emailInput = container.querySelector('input[name="email"]');
@@ -62,5 +63,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         sessionStorage.setItem('loggedUser', JSON.stringify(users));
         window.location.href = 'index.html';
-    })
+    })*/
 });

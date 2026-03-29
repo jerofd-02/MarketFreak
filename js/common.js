@@ -209,11 +209,12 @@ async function fetchData(jsonName) {
         const response = await fetch(`../data/${jsonName}.json`);
         const data = await response.json();
 
+        /*
         // Si hemos creado productos en localStorage, se mezclarán con los del products.json
         if (jsonName === 'products') {
             const stored = JSON.parse(localStorage.getItem('products') || '[]');
             data.products = [...data.products, ...stored];
-        }
+        }*/
 
         return data;
     } catch (error) {
