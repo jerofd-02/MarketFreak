@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const productData = await fetchData('products');
     if (!productData) return;
 
-    const shuffled = productData.products.sort(() => Math.random() - 0.5).slice(0, 4);
+    const shuffled = productData.products.sort(() => Math.random() - 0.5).slice(0, 8);
 
     const photos = document.querySelector('.photo_row')
     photos.innerHTML = '';

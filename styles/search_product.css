@@ -94,7 +94,6 @@
 }
 
 @media (max-width: 768px) {
-
     .main_content {
         flex-direction: column;
         gap: 0;
@@ -145,27 +144,6 @@
         max-height: 1000px;
         padding: 10px;
         margin-bottom: 12px;
-    }
-}
-
-@media (max-width: 479px) {
-
-    .main_content {
-        padding: 8px;
-    }
-
-    .filter_toggle_btn {
-        font-size: 14px;
-        padding: 9px 12px;
-    }
-
-    .category_title {
-        font-size: 15px;
-    }
-
-    .photo_row .no_results {
-        grid-column: 1 / -1;
-        text-align: center;
     }
 }
 

@@ -89,6 +89,14 @@ h1 {
     padding: 6px 12px;
     height: auto;
     line-height: normal;
+    transition: 0.3s;
+}
+
+.register_button:hover,
+.login_button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
 }
 
 .registration_login a {
@@ -158,6 +166,11 @@ footer a {
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    transition: 0.3s;
+}
+
+.photo_row img:hover {
+    border: 1px solid #783f8eff;
 }
 
 .footer_photo {
@@ -455,7 +468,7 @@ i {
 }
 
 /* Responsive (tablet pequeña) */
-@media (min-width: 480px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .hamburger_btn,
     .search_toggle_btn {
         display: flex;
@@ -510,117 +523,5 @@ i {
 
     footer .column:nth-child(1) i {
         font-size: 1.4rem;
-    }
-}
-
-/* Responsive (móvil) */
-@media (max-width: 479px) {
-    header {
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    .hamburger_btn,
-    .search_toggle_btn {
-        display: flex;
-    }
-
-    .nav_bar {
-        display: none !important;
-    }
-
-    .image_container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .login_button,
-    .register_button,
-    .header_profile_photo {
-        display: none !important;
-    }
-
-    .registration_login {
-        margin: 0;
-        padding: 0;
-        gap: 6px;
-    }
-
-    .registration_login a {
-        font-size: 13px;
-        padding: 6px;
-        white-space: nowrap;
-    }
-
-    .register_button {
-        margin-right: 0;
-    }
-
-    .photo_row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin: 8px;
-        justify-content: unset;
-    }
-
-    .photo_row img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-    }
-
-    footer {
-        flex-wrap: wrap;
-    }
-
-    footer .column:nth-child(1) {
-        width: 100%;
-        order: 2;
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-    }
-
-    footer .column:nth-child(2),
-    footer .column:nth-child(3) {
-        width: 50%;
-        order: 1;
-    }
-
-    footer .column:nth-child(1) .footer_item a span {
-        display: none;
-    }
-
-    footer .column:nth-child(1) .footer_item {
-        margin-bottom: 0;
-    }
-
-    footer .column:nth-child(1) i {
-        font-size: 1.4rem;
-    }
-
-    .wish_bar {
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 15px 8px;
-    }
-
-    .wish_search {
-        width: 100%;
-    }
-
-    .wish_bar input {
-        width: 100%;
-    }
-
-    .wish_bar form {
-        width: 100%;
-    }
-
-    .wish_bar select {
-        width: 100%;
     }
 }

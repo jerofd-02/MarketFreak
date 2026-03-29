@@ -4,7 +4,7 @@ body {
 }
 
 .header-text {
-    margin: 0 10px 0 10px;
+    margin: 20px 0 10px 0;
     font-size: 30px;
     text-align: center;
 }
@@ -33,6 +33,16 @@ input[readonly] {
     cursor: not-allowed;
 }
 
+input:focus {
+    border: 1px solid #411271ff;
+    outline: #411271ff;
+}
+
+input:user-invalid {
+    border-color: #e53e3e;
+    outline-color: #e53e3e;
+}
+
 .input_error {
     color: #e53e3e;
     font-size: .8em;
@@ -54,6 +64,16 @@ textarea {
     min-height: 160px;
     resize: vertical;
     width: 100%;
+}
+
+textarea:focus {
+    border: 1px solid #411271ff;
+    outline: #411271ff;
+}
+
+textarea:user-invalid {
+    border-color: #e53e3e;
+    outline-color: #e53e3e;
 }
 
 .form_group {
@@ -79,6 +99,13 @@ textarea {
     border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
 }
 
 .register_password_forgot {
@@ -120,6 +147,16 @@ select {
     display: block;
     width: 100%;
     box-sizing: border-box;
+}
+
+select:focus {
+    border: 1px solid #411271ff;
+    outline: #411271ff;
+}
+
+select:user-invalid {
+    border-color: #e53e3e;
+    outline-color: #e53e3e;
 }
 
 .file_preview {
@@ -213,7 +250,6 @@ select {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-
     .form_container {
         width: 75%;
         max-width: 560px;
@@ -231,25 +267,6 @@ select {
 }
 
 @media (max-width: 767px) {
-
-    .form_container {
-        width: 90%;
-        max-width: 480px;
-        margin: 30px auto;
-        padding: 16px;
-    }
-
-    label {
-        font-size: 16px;
-    }
-
-    .row {
-        gap: 8px;
-    }
-}
-
-@media (max-width: 479px) {
-
     .form_container {
         width: 95%;
         max-width: 100%;

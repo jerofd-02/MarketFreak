@@ -53,6 +53,11 @@
     cursor: pointer;
 }
 
+.buy_button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
+}
 
 .wishlist_button {
     background: #b6465fff;
@@ -61,6 +66,13 @@
     padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.wishlist_button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
 }
 
 .edit_button {
@@ -74,8 +86,13 @@
     cursor: pointer;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+.edit_button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
+}
 
+@media (min-width: 768px) and (max-width: 1024px) {
     .product_container {
         gap: 20px;
         padding-bottom: 20px;
@@ -105,7 +122,6 @@
 }
 
 @media (max-width: 767px) {
-
     .product_container {
         flex-direction: column;
         gap: 16px;

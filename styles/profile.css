@@ -32,6 +32,13 @@
     cursor: pointer;
     display: inline-block;
     margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.profile-button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
 }
 
 .add-product-button {
@@ -85,32 +92,6 @@
         display: flex;
         flex-direction: column;
         padding: 0 10px;
-    }
-
-    .profile-button {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-    }
-}
-
-@media (max-width: 479px) {
-    .profile-column:last-child {
-        display: flex;
-        flex-direction: column;
-        padding: 0 10px;
-    }
-
-    .profile-row img {
-        width: 60%;
-    }
-
-    .add-product-button {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
     }
 
     .profile-button {

@@ -44,6 +44,13 @@
     border: 1px solid #ebd4cbff;
     border-radius: 10px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.confirm_button:hover {
+    background-color: #783f8eff;
+    color: #c8c6d7ff;
+    border: 1px solid #c8c6d7ff;
 }
 
 /* Tablet landscape (responsive) */
