@@ -49,4 +49,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     fillOptions(document.querySelector('.shipment_method'), 'shipment', shipmentMethods.title, shipmentMethods.options);
 
     document.querySelector('.confirm_button').textContent = submitButton;
+
+    document.querySelector("form").addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const selectedPayment = document.querySelector('input[name="payment"]:checked');
+        const selectedShipment = document.querySelector('input[name="shipment"]:checked');
+
+        if (!selectedPayment || !selectedShipment) {
+            alert('Por favor selecciona un método de pago y de envío.');
+            return false;
+        }
+
+        sessionStorage.setItem('orderData', JSON.stringify({
+            productId: id,
+            productName: product.name,
+            productPrice: product.price,
+            productImage: product.image,
+            productAlt: product.alt,
+            productDescription: product.description,
+            productCategory: product.category,
+            payment: document.querySelector(`label[for="${selectedPayment.id}"]`).textContent,
+            shipment: document.querySelector(`label[for="${selectedShipment.id}"]`).textContent,
+            seller: product.seller
+        }));
+
+        window.location.href = "confirmation.html"
+    })
 });

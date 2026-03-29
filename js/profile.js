@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const seller = params.get('seller');
 
+    const profileData = await fetchData('profile');
+    if (!profileData) return false;
+
     const productsData = await fetchData('products');
     if (!productsData) return false;
 
@@ -27,4 +30,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     information.querySelector('p:nth-child(2)').textContent = `@${user.seller}`;
     information.querySelector('p:nth-child(3)').textContent = user.location;
     information.querySelector('#description').textContent = user.description;
+
+    document.getElementById('products_title').textContent = profileData.profile.productsTitle;
+
+    const profileButton = document.querySelector('.profile-button');
+    profileButton.textContent = profileData.profile.editButton.label;
+    profileButton.href = profileData.profile.editButton.href;
+
+    const addProductButton = document.querySelector('.add-product-button');
+    addProductButton.querySelector('i').className = profileData.profile.addProductButton.icon;
+    addProductButton.childNodes[2].textContent = `${profileData.profile.addProductButton.label}`;
+    addProductButton.href = profileData.profile.addProductButton.href;
+
+    const loggedUser = getLoggedUser();
+    const isOwner = loggedUser && loggedUser.seller === seller;
+
+    if (!isOwner) {
+        profileButton.style.display = 'none';
+        document.querySelector('.add-product-button').closest('.photo_item').style.display = 'none';
+    }
 });
