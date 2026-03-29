@@ -1,31 +1,31 @@
 {
   "users": [
     {
-      "seller": "Vendedor_A",
-      "name": "Carlos García",
-      "email": "carlos@example.com",
+      "seller": "armin.keenan",
+      "name": "Armin Keenan",
+      "email": "armin.keenan@example.com",
       "password": "12345678",
-      "photo": "../images/logo_filter.png",
+      "photo": "../images/user-images/ren_pfp.jpg",
       "location": "Madrid, España",
-      "description": "Coleccionista apasionado desde hace más de 15 años, especializado en figuras de acción y cómics de edición limitada. Todos mis artículos están en perfecto estado y proceden de mi colección personal. Envío a toda España con embalaje seguro y número de seguimiento."
+      "description": "Coleccionista apasionado desde hace más de 15 años, especializado en figuras de acción y mangas de edición limitada. Todos mis artículos están en perfecto estado y proceden de mi colección personal. Envío a toda España con embalaje seguro y número de seguimiento."
     },
     {
-      "seller": "Vendedor_B",
-      "name": "Laura Martínez",
-      "email": "laura@example.com",
+      "seller": "kasumi.yoshizawa",
+      "name": "Kasumi Yoshizawa 🎀",
+      "email": "kasumi.yoshizawa@example.com",
       "password": "abcdefgh",
-      "photo": "../images/logo_filter.png",
+      "photo": "../images/user-images/sumi_pfp.jpg",
       "location": "Barcelona, España",
-      "description": "Especialista en monedas antiguas y billetes de colección. Cada pieza que vendo ha sido verificada y catalogada con su correspondiente certificado de autenticidad. Llevo más de 10 años en el mundo del coleccionismo numismático y ofrezco asesoramiento gratuito a compradores interesados."
+      "description": "Apasionada coleccionista de figuras de anime y mangas shoujo desde hace más de 8 años. Especializada en ediciones limitadas y artículos exclusivos importados directamente de Japón. Cada figura que vendo viene en perfecto estado, con su caja original y todos los accesorios incluidos. ¡Si buscas algo en concreto, no dudes en preguntarme!"
     },
     {
-      "seller": "Vendedor_C",
+      "seller": "pedro.sanchez",
       "name": "Pedro Sánchez",
-      "email": "pedro@example.com",
+      "email": "pedro.sanchez@example.com",
       "password": "pass1234",
-      "photo": "../images/logo_filter.png",
+      "photo": "../images/user-images/pfp_3.jpg",
       "location": "Valencia, España",
-      "description": "Coleccionista de sellos y postales antiguas con más de 20 años de experiencia. Mi colección abarca piezas de todo el mundo, con especial énfasis en sellos españoles del siglo XX. Ofrezco descripciones detalladas y fotografías de alta calidad en todos mis anuncios."
+      "description": "Especialista en monedas antiguas y billetes de colección. Cada pieza que vendo ha sido verificada y catalogada con su correspondiente certificado de autenticidad. Llevo más de 10 años en el mundo del coleccionismo numismático y ofrezco asesoramiento gratuito a compradores interesados."
     }
   ]
 }

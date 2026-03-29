@@ -104,11 +104,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadTemplate('product-information', 'product_info');
     await loadTemplate('photo-row', 'photo_row');
 
-    const [data, productsData] = await Promise.all([
+    const [data, productsData, usersData] = await Promise.all([
         fetchData('product-page'),
-        fetchData('products')
+        fetchData('products'),
+        fetchData('users')
     ]);
-    if (!data || !productsData) return;
+    if (!data || !productsData || !usersData) return;
 
     document.getElementById('related_title').textContent = data.ui.relatedTitle;
 
@@ -120,8 +121,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    document.querySelector('.user_reference a').textContent = `@${product.seller}`;
+    const current_seller = usersData.users.find(u => u.seller === product.seller);
+
     document.querySelector('.user_reference a').href = `profile.html?seller=${product.seller}`;
+
+    if (current_seller) {
+        document.querySelector('.user_reference img').src = current_seller.photo;
+        document.querySelector('.user_reference img').alt = current_seller.name;
+        document.querySelector('.user_reference a').textContent = current_seller.name;
+    }
 
     const user = getLoggedUser();
     const productButtons = document.querySelector('.product_buttons');

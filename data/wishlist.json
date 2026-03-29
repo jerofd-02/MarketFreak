@@ -20,7 +20,7 @@
   ],
   "wishlists": [
     {
-      "seller": "Vendedor_A",
+      "seller": "armin.keenan",
       "products": [
         {
           "id": 4,
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "seller": "Vendedor_B",
+      "seller": "kasumi.yoshizawa",
       "products": [
         {
           "id": 1,
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "seller": "Vendedor_C",
+      "seller": "pedro.sanchez",
       "products": [
         {
           "id": 2,
