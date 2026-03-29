@@ -1,17 +1,13 @@
 .profile-column {
-    margin: 10px;
-    float: left;
+    padding: 10px;
     width: 50%;
-}
-
-.profile-row:after {
-    display: table;
-    clear: both;
+    box-sizing: border-box;
 }
 
 .profile-row {
     display: flex;
-    border-bottom: solid 5px darkgray;
+    border-bottom: solid 5px #890620ff;
+    padding: 0;
 }
 
 .profile-row img {
@@ -34,6 +30,8 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
 .add-product-button {
@@ -63,11 +61,62 @@
     background-color: #f5e4e9;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .profile-row img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-row {
+        flex-direction: column;
+    }
+
+    .profile-row img {
+        width: 40%;
+    }
+
+    .profile-column {
+        width: 100%;
+        float: none;
+    }
+
+    .profile-column:last-child {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .profile-button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
 @media (max-width: 479px) {
+    .profile-column:last-child {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .profile-row img {
+        width: 60%;
+    }
+
     .add-product-button {
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
         object-fit: cover;
+    }
+
+    .profile-button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
     }
 }

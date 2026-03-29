@@ -47,6 +47,10 @@ async function loadCommonTemplates() {
         profileButton.src = user.photo || '../images/placeholder.png';
         profileButton.style.display = 'inline-block';
         profileButton.title = user.name;
+        profileButton.style.cursor = 'pointer';
+        profileButton.addEventListener('click', () => {
+            window.location.href = `profile.html?seller=${user.seller}`;
+        });
 
         registerButton.textContent = 'Cerrar sesión';
         registerButton.href = '#';
@@ -104,7 +108,7 @@ function initHamburgerMenu() {
         <ul>
             <li><a href="index.html">Inicio</a></li>
             ${user
-        ? `<li><a>${user.name}</a></li>
+        ? `<li><a href="profile.html?seller=${user.seller}">${user.name}</a></li>
                    <li><a href="login.html" id="mobile_logout">Cerrar sesión</a></li>`
         : `<li><a href="login.html">Iniciar sesión</a></li>
                     <li><a href="register.html">Registrarse</a></li>`
@@ -231,12 +235,6 @@ function logout() {
 function requireAuth() {
     const user = getLoggedUser();
     if (!user) {
-        window.location.href = 'login.html';
-    }
-}
-
-function checkAuth() {
-    if (!getLoggedUser()) {
         window.location.href = 'login.html';
     }
 }

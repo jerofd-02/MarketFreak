@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    document.querySelector('.user_reference a').textContent = `@${product.seller}`;
+    document.querySelector('.user_reference a').textContent = `${product.seller}`;
     document.querySelector('.user_reference a').href = `profile.html?seller=${product.seller}`;
 
     const user = getLoggedUser();
