@@ -1,0 +1,21 @@
+<footer>
+  <div class="column">
+    @for (social of footer.social; track social.name) {
+      <div class="footer_item">
+        <a [href]="social.url" target="_blank">
+          <i [class]="social.icon"></i>
+          <span>{{ social.name }}</span>
+        </a><br/>
+      </div>
+    }
+  </div>
+
+  @for (column of footer.columns; track column.title) {
+    <div class="column">
+      <h1>{{ column.title }}</h1>
+      @for (link of column.links; track link.url) {
+        <a [href]="link.url">{{ link.label }}</a>
+      }
+    </div>
+  }
+</footer>

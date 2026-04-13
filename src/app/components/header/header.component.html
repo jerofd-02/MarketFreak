@@ -1,0 +1,70 @@
+<header>
+  <div class="image_container">
+    <a routerLink="/" class="logo">
+      <img [src]="header.image.src" [alt]="header.image.alt">
+    </a>
+    <button class="hamburger_btn" (click)="toogleMenu()" [attr.aria-expanded]="menuOpen">
+      <i [class]="menuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+    </button>
+  </div>
+</header>
+
+<div class="nav_bar">
+  <i class="fa fa-search"></i>
+  <input type="text" [placeholder]="header.nav_bar" [(ngModel)]="searchQuery" (keydown)="onSearch($event)">
+</div>
+
+<div class="registration_login">
+  @if (user) {
+    <img [src]=user.photo alt="Foto de perfil" class="header_profile_photo" id="profileButton" [title]="user.name"
+         (click)="goToProfile()">
+  }
+  @if (!user) {
+    <a routerLink="/login" class="login_button" id="loginButton">
+      {{ header.login_button.label }}
+    </a>
+    <a routerLink="/register" class="register_button" id="registerButton">
+      {{ header.register_button.label }}
+    </a>
+  } @else {
+    <a href="#" class="register_button" (click)="logout(); $event.preventDefault()">
+      Cerrar sesión
+    </a>
+  }
+
+  <button class="search_toogle_btn" aria-label="Buscar">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+<div class="mobile_search_bar">
+  <input type="text" [placeholder]="header.nav_bar" [(ngModel)]="searchQuery" (keydown)="onSearch($event)">
+  <button class="search_close_btn">
+    <i class="fas fa-times"></i>
+  </button>
+</div>
+
+<div class="menu_overlay" [class.visible]="menuOpen" (click)="closeMenu()">
+  <nav class="mobile_menu" [class.open]="menuOpen">
+    <ul>
+      <li>
+        <a routerLink="/" (click)="closeMenu()">Inicio</a>
+      </li>
+      @if (!user) {
+        <li>
+          <a routerLink="/login" (click)="closeMenu()">{{ header.login_button.label }}</a>
+        </li>
+        <li>
+          <a routerLink="/register" (click)="closeMenu()">{{ header.register_button.label }}</a>
+        </li>
+      } @else {
+        <li>
+          <a (click)="goToProfile(); closeMenu()">{{ user.name }}</a>
+        </li>
+        <li>
+          <a href="#" (click)="logout(); $event.preventDefault()">Cerrar sesión</a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
