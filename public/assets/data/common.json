@@ -1,7 +1,7 @@
 {
   "header": {
     "image": {
-      "src": "/images/misc/logo_filter_with_transparency.png",
+      "src": "assets/images/misc/logo_filter_with_transparency.png",
       "alt": "Logo de MarketFreak"
     },
     "nav_bar": "Busca tu artículo friki",

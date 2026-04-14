@@ -5,8 +5,8 @@
       "name": "Carrusel image",
       "alt": "Foto del carrusel",
       "images": [
-        "images/misc/promo_image_1.png",
-        "images/misc/promo_image_2.png"
+        "assets/images/misc/promo_image_1.png",
+        "assets/images/misc/promo_image_2.png"
       ]
     }
   ],

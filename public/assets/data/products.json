@@ -8,9 +8,9 @@
       "description": "Descripción detallada del producto uno. Este es un artículo de alta calidad disponible en nuestra tienda.",
       "seller": "armin.keenan",
       "dateAdded": "2026-03-22",
-      "image": "../images/product-images/Ace_figura/foto_1.png",
+      "image": "assets/images/product-images/Ace_figura/foto_1.png",
       "images": [
-        "../images/product-images/Ace_figura/foto_1.png"
+        "assets/images/product-images/Ace_figura/foto_1.png"
       ],
       "alt": "Imagen producto uno",
       "url": "product-page.html?id=1"
@@ -23,9 +23,9 @@
       "description": "Descripción detallada del producto dos. Excelente relación calidad-precio.",
       "seller": "armin.keenan",
       "dateAdded": "2026-03-21",
-      "image": "../images/product-images/Manga_soul_eater/foto_1.png",
+      "image": "assets/images/product-images/Manga_soul_eater/foto_1.png",
       "images": [
-        "../images/product-images/Manga_soul_eater/foto_1.png"
+        "assets/images/product-images/Manga_soul_eater/foto_1.png"
       ],
       "alt": "Imagen producto dos",
       "url": "product-page.html?id=2"
@@ -38,11 +38,11 @@
       "description": "Descripción detallada del producto tres. Ideal para uso diario.",
       "seller": "armin.keenan",
       "dateAdded": "2026-03-18",
-      "image": "../images/product-images/Komaeda_figura/foto_1.jpg",
+      "image": "assets/images/product-images/Komaeda_figura/foto_1.jpg",
       "images": [
-        "../images/product-images/Komaeda_figura/foto_1.jpg",
-        "../images/product-images/Komaeda_figura/foto_2.jpg",
-        "../images/product-images/Komaeda_figura/foto_3.jpg"
+        "assets/images/product-images/Komaeda_figura/foto_1.jpg",
+        "assets/images/product-images/Komaeda_figura/foto_2.jpg",
+        "assets/images/product-images/Komaeda_figura/foto_3.jpg"
       ],
       "alt": "Imagen producto tres",
       "url": "product-page.html?id=3"
@@ -55,9 +55,9 @@
       "description": "Descripción detallada del producto cuatro. Producto premium de larga duración.",
       "seller": "kasumi.yoshizawa",
       "dateAdded": "2026-03-15",
-      "image": "../images/product-images/Dazai_figura/foto_1.png",
+      "image": "assets/images/product-images/Dazai_figura/foto_1.png",
       "images": [
-        "../images/product-images/Dazai_figura/foto_1.png"
+        "assets/images/product-images/Dazai_figura/foto_1.png"
       ],
       "alt": "Imagen producto cuatro",
       "url": "product-page.html?id=4"
@@ -70,9 +70,9 @@
       "description": "Descripción detallada del producto cinco. Pequeño y práctico.",
       "seller": "kasumi.yoshizawa",
       "dateAdded": "2026-03-22",
-      "image": "../images/product-images/Persona_figuras/foto_1.jpg",
+      "image": "assets/images/product-images/Persona_figuras/foto_1.jpg",
       "images": [
-        "../images/product-images/Persona_figuras/foto_1.jpg"
+        "assets/images/product-images/Persona_figuras/foto_1.jpg"
       ],
       "alt": "Imagen producto cinco",
       "url": "product-page.html?id=5"
@@ -85,10 +85,10 @@
       "description": "Descripción detallada del producto seis. Muy valorado por nuestros clientes.",
       "seller": "kasumi.yoshizawa",
       "dateAdded": "2026-03-10",
-      "image": "../images/product-images/Manga_cdm/foto_1.jpg",
+      "image": "assets/images/product-images/Manga_cdm/foto_1.jpg",
       "images": [
-        "../images/product-images/Manga_cdm/foto_1.jpg",
-        "../images/product-images/Manga_cdm/foto_2.jpg"
+        "assets/images/product-images/Manga_cdm/foto_1.jpg",
+        "assets/images/product-images/Manga_cdm/foto_2.jpg"
       ],
       "alt": "Imagen producto seis",
       "url": "product-page.html?id=6"
@@ -101,9 +101,9 @@
       "description": "Descripción detallada del producto siete. Diseño moderno y funcional.",
       "seller": "pedro.sanchez",
       "dateAdded": "2026-03-20",
-      "image": "../images/product-images/Monedas/foto_1.jpg",
+      "image": "assets/images/product-images/Monedas/foto_1.jpg",
       "images": [
-        "../images/product-images/Monedas/foto_1.jpg"
+        "assets/images/product-images/Monedas/foto_1.jpg"
       ],
       "alt": "Imagen producto siete",
       "url": "product-page.html?id=7"
@@ -116,10 +116,10 @@
       "description": "Descripción detallada del producto ocho. El más completo de nuestra colección.",
       "seller": "pedro.sanchez",
       "dateAdded": "2026-03-01",
-      "image": "../images/product-images/Monedas_y_billetes/foto_1.jpg",
+      "image": "assets/images/product-images/Monedas_y_billetes/foto_1.jpg",
 
       "images": [
-        "../images/product-images/Monedas_y_billetes/foto_1.jpg"
+        "assets/images/product-images/Monedas_y_billetes/foto_1.jpg"
       ],
       "alt": "Imagen producto ocho",
       "url": "product-page.html?id=8"
@@ -132,9 +132,9 @@
       "description": "Descripción detallada del producto nueve. Perfecto como regalo.",
       "seller": "pedro.sanchez",
       "dateAdded": "2026-03-19",
-      "image": "../images/product-images/Billetes/foto_1.jpg",
+      "image": "assets/images/product-images/Billetes/foto_1.jpg",
       "images": [
-        "../images/product-images/Billetes/foto_1.jpg"
+        "assets/images/product-images/Billetes/foto_1.jpg"
       ],
       "alt": "Imagen producto nueve",
       "url": "product-page.html?id=9"
@@ -147,9 +147,9 @@
       "description": "Descripción detallada del producto diez. Calidad garantizada.",
       "seller": "armin.keenan",
       "dateAdded": "2026-02-28",
-      "image": "../images/product-images/Chifuyu_figura/foto_1.jpg",
+      "image": "assets/images/product-images/Chifuyu_figura/foto_1.jpg",
       "images": [
-        "../images/product-images/Chifuyu_figura/foto_1.jpg"
+        "assets/images/product-images/Chifuyu_figura/foto_1.jpg"
       ],
       "alt": "Imagen producto diez",
       "url": "product-page.html?id=10"
