@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private router: Router) {
   }
 
-  getLoogedUser(): LoggedUser | null {
+  getLoggedUser(): LoggedUser | null {
     return JSON.parse(sessionStorage.getItem('loggedUser') || 'null');
   }
 
@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   requireAuth(): void {
-    if (!this.getLoogedUser()) {
+    if (!this.getLoggedUser()) {
       this.router.navigate(['/login']);
     }
   }

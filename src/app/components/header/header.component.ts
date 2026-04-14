@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
       error: (err) => console.error('Error al cargar el header:', err)
     });
 
-    this.user = this.authService.getLoogedUser();
+    this.user = this.authService.getLoggedUser();
 
     const params = new URLSearchParams(window.location.search);
     const query = params.get('q');
@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
-  toogleMenu(): void {
+  toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
 

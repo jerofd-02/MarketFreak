@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Footer} from '../../models/layout/layout.interface';
 import {LayoutService} from '../../services/layout.service';
@@ -13,12 +13,18 @@ import {LayoutService} from '../../services/layout.service';
 export class FooterComponent implements OnInit {
   footer!: Footer;
 
-  constructor(private layoutService: LayoutService) {
+  constructor(
+    private layoutService: LayoutService,
+    private cdr: ChangeDetectorRef
+  ) {
   }
 
   ngOnInit(): void {
     this.layoutService.getFooter().subscribe({
-      next: (data) => this.footer = data,
+      next: (data) => {
+        this.footer = data;
+        this.cdr.detectChanges();
+      },
       error: (err) => console.log("Error al cargar el footer:", err)
     });
   }
