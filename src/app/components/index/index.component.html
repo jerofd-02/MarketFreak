@@ -1,0 +1,31 @@
+<main>
+  @if (carousel) {
+    <div class="carousel carousel-divider">
+      <div class="carousel_viewport">
+        @for (img of carousel.images; track img; let i = $index) {
+          <div class="carousel_slide" [class.active]="i === currentSlide">
+            <img [src]="img" [alt]="carousel.alt">
+          </div>
+        }
+      </div>
+      <div class="carousel_navigation">
+        @for (img of carousel.images; track img; let i = $index) {
+          <a class="carousel_navigation-button" [class.active]="i === currentSlide" (click)="setSlide(i)"></a>
+        }
+      </div>
+    </div>
+  }
+
+  <h1>{{ mainTitle }}</h1>
+  <div class="photo_row">
+    @for (product of products; track product.id) {
+      <div class="photo_item">
+        <a [routerLink]="['/product', product.id]" class="img">
+          <img [src]="product.image" [alt]="product.alt">
+        </a>
+        <p class="text_element">{{ product.name }}</p>
+        <p class="price_element">{{ product.price }}</p>
+      </div>
+    }
+  </div>
+</main>
