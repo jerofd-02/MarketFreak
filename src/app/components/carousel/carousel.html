@@ -1,0 +1,16 @@
+@if (carousel) {
+  <div class="carousel carousel-divider">
+    <div class="carousel_viewport">
+      @for (img of carousel.images; track img; let i = $index) {
+        <div class="carousel_slide" [class.active]="i === currentSlide">
+          <img [src]="img" [alt]="carousel.alt">
+        </div>
+      }
+    </div>
+    <div class="carousel_navigation">
+      @for (img of carousel.images; track img; let i = $index) {
+        <a class="carousel_navigation-button" [class.active]="i === currentSlide" (click)="setSlide(i)"></a>
+      }
+    </div>
+  </div>
+}

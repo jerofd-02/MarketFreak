@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
-import {IndexComponent} from './components/index/index.component';
+import {Home} from './components/home/home';
 
 export const routes: Routes = [
-  {path: '', component: IndexComponent},
+  {path: '', component: Home},
 ];

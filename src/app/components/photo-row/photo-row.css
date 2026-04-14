@@ -1,0 +1,33 @@
+.photo_row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+  margin: 10px 15px 15px 15px;
+}
+
+.photo_item {
+  width: 100%;
+}
+
+.photo_row img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.photo_row img:hover {
+  border: 1px solid #783f8eff;
+}
+
+.text_element {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px 0 0 5px;
+}
+
+.price_element {
+  font-size: 15px;
+  margin: 5px 0 0 5px;
+}
