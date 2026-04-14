@@ -1,0 +1,114 @@
+{
+  "updateProfile": {
+    "fields": [
+      {
+        "name": "avatar",
+        "label": "Foto de perfil",
+        "type": "file"
+      },
+      {
+        "name": "username",
+        "label": "Nombre de usuario",
+        "type": "text",
+        "placeholder": "Introduce tu nombre de usuario..."
+      },
+      {
+        "name": "location",
+        "label": "Ubicación",
+        "type": "text",
+        "value": "España",
+        "readonly": true
+      },
+      {
+        "name": "province",
+        "label": "Comunidad autónoma",
+        "type": "select",
+        "options": [
+          {
+            "value": "andalucia",
+            "label": "Andalucía"
+          },
+          {
+            "value": "aragon",
+            "label": "Aragón"
+          },
+          {
+            "value": "asturias",
+            "label": "Asturias"
+          },
+          {
+            "value": "baleares",
+            "label": "Islas Baleares"
+          },
+          {
+            "value": "canarias",
+            "label": "Islas Canarias"
+          },
+          {
+            "value": "cantabria",
+            "label": "Cantabria"
+          },
+          {
+            "value": "castilla_la_mancha",
+            "label": "Castilla-La Mancha"
+          },
+          {
+            "value": "castilla_y_leon",
+            "label": "Castilla y León"
+          },
+          {
+            "value": "cataluna",
+            "label": "Cataluña"
+          },
+          {
+            "value": "extremadura",
+            "label": "Extremadura"
+          },
+          {
+            "value": "galicia",
+            "label": "Galicia"
+          },
+          {
+            "value": "la_rioja",
+            "label": "La Rioja"
+          },
+          {
+            "value": "madrid",
+            "label": "Comunidad de Madrid"
+          },
+          {
+            "value": "murcia",
+            "label": "Región de Murcia"
+          },
+          {
+            "value": "navarra",
+            "label": "Comunidad Foral de Navarra"
+          },
+          {
+            "value": "pais_vasco",
+            "label": "País Vasco"
+          },
+          {
+            "value": "valencia",
+            "label": "Comunidad Valenciana"
+          },
+          {
+            "value": "ceuta",
+            "label": "Ceuta"
+          },
+          {
+            "value": "melilla",
+            "label": "Melilla"
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "label": "Descripción",
+        "type": "textarea",
+        "placeholder": "Cuéntanos sobre ti y tu colección..."
+      }
+    ],
+    "submitLabel": "Guardar cambios"
+  }
+}

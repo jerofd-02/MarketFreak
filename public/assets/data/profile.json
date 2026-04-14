@@ -1,0 +1,14 @@
+{
+  "profile": {
+    "productsTitle": "Productos del vendedor",
+    "editButton": {
+      "label": "Editar perfil",
+      "href": "update-profile.html"
+    },
+    "addProductButton": {
+      "label": "Añadir producto",
+      "href": "upload-product.html",
+      "icon": "fa fa-plus"
+    }
+  }
+}
