@@ -1,0 +1,39 @@
+import {Component, OnInit} from '@angular/core';
+import {LoginConfig, LoginData} from '../../models/login/login.interface';
+import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {LoginService} from '../../services/login.service';
+
+@Component({
+  selector: 'app-login',
+  imports: [
+    FormsModule,
+    RouterLink,
+    CommonModule,
+  ],
+  templateUrl: './login.html',
+  styleUrls: ['../form-style-page/form-style-page.css']
+})
+export class Login implements OnInit {
+
+  loginData: LoginData = {
+    email: '',
+    password: ''
+  };
+
+  config?: LoginConfig;
+
+  constructor(private loginService: LoginService) {
+  }
+
+  ngOnInit(): void {
+    this.loginService.getData().subscribe({
+      next: (data) => this.config = data
+    })
+  }
+
+  onSubmit() {
+    console.log(this.loginData);
+  }
+}

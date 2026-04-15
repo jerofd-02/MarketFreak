@@ -10,8 +10,8 @@ import {AuthService, LoggedUser} from '../../services/auth.service';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  templateUrl: './header.html',
+  styleUrl: './header.css',
 })
 export class HeaderComponent implements OnInit {
   header!: Header;
