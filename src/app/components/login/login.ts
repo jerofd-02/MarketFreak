@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {LoginConfig, LoginData} from '../../models/login/login.interface';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
@@ -24,12 +24,15 @@ export class Login implements OnInit {
 
   config?: LoginConfig;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
     this.loginService.getData().subscribe({
-      next: (data) => this.config = data
+      next: (data) => {
+        this.config = data;
+        this.cdr.detectChanges();
+      }
     })
   }
 

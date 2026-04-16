@@ -1,0 +1,40 @@
+@if (config) {
+  <h1 class="header-text">{{ config.title }}</h1>
+  <div class="form_container">
+    <form class="form_group" action="#" method="POST" (ngSubmit)="onSubmit()">
+      <div class="element">
+        <label for="name">{{ config.fields[0].label }}</label>
+        <input type="text" [ngModel]="registerData.name" name="name" id="name"
+               [placeholder]="config.fields[0].placeholder" required/>
+      </div>
+      <div class="element">
+        <label for="username">{{ config.fields[1].label }}</label>
+        <input type="text" [ngModel]="registerData.username" name="username" id="username"
+               [placeholder]="config.fields[1].placeholder" required minlength="3" maxlength="20"
+               pattern="[a-zA-Z0-9]+"/>
+      </div>
+      <div class="element">
+        <label for="email">{{ config.fields[2].label }}</label>
+        <input type="email" [ngModel]="registerData.email" name="email" id="email"
+               [placeholder]="config.fields[2].placeholder" required/>
+      </div>
+      <div class="element">
+        <label for="password">{{ config.fields[3].label }}</label>
+        <input type="password" [ngModel]="registerData.password" name="password" id="password"
+               [placeholder]="config.fields[3].placeholder" required minlength="8"/>
+      </div>
+      <div class="element">
+        <label for="password_confirm">{{ config.fields[4].label }}</label>
+        <input type="password" [ngModel]="registerData.password_confirm" name="password_confirm" id="password_confirm"
+               [placeholder]="config.fields[4].placeholder" required minlength="8"/>
+      </div>
+      <button class="button">{{ config.submitLabel }}</button>
+    </form>
+  </div>
+  <div>
+    <span class="register_password_forgot">
+      {{ config.registerLink.text }}
+      <a routerLink="/login">{{ config.registerLink.linkText }}</a>
+    </span>
+  </div>
+}
