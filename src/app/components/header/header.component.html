@@ -19,26 +19,20 @@
            (click)="goToProfile()">
     }
     @if (!user) {
-      <a routerLink="/login" class="login_button" id="loginButton">
-        {{ header.login_button.label }}
-      </a>
-      <a routerLink="/register" class="register_button" id="registerButton">
-        {{ header.register_button.label }}
-      </a>
+      <a routerLink="/login" class="login_button" id="loginButton">{{ header.login_button.label }}</a>
+      <a routerLink="/register" class="register_button" id="registerButton">{{ header.register_button.label }}</a>
     } @else {
-      <a href="#" class="register_button" (click)="logout(); $event.preventDefault()">
-        Cerrar sesión
-      </a>
+      <a href="#" class="register_button" (click)="logout(); $event.preventDefault()">Cerrar sesión</a>
     }
 
-    <button class="search_toggle_btn" aria-label="Buscar">
+    <button class="search_toggle_btn" aria-label="Buscar" (click)="toggleSearch()">
       <i class="fas fa-search"></i>
     </button>
   </div>
 
-  <div class="mobile_search_bar">
+  <div class="mobile_search_bar" [class.visible]="searchOpen">
     <input type="text" [placeholder]="header.nav_bar" [(ngModel)]="searchQuery" (keydown)="onSearch($event)">
-    <button class="search_close_btn">
+    <button class="search_close_btn" (click)="toggleSearch()">
       <i class="fas fa-times"></i>
     </button>
   </div>

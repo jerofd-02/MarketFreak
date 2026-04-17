@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Header} from '../../models/layout/layout.interface';
 import {LayoutService} from '../../services/layout.service';
@@ -10,14 +10,22 @@ import {AuthService, LoggedUser} from '../../services/auth.service';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   header!: Header;
   user: LoggedUser | null = null;
   searchQuery: string = '';
   menuOpen: boolean = false;
+  searchOpen: boolean = false;
+
+  private resizeListener = () => {
+    if (window.innerWidth > 1024) {
+      this.searchOpen = false;
+      this.cdr.detectChanges();
+    }
+  }
 
   constructor(
     private layoutService: LayoutService,
@@ -41,6 +49,12 @@ export class HeaderComponent implements OnInit {
     const params = new URLSearchParams(window.location.search);
     const query = params.get('q');
     if (query) this.searchQuery = decodeURIComponent(query);
+
+    window.addEventListener('resize', this.resizeListener);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.resizeListener);
   }
 
   onSearch(event: KeyboardEvent): void {
@@ -70,5 +84,9 @@ export class HeaderComponent implements OnInit {
 
   closeMenu(): void {
     this.menuOpen = false;
+  }
+
+  toggleSearch(): void {
+    this.searchOpen = !this.searchOpen;
   }
 }

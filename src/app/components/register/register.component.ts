@@ -10,10 +10,10 @@ import {RegisterService} from '../../services/register.service';
     FormsModule,
     RouterLink
   ],
-  templateUrl: './register.html',
-  styleUrls: ['../form-style-page/form-style-page.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['../form-style-page/form-style-page.component.css']
 })
-export class Register implements OnInit {
+export class RegisterComponent implements OnInit {
   registerData: RegisterData = {
     name: '',
     username: '',

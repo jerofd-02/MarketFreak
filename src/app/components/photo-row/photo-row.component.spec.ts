@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PhotoRow } from './photo-row';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {PhotoRow} from './photo-row.component';
 
 describe('PhotoRow', () => {
   let component: PhotoRow;

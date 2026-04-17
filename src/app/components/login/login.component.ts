@@ -12,11 +12,10 @@ import {LoginService} from '../../services/login.service';
     RouterLink,
     CommonModule,
   ],
-  templateUrl: './login.html',
-  styleUrls: ['../form-style-page/form-style-page.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['../form-style-page/form-style-page.component.css']
 })
-export class Login implements OnInit {
-
+export class LoginComponent implements OnInit {
   loginData: LoginData = {
     email: '',
     password: ''

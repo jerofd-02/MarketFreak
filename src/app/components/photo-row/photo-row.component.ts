@@ -7,8 +7,8 @@ import {Product} from '../../models/product/product.interface';
   selector: 'app-photo-row',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './photo-row.html',
-  styleUrl: './photo-row.css',
+  templateUrl: './photo-row.component.html',
+  styleUrl: './photo-row.component.css',
 })
 export class PhotoRow {
   @Input() products: Product[] = [];

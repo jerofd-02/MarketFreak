@@ -7,8 +7,8 @@ import {LayoutService} from '../../services/layout.service';
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './footer.html',
-  styleUrl: './footer.css',
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.css',
 })
 export class FooterComponent implements OnInit {
   footer!: Footer;
