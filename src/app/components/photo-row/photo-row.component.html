@@ -1,7 +1,7 @@
 <div class="photo_row">
   @for (product of products; track product.id) {
     <div class="photo_item">
-      <a [routerLink]="['/product', product.id]" class="img">
+      <a [routerLink]="['/product-page', product.id]" class="img">
         <img [src]="product.image" [alt]="product.alt">
       </a>
       <p class="text_element">{{ product.name }}</p>

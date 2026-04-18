@@ -1,0 +1,34 @@
+@if (product) {
+  <main class="product_container_page">
+
+    <div class="product_container">
+      <div class="carousel_container">
+        <app-carousel [carousel]="carousel"></app-carousel>
+      </div>
+
+      <div class="product_side">
+
+        <div class="user_reference">
+          @if (user) {
+            <img [src]="user.photo" [alt]="user.name">
+            <a [routerLink]="['/profile', product.seller]">{{ user.name }}</a>
+          }
+        </div>
+
+        <app-product-info [product]="product" />
+
+        <div class="product_buttons">
+          <a [routerLink]="['/wishlist']" class="wishlist_button">{{ ui?.wishlistButton }}</a>
+          <a [routerLink]="['/payment']" class="buy_button">{{ ui?.buyButton }}</a>
+        </div>
+
+      </div>
+    </div>
+
+    @if (relatedProducts.length > 0) {
+      <h1 class="related_title">{{ ui?.relatedTitle }}</h1>
+      <app-photo-row [products]="relatedProducts" />
+    }
+
+  </main>
+}

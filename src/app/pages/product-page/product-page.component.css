@@ -1,0 +1,156 @@
+.product_container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  border-bottom: solid 5px #890620ff;
+}
+
+.product_side {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.user_reference {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.user_reference img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user_reference a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.product_buttons {
+  text-decoration: none;
+  display: flex;
+  gap: 300px;
+  margin-top: 20px;
+}
+
+.product_buttons a {
+  text-decoration: none;
+}
+
+.buy_button {
+  background: #d6abac;
+  color: black;
+  border: solid 1px #d6abac;
+  width: 200px;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buy_button:hover {
+  background-color: #783f8eff;
+  color: #c8c6d7ff;
+  border: 1px solid #c8c6d7ff;
+}
+
+.wishlist_button {
+  background: #b6465fff;
+  color: #ebd4cbff;
+  border: 1px solid #ebd4cbff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.wishlist_button:hover {
+  background-color: #783f8eff;
+  color: #c8c6d7ff;
+  border: 1px solid #c8c6d7ff;
+}
+
+.edit_button {
+  background: #b6465f;
+  color: #ebd4cbff;
+  border: 1px solid #ebd4cbff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit_button:hover {
+  background-color: #783f8eff;
+  color: #c8c6d7ff;
+  border: 1px solid #c8c6d7ff;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product_container {
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  .carousel_container {
+    width: 350px;
+  }
+
+  .product_buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .buy_button {
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .wishlist_button {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .product_container {
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .carousel_container {
+    width: 100%;
+  }
+
+  .product_side {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .product_buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buy_button {
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .wishlist_button {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+}
