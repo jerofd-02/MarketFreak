@@ -38,11 +38,11 @@
       "description": "Descripción detallada del producto tres. Ideal para uso diario.",
       "seller": "armin.keenan",
       "dateAdded": "2026-03-18",
-      "image": "assets/images/product-images/Komaeda_figura/foto_1.jpg",
+      "image": "assets/images/product-images/Komaeda_Figura/foto_1.jpg",
       "images": [
-        "assets/images/product-images/Komaeda_figura/foto_1.jpg",
-        "assets/images/product-images/Komaeda_figura/foto_2.jpg",
-        "assets/images/product-images/Komaeda_figura/foto_3.jpg"
+        "assets/images/product-images/Komaeda_Figura/foto_1.jpg",
+        "assets/images/product-images/Komaeda_Figura/foto_2.jpg",
+        "assets/images/product-images/Komaeda_Figura/foto_3.jpg"
       ],
       "alt": "Imagen producto tres",
       "url": "product-page.html?id=3"
