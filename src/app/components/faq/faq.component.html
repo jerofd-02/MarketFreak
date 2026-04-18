@@ -1,0 +1,6 @@
+@if (faq) {
+  @for (item of faq.items; track item) {
+    <h1>{{ item?.question }}</h1>
+    <p>{{ item?.answer }}</p>
+  }
+}

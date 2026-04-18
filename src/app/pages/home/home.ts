@@ -1,18 +1,18 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {PhotoRow} from '../photo-row/photo-row.component';
-import {CarouselComponent} from '../carousel/carousel.component';
+import {CarouselComponent} from "../../components/carousel/carousel.component";
+import {PhotoRow} from "../../components/photo-row/photo-row.component";
 import {CarouselItem, Product} from '../../models/product/product.interface';
 import {IndexService} from '../../services/index.service';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, RouterModule, CarouselComponent, PhotoRow],
-  templateUrl: './home.component.html',
+  imports: [
+    CarouselComponent,
+    PhotoRow
+  ],
+  templateUrl: './home.html',
 })
-export class HomeComponent implements OnInit {
+export class Home implements OnInit {
   carousel: CarouselItem | null = null;
   mainTitle: string = '';
   products: Product[] = [];
