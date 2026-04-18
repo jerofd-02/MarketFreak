@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, shareReplay } from 'rxjs';
-
-export interface ProductPageUI {
-  relatedTitle: string;
-  wishlistButton: string;
-  buyButton: string;
-}
+import {ProductPageUI} from '../models/product-page/product-page.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ProductPageService {

@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { Subject, takeUntil, switchMap, tap } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { UserService } from '../../services/user.service';
-import { ProductPageService, ProductPageUI } from '../../services/product-page.service';
+import { ProductPageService } from '../../services/product-page.service';
 import { User } from '../../models/user/user.interface';
 import { PhotoRow } from '../../components/photo-row/photo-row.component';
 import { ProductInfo } from '../../components/product-info/product-info.component';
 import { CarouselItem, Product } from '../../models/product/product.interface';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
+import {ProductPageUI} from '../../models/product-page/product-page.interface';
 
 @Component({
   selector: 'app-product-page',
