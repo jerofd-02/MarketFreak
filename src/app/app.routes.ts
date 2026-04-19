@@ -6,6 +6,8 @@ import {ProductPage} from './pages/product-page/product-page.component';
 import {FaqComponent} from './components/faq/faq.component';
 import {WishlistComponent} from './pages/wishlist/wishlist.component';
 import {PaymentComponent} from './pages/payment/payment.component';
+import {ContactComponent} from './pages/contact/contact.component';
+import {UploadProductComponent} from './pages/upload-product/upload-product.component';
 
 export const routes: Routes = [
   {path: '', component: Home},
@@ -15,4 +17,6 @@ export const routes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'wishlist', component: WishlistComponent},
   {path: 'payment/:id', component: PaymentComponent},
+  { path: 'contact', component: ContactComponent },
+  { path: 'upload-product', component: UploadProductComponent },
 ];

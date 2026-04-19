@@ -1,0 +1,41 @@
+@if (formData) {
+  <div class="form_container">
+    <form class="form_group">
+
+      @for (key of getFieldKeys(); track key) {
+        @if (isFile(key)) {
+          <div class="add-photo" id="file_charge">
+            <i></i>
+            <p>{{ formData.fields[key].placeholder }}</p>
+            <input type="file" id="file_input" accept="image/*" multiple>
+            <div class="file_preview"></div>
+          </div>
+        } @else if (isSelect(key)) {
+          <div class="element">
+            <label [for]="key">{{ formData.fields[key].label }}</label>
+            <select [id]="key" required>
+              @for (option of formData.fields[key].options; track option.value) {
+                <option [value]="option.value" [disabled]="option.disabled ?? false">
+                  {{ option.label }}
+                </option>
+              }
+            </select>
+          </div>
+        } @else if (isTextarea(key)) {
+          <div class="element">
+            <label [for]="key">{{ formData.fields[key].label }}</label>
+            <textarea [id]="key" [placeholder]="formData.fields[key].placeholder ?? ''" required></textarea>
+          </div>
+        } @else {
+          <div class="element">
+            <label [for]="key">{{ formData.fields[key].label }}</label>
+            <input type="text" [id]="key" [placeholder]="formData.fields[key].placeholder ?? ''" required>
+          </div>
+        }
+      }
+
+      <button type="button" class="button">{{ formData.submitButton }}</button>
+
+    </form>
+  </div>
+}
