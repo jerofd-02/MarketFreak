@@ -1,0 +1,24 @@
+<div class="range_item">
+  <div class="range_labels">
+    <span>{{ currentMin }}€</span>
+    <span>{{ currentMax }}€</span>
+  </div>
+  <div class="range_track">
+    <input
+      type="range"
+      [min]="min"
+      [max]="max"
+      [value]="currentMax"
+      [style.background]="maxBackground"
+      (input)="onMaxChange($any($event.target).valueAsNumber)"
+    >
+    <input
+      type="range"
+      [min]="min"
+      [max]="max"
+      [value]="currentMin"
+      [style.background]="minBackground"
+      (input)="onMinChange($any($event.target).valueAsNumber)"
+    >
+  </div>
+</div>

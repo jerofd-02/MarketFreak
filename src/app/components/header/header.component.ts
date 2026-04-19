@@ -58,11 +58,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSearch(event: KeyboardEvent): void {
-    if (event.key === 'Enter' && this.searchQuery.trim()) {
-      this.router.navigate(['/search'], {
-        queryParams: {q: this.searchQuery.trim()}
+    if (event.key === 'Enter') {
+      this.router.navigate(['/search-product'], {
+        queryParams: this.searchQuery.trim() ? { q: this.searchQuery.trim() } : {}
       });
       this.menuOpen = false;
+      this.searchOpen = false;
     }
   }
 

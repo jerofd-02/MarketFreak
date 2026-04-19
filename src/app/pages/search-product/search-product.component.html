@@ -1,0 +1,84 @@
+<main>
+  <div class="main_content">
+
+    <button
+      class="filter_toggle_btn"
+      [class.open]="sidebarOpen"
+      (click)="toggleSidebar()"
+    >
+      Filtros
+      <span class="btn_icon"><i class="fa-solid fa-chevron-down"></i></span>
+    </button>
+
+    <div class="sidebar" [class.open]="sidebarOpen">
+      @for (filter of filters; track filter.id) {
+        <div class="category" [id]="filter.id">
+          <p class="category_title">{{ filter.title }}</p>
+          <div>
+            @if (filter.options) {
+              @for (option of filter.options; track option.id) {
+                @if (option.separator) {
+                  <hr class="filter_separator">
+                } @else if (isCategoryFilter(filter)) {
+                  <div class="checkbox_item">
+                    <input
+                      type="checkbox"
+                      [id]="option.id"
+                      [name]="filter.id"
+                      (change)="onCategoryChange(option.label!, $any($event.target).checked)"
+                    >
+                    <label [for]="option.id">{{ option.label }}</label>
+                  </div>
+                } @else if (isDateFilter(filter)) {
+                  <div class="checkbox_item">
+                    <input
+                      type="radio"
+                      [id]="option.id"
+                      [name]="isDateSort(option.id) ? 'filter_date_sort' : 'filter_date_range'"
+                      (change)="onDateChange(option.id, $any($event.target).checked)"
+                    >
+                    <label [for]="option.id">{{ option.label }}</label>
+                  </div>
+                } @else {
+                  <div class="checkbox_item">
+                    <input
+                      type="radio"
+                      [id]="option.id"
+                      [name]="filter.id"
+                      (change)="onPriceChange(option.id, $any($event.target).checked)"
+                    >
+                    <label [for]="option.id">{{ option.label }}</label>
+                  </div>
+                }
+              }
+            }
+
+            @if (filter.range) {
+              <app-range-slider
+                [min]="filter.range.min"
+                [max]="filter.range.max"
+                (rangeChange)="onRangeChange($event.min, $event.max)"
+              />
+            }
+
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="product_section">
+      @if (filteredProducts.length > 0) {
+        <app-photo-row [products]="filteredProducts" />
+      } @else {
+        <p class="no_results">
+          @if (query) {
+            No se encontraron resultados para "<strong>{{ query }}</strong>"
+          } @else {
+            No se encontraron resultados.
+          }
+        </p>
+      }
+    </div>
+
+  </div>
+</main>
