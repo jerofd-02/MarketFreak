@@ -19,7 +19,7 @@
 
         <div class="product_buttons">
           <a [routerLink]="['/wishlist']" class="wishlist_button">{{ ui?.wishlistButton }}</a>
-          <a [routerLink]="['/payment']" class="buy_button">{{ ui?.buyButton }}</a>
+          <a [routerLink]="['/payment', product.id]" class="buy_button">{{ ui?.buyButton }}</a>
         </div>
 
       </div>

@@ -19,6 +19,10 @@
   </div>
 
   <div class="wish_list">
-    <app-photo-row [products]="filteredProducts" />
+    @if (filteredProducts.length > 0) {
+      <app-photo-row [products]="filteredProducts" />
+    } @else {
+      <p class="wish_empty">Tu wishlist está un poco vacía...</p>
+    }
   </div>
 </main>

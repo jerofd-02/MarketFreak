@@ -1,0 +1,57 @@
+@if (product && ui) {
+  <div class="page_container">
+
+    <div class="product_information">
+      <div class="information">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.price }}</p>
+        <p>{{ product.category }}</p>
+        <p id="description">{{ product.description }}</p>
+      </div>
+      <div class="photo">
+        <img [src]="product.image" [alt]="product.alt">
+      </div>
+    </div>
+
+    <div class="payment_method">
+      <p class="category_title">{{ ui.paymentMethods.title }}</p>
+      @for (option of ui.paymentMethods.options; track option.id) {
+        <div class="checkbox_item">
+          <input
+            type="radio"
+            name="payment"
+            [id]="option.id"
+            [value]="option.value"
+            [(ngModel)]="selectedPayment"
+          >
+          <label [for]="option.id">{{ option.label }}</label>
+        </div>
+      }
+    </div>
+
+    <div class="shipment_method">
+      <p class="category_title">{{ ui.shipmentMethods.title }}</p>
+      @for (option of ui.shipmentMethods.options; track option.id) {
+        <div class="checkbox_item">
+          <input
+            type="radio"
+            name="shipment"
+            [id]="option.id"
+            [value]="option.value"
+            [(ngModel)]="selectedShipment"
+          >
+          <label [for]="option.id">{{ option.label }}</label>
+        </div>
+      }
+    </div>
+
+    <button class="confirm_button" (click)="onConfirm()">
+      {{ ui.submitButton }}
+    </button>
+
+  </div>
+} @else {
+  <div class="product_loading">
+    <p>Cargando...</p>
+  </div>
+}
