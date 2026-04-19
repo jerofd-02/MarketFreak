@@ -1,0 +1,24 @@
+<main>
+  <div class="wish_bar">
+    <div class="wish_search">
+      <i class="fa fa-search"></i>
+      <input
+        type="text"
+        [placeholder]="searchPlaceholder"
+        (input)="onSearch($any($event.target).value)"
+      >
+    </div>
+    <div>
+      <label for="opciones"></label>
+      <select id="opciones" name="opciones" (change)="onSortChange($any($event.target).value)">
+        @for (option of sortOptions; track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="wish_list">
+    <app-photo-row [products]="filteredProducts" />
+  </div>
+</main>

@@ -31,3 +31,18 @@
   font-size: 15px;
   margin: 5px 0 0 5px;
 }
+
+@media (max-width: 767px) {
+  .photo_row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .photo_row {
+    max-width: 100%;
+    margin: 10px;
+  }
+}
