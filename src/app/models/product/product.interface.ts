@@ -27,3 +27,7 @@ export interface IndexData {
   'image-loader': CarouselItem[];
   main_title: string;
 }
+
+export interface ProductResponse {
+  products: Product[];
+}

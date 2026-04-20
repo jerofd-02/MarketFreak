@@ -6,3 +6,7 @@ export interface User {
   location: string;
   description: string;
 }
+
+export interface UserResponse {
+  users: User[];
+}

@@ -5,6 +5,7 @@ export interface LoggedUser {
   name: string;
   photo?: string;
   seller: boolean;
+  username: string;
 }
 
 @Injectable({providedIn: 'root'})

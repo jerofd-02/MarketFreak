@@ -9,6 +9,7 @@ import {PaymentComponent} from './pages/payment/payment.component';
 import {ContactComponent} from './pages/contact/contact.component';
 import {UploadProductComponent} from './pages/upload-product/upload-product.component';
 import {SearchProductComponent} from './pages/search-product/search-product.component';
+import {ProfilePage} from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {path: '', component: Home},
@@ -21,4 +22,5 @@ export const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'upload-product', component: UploadProductComponent},
   {path: 'search-product', component: SearchProductComponent},
+  {path: 'profile', component: ProfilePage}
 ];

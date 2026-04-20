@@ -11,11 +11,11 @@
         <div class="user_reference">
           @if (user) {
             <img [src]="user.photo" [alt]="user.name">
-            <a [routerLink]="['/profile', product.seller]">{{ user.name }}</a>
+            <a [routerLink]="['/profile']" [queryParams]=" {seller: product.seller}">{{ user.name }}</a>
           }
         </div>
 
-        <app-product-info [product]="product" />
+        <app-product-info [product]="product"/>
 
         <div class="product_buttons">
           <a [routerLink]="['/wishlist']" class="wishlist_button">{{ ui?.wishlistButton }}</a>
@@ -27,7 +27,7 @@
 
     @if (relatedProducts.length > 0) {
       <h1 class="related_title">{{ ui?.relatedTitle }}</h1>
-      <app-photo-row [products]="relatedProducts" />
+      <app-photo-row [products]="relatedProducts"/>
     }
 
   </main>

@@ -8,4 +8,13 @@
       <p class="price_element">{{ product.price }}</p>
     </div>
   }
+
+  @if (addProductButton) {
+    <div class="photo_item">
+      <a [href]="addProductButton.href" class="add-product-button">
+        <i [class]="addProductButton.icon"></i>
+        {{ addProductButton.label }}
+      </a>
+    </div>
+  }
 </div>
