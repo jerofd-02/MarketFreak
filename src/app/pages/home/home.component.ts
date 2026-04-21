@@ -8,11 +8,11 @@ import {IndexService} from '../../services/index.service';
   selector: 'app-home',
   imports: [
     CarouselComponent,
-    PhotoRow
+    PhotoRow,
   ],
-  templateUrl: './home.html',
+  templateUrl: './home.component.html',
 })
-export class Home implements OnInit {
+export class HomeComponent implements OnInit {
   carousel: CarouselItem | null = null;
   mainTitle: string = '';
   products: Product[] = [];

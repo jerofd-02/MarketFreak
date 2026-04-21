@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {Home} from './pages/home/home';
+import {HomeComponent} from './pages/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {ProductPage} from './pages/product-page/product-page.component';
@@ -12,7 +12,7 @@ import {SearchProductComponent} from './pages/search-product/search-product.comp
 import {ProfilePage} from './pages/profile/profile.component';
 
 export const routes: Routes = [
-  {path: '', component: Home},
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'product-page/:id', component: ProductPage},
