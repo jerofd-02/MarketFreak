@@ -1,0 +1,54 @@
+{
+  "header": {
+    "image": {
+      "src": "assets/images/misc/logo_filter_with_transparency.png",
+      "alt": "Logo de MarketFreak"
+    },
+    "nav_bar": "Busca tu artículo friki",
+    "login_button": {
+      "label": "Iniciar Sesión"
+    },
+    "register_button": {
+      "label": "Registrarse"
+    }
+  },
+  "footer": {
+    "social": [
+      {
+        "name": "Instagram",
+        "icon": "fa-brands fa-instagram",
+        "url": "https://www.instagram.com"
+      },
+      {
+        "name": "X",
+        "icon": "fa-brands fa-x-twitter",
+        "url": "https://www.x.com"
+      },
+      {
+        "name": "Facebook",
+        "icon": "fa-brands fa-facebook",
+        "url": "https://www.facebook.com"
+      }
+    ],
+    "columns": [
+      {
+        "title": "Contacto",
+        "links": [
+          {
+            "label": "Contáctanos",
+            "url": "contact"
+          }
+        ]
+      },
+      {
+        "title": "Ayuda",
+        "links": [
+          {
+            "label": "Preguntas frecuentes",
+            "url": "faq"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "form": {
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "tu@email.com"
+      },
+      "name": {
+        "label": "Nombre",
+        "placeholder": "John"
+      },
+      "surname": {
+        "label": "Apellido",
+        "placeholder": "Doe"
+      },
+      "problem": {
+        "label": "Tipo de problema",
+        "options": [
+          {
+            "value": "",
+            "label": "Selecciona una opción",
+            "disabled": true
+          },
+          {
+            "value": "payment",
+            "label": "Problemas con el pago"
+          },
+          {
+            "value": "shipping",
+            "label": "Envío o entrega"
+          },
+          {
+            "value": "product",
+            "label": "Producto dañado o incorrecto"
+          },
+          {
+            "value": "account",
+            "label": "Problemas con la cuenta"
+          },
+          {
+            "value": "seller",
+            "label": "Reclamación sobre un vendedor"
+          },
+          {
+            "value": "other",
+            "label": "Otro"
+          }
+        ]
+      },
+      "description": {
+        "label": "Descripción",
+        "placeholder": "Describe tu problema con detalle..."
+      },
+      "image": {
+        "placeholder": "Adjunta una imagen si es necesario"
+      }
+    },
+    "submitButton": "Enviar consulta"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "payment": {
+    "paymentMethods": {
+      "title": "Método de pago",
+      "options": [
+        {
+          "id": "payment_method_1",
+          "value": "efectivo",
+          "label": "Efectivo"
+        },
+        {
+          "id": "payment_method_2",
+          "value": "paypal",
+          "label": "PayPal"
+        },
+        {
+          "id": "payment_method_3",
+          "value": "tarjeta",
+          "label": "Tarjeta de crédito"
+        }
+      ]
+    },
+    "shipmentMethods": {
+      "title": "Método de envío",
+      "options": [
+        {
+          "id": "shipment_method_1",
+          "value": "mano",
+          "label": "Entrega en mano"
+        },
+        {
+          "id": "shipment_method_2",
+          "value": "correos",
+          "label": "Correos"
+        },
+        {
+          "id": "shipment_method_3",
+          "value": "urgente",
+          "label": "Envío urgente"
+        }
+      ]
+    },
+    "submitButton": "Confirmar pedido"
+  }
+}
