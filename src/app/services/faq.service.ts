@@ -1,18 +1,15 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
-import {FaqInterface} from '../models/faq/faq.interface';
+import { Injectable } from '@angular/core';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { FaqInterface } from '../models/faq/faq.interface';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class FaqService {
-  private faqUrl = 'assets/data/faq.json';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private firestore: Firestore) {}
 
-  getData(): Observable<FaqInterface> {
-    return this.http.get<{faq: FaqInterface}>(this.faqUrl).pipe(
-      map(data => data.faq)
-    )
+  getData(): Observable<FaqInterface[]> {
+    const ref = collection(this.firestore, 'faq');
+    return collectionData(ref) as Observable<FaqInterface[]>;
   }
 }
