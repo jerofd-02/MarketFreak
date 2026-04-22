@@ -12,6 +12,7 @@ export interface PaymentMethodGroup {
 export interface PaymentUI {
   paymentMethods: PaymentMethodGroup;
   shipmentMethods: PaymentMethodGroup;
+  sellerInfo: { title: string };
   submitButton: string;
 }
 

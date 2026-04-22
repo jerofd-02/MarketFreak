@@ -40,6 +40,9 @@
         }
       ]
     },
+    "sellerInfo": {
+      "title": "Información del vendedor"
+    },
     "submitButton": "Confirmar pedido"
   }
 }

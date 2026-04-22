@@ -1,0 +1,47 @@
+<div class="page_container">
+  <div class="product_information">
+    <div class="information">
+      <h1>{{ orderData?.productName }}</h1>
+      <p>{{ orderData?.productPrice }}</p>
+      <p>{{ orderData?.productCategory }}</p>
+      <p id="description"> {{ orderData?.productDescription }}</p>
+    </div>
+    <div class="photo">
+      <img [src]="orderData?.productImage" [alt]="orderData?.productAlt">
+    </div>
+  </div>
+
+  <div class="payment_method">
+    @if (paymentUI) {
+      <p class="category_title">{{ paymentUI.paymentMethods.title }}</p>
+    }
+    @if (orderData) {
+      <p>{{ orderData.payment }}</p>
+    }
+  </div>
+
+  <div class="shipment_method">
+    @if (paymentUI) {
+      <p class="category_title">{{ paymentUI.shipmentMethods.title }}</p>
+    }
+    @if (orderData) {
+      <p>{{ orderData.payment }}</p>
+    }
+  </div>
+
+
+  <div class="seller_information">
+    @if (paymentUI) {
+      <p class="category_title">{{ paymentUI.sellerInfo.title }}</p>
+    }
+    @if (seller) {
+      <p>{{ seller.name }}</p>
+      <p>{{ '@' + seller.seller }}</p>
+      <p>{{ seller.location }}</p>
+    }
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <button class="confirm_button" type="submit">Confirmar pedido</button>
+  </form>
+</div>

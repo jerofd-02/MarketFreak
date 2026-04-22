@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { PaymentService } from '../../services/payment.service';
-import { Product } from '../../models/product/product.interface';
-import { PaymentUI } from '../../models/payment/payment.interface';
+import {ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Subject, takeUntil} from 'rxjs';
+import {ProductService} from '../../services/product.service';
+import {PaymentService} from '../../services/payment.service';
+import {Product} from '../../models/product/product.interface';
+import {PaymentUI} from '../../models/payment/payment.interface';
 
 @Component({
   selector: 'app-payment',
@@ -30,7 +30,8 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private paymentService: PaymentService,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
@@ -58,13 +59,21 @@ export class PaymentComponent implements OnInit, OnDestroy {
   }
 
   onConfirm(): void {
-    this.router.navigate(['/confirmation'], {
-      queryParams: {
-        productId: this.product?.id,
-        payment: this.selectedPayment,
-        shipment: this.selectedShipment
-      }
-    });
+    const orderData = {
+      productId: this.product?.id,
+      productName: this.product?.name,
+      productPrice: this.product?.price,
+      productCategory: this.product?.category,
+      productDescription: this.product?.description,
+      productImage: this.product?.image,
+      productAlt: this.product?.alt,
+      seller: this.product?.seller,
+      payment: this.selectedPayment,
+      shipment: this.selectedShipment
+    };
+
+    sessionStorage.setItem('orderData', JSON.stringify(orderData));
+    this.router.navigate(['/confirmation']);
   }
 
   ngOnDestroy(): void {

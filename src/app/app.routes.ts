@@ -11,6 +11,7 @@ import {UploadProductComponent} from './pages/upload-product/upload-product.comp
 import {SearchProductComponent} from './pages/search-product/search-product.component';
 import {ProfilePage} from './pages/profile/profile.component';
 import {UpdateProfile} from './pages/update-profile/update-profile.component';
+import {Confirmation} from './pages/confirmation/confirmation.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,5 +25,6 @@ export const routes: Routes = [
   {path: 'upload-product', component: UploadProductComponent},
   {path: 'search-product', component: SearchProductComponent},
   {path: 'profile', component: ProfilePage},
-  {path: 'update-profile', component: UpdateProfile}
+  {path: 'update-profile', component: UpdateProfile},
+  {path: 'confirmation', component: Confirmation}
 ];
