@@ -1,28 +1,20 @@
 {
   "updateProfile": {
-    "fields": [
-      {
-        "name": "avatar",
+    "fields": {
+      "avatar": {
         "label": "Foto de perfil",
-        "type": "file"
+        "placeholder": "Arrastra tu foto aquí o haz clic para seleccionar",
+        "icon": "fas fa-cloud-upload"
       },
-      {
-        "name": "username",
+      "username": {
         "label": "Nombre de usuario",
-        "type": "text",
         "placeholder": "Introduce tu nombre de usuario..."
       },
-      {
-        "name": "location",
-        "label": "Ubicación",
-        "type": "text",
-        "value": "España",
-        "readonly": true
+      "location": {
+        "label": "Ubicación"
       },
-      {
-        "name": "province",
+      "province": {
         "label": "Comunidad autónoma",
-        "type": "select",
         "options": [
           {
             "value": "andalucia",
@@ -102,13 +94,11 @@
           }
         ]
       },
-      {
-        "name": "description",
+      "description": {
         "label": "Descripción",
-        "type": "textarea",
         "placeholder": "Cuéntanos sobre ti y tu colección..."
       }
-    ],
-    "submitLabel": "Guardar cambios"
+    },
+    "submitButton": "Guardar cambios"
   }
 }

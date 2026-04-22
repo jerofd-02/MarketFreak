@@ -10,6 +10,7 @@ import {ContactComponent} from './pages/contact/contact.component';
 import {UploadProductComponent} from './pages/upload-product/upload-product.component';
 import {SearchProductComponent} from './pages/search-product/search-product.component';
 import {ProfilePage} from './pages/profile/profile.component';
+import {UpdateProfile} from './pages/update-profile/update-profile.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'upload-product', component: UploadProductComponent},
   {path: 'search-product', component: SearchProductComponent},
-  {path: 'profile', component: ProfilePage}
+  {path: 'profile', component: ProfilePage},
+  {path: 'update-profile', component: UpdateProfile}
 ];

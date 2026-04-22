@@ -5,6 +5,7 @@ export interface FormOption {
 }
 
 export interface FormField {
+  icon: string;
   label?: string;
   placeholder?: string;
   options?: FormOption[];
