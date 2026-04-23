@@ -9,6 +9,8 @@ export interface FormField {
   label?: string;
   placeholder?: string;
   type?: string;
+  step?: string;
+  maxImages?: number;
   validation?: {
     required?: boolean;
     pattern?: string;

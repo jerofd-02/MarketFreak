@@ -8,6 +8,8 @@
             @if (imagePreviews.length === 0) {
               <i class="fa fa-camera"></i>
               <p>{{ formData.fields[key].placeholder }}</p>
+            } @else if (formData.fields[key].maxImages) {
+              <p>{{ imagePreviews.length }} / {{ formData.fields[key].maxImages }}</p>
             }
             <input type="file" accept="image/*" multiple (change)="onFileChange($event)">
             <div class="file_preview">
@@ -20,6 +22,9 @@
               }
             </div>
           </div>
+          @if (imageError) {
+            <span class="input_error">Debes añadir al menos una imagen</span>
+          }
         } @else if (isSelect(key)) {
           <div class="element">
             <label [for]="key">{{ formData.fields[key].label }}</label>
@@ -49,7 +54,8 @@
             <label [for]="key">{{ formData.fields[key].label }}</label>
             <input [type]="formData.fields[key].type ?? 'text'"
                    [id]="key" [formControlName]="key"
-                   [placeholder]="formData.fields[key].placeholder ?? ''">
+                   [placeholder]="formData.fields[key].placeholder ?? ''"
+                   [step]="formData.fields[key].step ?? null">
             @if (form.get(key)?.invalid && form.get(key)?.touched) {
               <span class="input_error">{{ getErrorMessage(key) }}</span>
             }

@@ -55,7 +55,8 @@
       },
       "image": {
         "placeholder": "Arrastra tu(s) foto(s) aquí o haz clic para seleccionar",
-        "type": "file"
+        "type": "file",
+        "maxImages": 5
       }
     },
     "submitButton": "Enviar consulta"

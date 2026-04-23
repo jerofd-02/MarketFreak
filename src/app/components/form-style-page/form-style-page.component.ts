@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { FormStyleData } from '../../models/form-style-page/form-style-page.interface';
-import { DynamicFormService } from '../../services/form-style-page.service';
+import {DynamicFormService} from '../../services/form-style-page.service';
 
 @Component({
   selector: 'app-form-style-page',
@@ -15,6 +15,7 @@ export class FormStylePageComponent implements OnChanges {
 
   form!: FormGroup;
   imagePreviews: { src: string; file: File }[] = [];
+  imageError = false;
 
   constructor(private dynamicFormService: DynamicFormService) {}
 
@@ -25,8 +26,7 @@ export class FormStylePageComponent implements OnChanges {
   }
 
   getFieldKeys(): string[] {
-    if (!this.formData) return [];
-    return Object.keys(this.formData.fields);
+    return Object.keys(this.formData?.fields ?? {});
   }
 
   isSelect(key: string): boolean {
@@ -46,7 +46,11 @@ export class FormStylePageComponent implements OnChanges {
     const files = input.files;
     if (!files || files.length === 0) return;
 
+    const maxImages = this.formData?.fields['image']?.maxImages ?? Infinity;
+
     Array.from(files).forEach(file => {
+      if (this.imagePreviews.length >= maxImages) return;
+
       const yaExiste = this.imagePreviews.some(p =>
         p.file.name === file.name && p.file.size === file.size
       );
@@ -62,6 +66,7 @@ export class FormStylePageComponent implements OnChanges {
       reader.readAsDataURL(file);
     });
 
+    this.imageError = false;
     input.value = '';
   }
 
@@ -73,20 +78,26 @@ export class FormStylePageComponent implements OnChanges {
     const control = this.form.get(key);
     const label = this.formData?.fields[key]?.label ?? key;
 
-    if (control?.hasError('required'))   return `${label} es un campo obligatorio`;
-    if (control?.hasError('pattern'))    return `Formato de ${label.toLowerCase()} incorrecto`;
-    if (control?.hasError('minlength'))  return `Mínimo ${control.errors?.['minlength'].requiredLength} caracteres`;
-    if (control?.hasError('maxlength'))  return `Máximo ${control.errors?.['maxlength'].requiredLength} caracteres`;
-    if (control?.hasError('min'))        return `El valor mínimo es ${control.errors?.['min'].min}`;
+    if (control?.hasError('required')) return `${label} es un campo obligatorio`;
+    if (control?.hasError('pattern')) return `Formato de ${label.toLowerCase()} incorrecto`;
+    if (control?.hasError('minlength')) return `Mínimo ${control.errors?.['minlength'].requiredLength} caracteres`;
+    if (control?.hasError('maxlength')) return `Máximo ${control.errors?.['maxlength'].requiredLength} caracteres`;
+    if (control?.hasError('min')) return `El valor mínimo es ${control.errors?.['min'].min}`;
 
     return 'Campo inválido';
   }
 
   onSubmit(): void {
-    if (this.form.valid) {
+    const imageRequired = this.formData?.fields['image']?.validation?.required ?? false;
+    const sinImagenes = imageRequired && this.imagePreviews.length === 0;
+
+    if (this.form.valid && !sinImagenes) {
       console.log({ ...this.form.value, images: this.imagePreviews.map(p => p.file) });
     } else {
       this.form.markAllAsTouched();
+      if (sinImagenes) {
+        this.imageError = true;
+      }
     }
   }
 }
