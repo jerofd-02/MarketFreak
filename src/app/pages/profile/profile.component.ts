@@ -7,6 +7,7 @@ import {Profile} from '../../models/profile/profile.interface';
 import {User} from '../../models/user/user.interface';
 import {Product} from '../../models/product/product.interface';
 import {ProfileService} from '../../services/profile.service';
+import {take} from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -36,9 +37,15 @@ export class ProfilePage implements OnInit {
     this.products = productsJson?.products?.filter(p => p.seller === seller);
     this.user = usersJson?.users?.find(u => u.seller === seller) ?? null;
 
-    const loggedUser = this.authService.getLoggedUser();
-    this.isOwner = !!loggedUser && !!seller && loggedUser.username === seller;
 
+    this.authService.currentUser$.pipe(take(1)).subscribe(async firebaseUser => {
+      if (firebaseUser) {
+        const loggedUser = await this.authService.getLoggedUser(firebaseUser.uid);
+        this.isOwner = !!loggedUser && !!seller && loggedUser['seller'] === seller;
+      } else {
+        this.isOwner = false;
+      }
+    })
     this.cdr.detectChanges();
   }
 }

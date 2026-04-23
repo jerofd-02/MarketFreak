@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {LoginService} from '../../services/login.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +23,10 @@ export class LoginComponent implements OnInit {
   };
 
   config?: LoginConfig;
+  errorMessage?: string;
+  loading = false;
 
-  constructor(private loginService: LoginService, private cdr: ChangeDetectorRef) {
+  constructor(private loginService: LoginService, private authService: AuthService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -32,10 +35,19 @@ export class LoginComponent implements OnInit {
         this.config = data;
         this.cdr.detectChanges();
       }
-    })
+    });
   }
 
-  onSubmit() {
-    console.log(this.loginData);
+  async onSubmit() {
+    this.errorMessage = undefined;
+    this.loading = true;
+
+    try {
+      await this.authService.login(this.loginData.email, this.loginData.password);
+    } catch (error) {
+      this.errorMessage = error as string;
+    } finally {
+      this.loading = false;
+    }
   }
 }

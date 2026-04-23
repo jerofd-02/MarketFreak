@@ -5,6 +5,7 @@ import {LayoutService} from '../../services/layout.service';
 import {Router, RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {AuthService, LoggedUser} from '../../services/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -27,6 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  private userSub?: Subscription;
+
   constructor(
     private layoutService: LayoutService,
     private authService: AuthService,
@@ -44,7 +47,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       error: (err) => console.error('Error al cargar el header:', err)
     });
 
-    this.user = this.authService.getLoggedUser();
+    this.userSub = this.authService.currentUser$.subscribe(async firebaseUser => {
+      if (firebaseUser) {
+        this.user = await this.authService.getLoggedUser(firebaseUser.uid) as LoggedUser;
+      } else {
+        this.user = null;
+      }
+      this.cdr.detectChanges();
+    });
 
     const params = new URLSearchParams(window.location.search);
     const query = params.get('q');
@@ -60,7 +70,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onSearch(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
       this.router.navigate(['/search-product'], {
-        queryParams: this.searchQuery.trim() ? { q: this.searchQuery.trim() } : {}
+        queryParams: this.searchQuery.trim() ? {q: this.searchQuery.trim()} : {}
       });
       this.menuOpen = false;
       this.searchOpen = false;
@@ -75,8 +85,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout(): void {
-    this.authService.logout();
+  async logout(): Promise<void> {
+    await this.authService.logout();
   }
 
   toggleMenu(): void {

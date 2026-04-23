@@ -3,6 +3,7 @@ import {RegisterConfig, RegisterData} from '../../models/register/register.inter
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {RegisterService} from '../../services/register.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,15 +17,17 @@ import {RegisterService} from '../../services/register.service';
 export class RegisterComponent implements OnInit {
   registerData: RegisterData = {
     name: '',
-    username: '',
+    seller: '',
     email: '',
     password: '',
     password_confirm: ''
   };
 
   config?: RegisterConfig;
+  errorMessage?: string;
+  loading = false;
 
-  constructor(private registerService: RegisterService, private cdr: ChangeDetectorRef) {
+  constructor(private registerService: RegisterService, private authService: AuthService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -36,12 +39,26 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.registerData.password != this.registerData.password_confirm) {
       alert("Las contraseñas no coinciden.");
       return;
     }
 
-    console.log(this.registerData);
+    this.errorMessage = undefined;
+    this.loading = true;
+
+    try {
+      await this.authService.register(
+        this.registerData.name,
+        this.registerData.seller,
+        this.registerData.email,
+        this.registerData.password,
+      );
+    } catch (error) {
+      this.errorMessage = error as string;
+    } finally {
+      this.loading = false;
+    }
   }
 }

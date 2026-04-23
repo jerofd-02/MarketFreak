@@ -1,9 +1,9 @@
 export interface RegisterData {
-  name: String;
-  username: String;
-  email: String;
-  password: String;
-  password_confirm: String;
+  name: string;
+  seller: string;
+  email: string;
+  password: string;
+  password_confirm: string;
 }
 
 export interface RegisterConfig {

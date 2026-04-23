@@ -1,7 +1,7 @@
 @if (config) {
   <h1 class="header-text">{{ config.title }}</h1>
   <div class="form_container">
-    <form class="form_group" action="index.html" method="POST" (ngSubmit)="onSubmit()">
+    <form class="form_group" (ngSubmit)="onSubmit()">
       <div class="element">
         <label for="email">{{ config.fields[0].label }}</label>
         <input type="email" [(ngModel)]="loginData.email" name="email" id="email"
@@ -9,10 +9,15 @@
       </div>
       <div class="element">
         <label for="password">{{ config.fields[1].label }}</label>
-        <input type="password" [ngModel]="loginData.password" name="password" id="password"
+        <input type="password" [(ngModel)]="loginData.password" name="password" id="password"
                [placeholder]="config.fields[1].placeholder" required minlength="8"/>
       </div>
-      <button type="submit" class="button">{{ config.submitLabel }}</button>
+      <button type="submit" class="button" [disabled]="loading" (click)="onSubmit()">
+        {{ loading ? 'Cargando...' : config.submitLabel }}
+      </button>
+      @if (errorMessage) {
+        <p>{{ errorMessage }}</p>
+      }
     </form>
   </div>
   <div>
