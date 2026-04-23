@@ -11,6 +11,7 @@ import {FormStyleData} from '../../models/form-style-page/form-style-page.interf
 })
 export class FormStylePageComponent {
   @Input() formData: FormStyleData | null = null;
+  imagePreviews: { url: string; file: File }[] = [];
 
   getFieldKeys(): string[] {
     if (!this.formData) return [];
@@ -27,5 +28,26 @@ export class FormStylePageComponent {
 
   isFile(key: string): boolean {
     return key === 'image';
+  }
+
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const files = input.files;
+    if (!files || files.length === 0) return;
+
+    Array.from(files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.imagePreviews.push({
+          url: e.target?.result as string,
+          file
+        });
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  removePreview(index: number): void {
+    this.imagePreviews.splice(index, 1);
   }
 }

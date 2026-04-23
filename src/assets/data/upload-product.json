@@ -48,7 +48,7 @@
         "placeholder": "Introduzca una descripción para el producto..."
       },
       "image": {
-        "placeholder": "Adjunta una imagen si es necesario"
+        "placeholder": "Arrastra tu(s) foto(s) aquí o haz clic para seleccionar"
       }
     },
     "submitButton": "Enviar consulta"

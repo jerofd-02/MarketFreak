@@ -4,11 +4,19 @@
 
       @for (key of getFieldKeys(); track key) {
         @if (isFile(key)) {
-          <div class="add-photo" id="file_charge">
-            <i></i>
+          <div class="add-photo">
+            <i class="fas fa-cloud-upload"></i>
             <p>{{ formData.fields[key].placeholder }}</p>
-            <input type="file" id="file_input" accept="image/*" multiple>
-            <div class="file_preview"></div>
+            <input type="file" accept="image/*" multiple (change)="onFileChange($event)">
+
+            <div class="file_preview">
+              @for (preview of imagePreviews; track preview.url; let i = $index) {
+                <div class="preview_item">
+                  <img [src]="preview.url" [alt]="preview.file.name">
+                  <button class="remove_btn" type="button" (click)="removePreview(i); $event.stopPropagation()">✕</button>
+                </div>
+              }
+            </div>
           </div>
         } @else if (isSelect(key)) {
           <div class="element">
