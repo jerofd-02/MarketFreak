@@ -1,19 +1,21 @@
-@if (formData) {
+@if (formData && form) {
   <div class="form_container">
-    <form class="form_group">
+    <form class="form_group" [formGroup]="form" (ngSubmit)="onSubmit()">
 
       @for (key of getFieldKeys(); track key) {
         @if (isFile(key)) {
           <div class="add-photo">
-            <i class="fas fa-cloud-upload"></i>
-            <p>{{ formData.fields[key].placeholder }}</p>
+            @if (imagePreviews.length === 0) {
+              <i class="fa fa-camera"></i>
+              <p>{{ formData.fields[key].placeholder }}</p>
+            }
             <input type="file" accept="image/*" multiple (change)="onFileChange($event)">
-
             <div class="file_preview">
-              @for (preview of imagePreviews; track preview.url; let i = $index) {
+              @for (preview of imagePreviews; track preview.src; let i = $index) {
                 <div class="preview_item">
-                  <img [src]="preview.url" [alt]="preview.file.name">
-                  <button class="remove_btn" type="button" (click)="removePreview(i); $event.stopPropagation()">✕</button>
+                  <img [src]="preview.src" [alt]="preview.file.name">
+                  <button class="remove_btn" type="button"
+                          (click)="removePreview(i); $event.stopPropagation()">✕</button>
                 </div>
               }
             </div>
@@ -21,29 +23,41 @@
         } @else if (isSelect(key)) {
           <div class="element">
             <label [for]="key">{{ formData.fields[key].label }}</label>
-            <select [id]="key" required>
+            <select [id]="key" [formControlName]="key">
               @for (option of formData.fields[key].options; track option.value) {
                 <option [value]="option.value" [disabled]="option.disabled ?? false">
                   {{ option.label }}
                 </option>
               }
             </select>
+            @if (form.get(key)?.invalid && form.get(key)?.touched) {
+              <span class="input_error">{{ getErrorMessage(key) }}</span>
+            }
           </div>
         } @else if (isTextarea(key)) {
           <div class="element">
             <label [for]="key">{{ formData.fields[key].label }}</label>
-            <textarea [id]="key" [placeholder]="formData.fields[key].placeholder ?? ''" required></textarea>
+            <textarea [id]="key" [formControlName]="key"
+                      [placeholder]="formData.fields[key].placeholder ?? ''">
+            </textarea>
+            @if (form.get(key)?.invalid && form.get(key)?.touched) {
+              <span class="input_error">{{ getErrorMessage(key) }}</span>
+            }
           </div>
         } @else {
           <div class="element">
             <label [for]="key">{{ formData.fields[key].label }}</label>
-            <input type="text" [id]="key" [placeholder]="formData.fields[key].placeholder ?? ''" required>
+            <input [type]="formData.fields[key].type ?? 'text'"
+                   [id]="key" [formControlName]="key"
+                   [placeholder]="formData.fields[key].placeholder ?? ''">
+            @if (form.get(key)?.invalid && form.get(key)?.touched) {
+              <span class="input_error">{{ getErrorMessage(key) }}</span>
+            }
           </div>
         }
       }
 
-      <button type="button" class="button">{{ formData.submitButton }}</button>
-
+      <button type="submit" class="button">{{ formData.submitButton }}</button>
     </form>
   </div>
 }

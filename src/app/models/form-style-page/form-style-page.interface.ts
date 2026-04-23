@@ -5,9 +5,18 @@ export interface FormOption {
 }
 
 export interface FormField {
-  icon: string;
+  icon?: string;
   label?: string;
   placeholder?: string;
+  type?: string;
+  validation?: {
+    required?: boolean;
+    pattern?: string;
+    minLength?: number;
+    maxLength?: number;
+    min?: number;
+    max?: number;
+  };
   options?: FormOption[];
 }
 
