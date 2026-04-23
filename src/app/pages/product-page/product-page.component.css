@@ -2,7 +2,7 @@
   display: flex;
   gap: 40px;
   align-items: flex-start;
-  border-bottom: solid 5px #890620ff;
+  border-bottom: solid 5px var(--burgundy);
 }
 
 .product_side {
@@ -43,9 +43,9 @@
 }
 
 .buy_button {
-  background: #d6abac;
+  background: var(--dusty-rose);
   color: black;
-  border: solid 1px #d6abac;
+  border: solid 1px var(--dusty-rose);
   width: 200px;
   text-align: center;
   padding: 12px 20px;
@@ -54,15 +54,15 @@
 }
 
 .buy_button:hover {
-  background-color: #783f8eff;
-  color: #c8c6d7ff;
-  border: 1px solid #c8c6d7ff;
+  background-color: var(--plum);
+  color: var(--periwinkle);
+  border: 1px solid var(--periwinkle);
 }
 
 .wishlist_button {
-  background: #b6465fff;
-  color: #ebd4cbff;
-  border: 1px solid #ebd4cbff;
+  background: var(--crimson);
+  color: var(--linen);
+  border: 1px solid var(--linen);
   padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -70,15 +70,15 @@
 }
 
 .wishlist_button:hover {
-  background-color: #783f8eff;
-  color: #c8c6d7ff;
-  border: 1px solid #c8c6d7ff;
+  background-color: var(--plum);
+  color: var(--periwinkle);
+  border: 1px solid var(--periwinkle);
 }
 
 .edit_button {
-  background: #b6465f;
-  color: #ebd4cbff;
-  border: 1px solid #ebd4cbff;
+  background: var(--crimson);
+  color: var(--linen);
+  border: 1px solid var(--linen);
   padding: 12px 20px;
   border-radius: 8px;
   text-align: center;
@@ -87,9 +87,9 @@
 }
 
 .edit_button:hover {
-  background-color: #783f8eff;
-  color: #c8c6d7ff;
-  border: 1px solid #c8c6d7ff;
+  background-color: var(--plum);
+  color: var(--periwinkle);
+  border: 1px solid var(--periwinkle);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

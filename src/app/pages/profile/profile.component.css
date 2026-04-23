@@ -6,7 +6,7 @@
 
 .profile-row {
   display: flex;
-  border-bottom: solid 5px #890620ff;
+  border-bottom: solid 5px var(--burgundy);
   padding: 0;
 }
 
@@ -25,9 +25,9 @@
 }
 
 .profile-button {
-  background: #b6465f;
-  color: #ebd4cbff;
-  border: 1px solid #ebd4cbff;
+  background: var(--crimson);
+  color: var(--linen);
+  border: 1px solid var(--linen);
   padding: 12px 20px;
   border-radius: 8px;
   text-align: center;
@@ -39,9 +39,9 @@
 }
 
 .profile-button:hover {
-  background-color: #783f8eff;
-  color: #c8c6d7ff;
-  border: 1px solid #c8c6d7ff;
+  background-color: var(--plum);
+  color: var(--periwinkle);
+  border: 1px solid var(--periwinkle);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

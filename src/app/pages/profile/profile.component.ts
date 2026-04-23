@@ -12,7 +12,7 @@ import {ProfileService} from '../../services/profile.service';
   selector: 'app-profile',
   imports: [CommonModule, PhotoRow],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css',
+  styleUrls: ['../../components/product-info/product-info.component.css', './profile.component.css'],
 })
 export class ProfilePage implements OnInit {
   profileData: Profile | null = null;

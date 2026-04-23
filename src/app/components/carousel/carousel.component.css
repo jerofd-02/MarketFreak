@@ -15,7 +15,7 @@
 }
 
 .carousel-divider {
-  border-bottom: solid 5px #890620ff;
+  border-bottom: solid 5px var(--burgundy);
 }
 
 .carousel_viewport {
@@ -63,9 +63,9 @@
 .carousel_navigation-button:focus,
 .carousel_navigation-button:active,
 .carousel_navigation-button:hover {
-  background-color: #d6abac;
+  background-color: var(--dusty-rose);
 }
 
 .carousel_navigation-button.active {
-  background-color: #9a3850;
+  background-color: var(--raspberry);
 }

@@ -9,20 +9,20 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  background-color: #f5e4e9;
+  background-color: var(--blush);
   border-radius: 10px;
 }
 
 .wish_search input {
-  background-color: #f2dcfc;
-  border: 1px solid #b6465f;
+  background-color: var(--lavender-blush);
+  border: 1px solid var(--crimson);
   border-radius: 10px;
 }
 
 .wish_search i {
   position: absolute;
   left: 8px;
-  color: #b6465f;
+  color: var(--crimson);
   pointer-events: none;
 }
 
@@ -35,8 +35,8 @@
 .wish_bar select {
   border-radius: 10px;
   margin-top: 0;
-  background: #b6465f;
-  color: #ebd4cb;
+  background: var(--crimson);
+  color: var(--linen);
   border: none;
   font-family: Helvetica, sans-serif;
   font-size: 15px;
@@ -46,12 +46,12 @@
 }
 
 .wish_bar select option {
-  background-color: #f2dcfc;
+  background-color: var(--lavender-blush);
   color: black;
 }
 
 .wish_bar select:hover {
-  background: #b6465fff;
+  background: var(--crimson);
 }
 
 .wish_list {

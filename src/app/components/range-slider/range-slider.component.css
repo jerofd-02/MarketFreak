@@ -10,7 +10,7 @@
   justify-content: space-between;
   font-size: 13px;
   font-weight: bold;
-  color: #2c0703;
+  color: var(--dark-mahogany);
 }
 
 .range_track {
@@ -40,7 +40,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #b6465f;
+  background: var(--crimson);
   cursor: pointer;
   border: 2px solid white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
@@ -51,7 +51,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #b6465f;
+  background: var(--crimson);
   cursor: pointer;
   border: 2px solid white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);

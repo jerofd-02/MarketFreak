@@ -1,7 +1,7 @@
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #b6465fff;
+  background-color: var(--crimson);
   padding: 5px;
   margin: -8px -8px 0 -8px;
 }
@@ -24,18 +24,18 @@ header {
   padding: 10px 10px 10px 30px;
   border-radius: 10px;
   background-color: transparent;
-  color: #ebd4cbff;
-  border: solid 1px #ebd4cbff;
+  color: var(--linen);
+  border: solid 1px var(--linen);
 }
 
 .nav_bar input::placeholder {
-  color: #ebd4cbff;
+  color: var(--linen);
 }
 
 .nav_bar i {
   position: absolute;
   margin: 5px 0 0 6px;
-  color: #ebd4cbff;
+  color: var(--linen);
 }
 
 .nav_bar .fa-search {
@@ -69,22 +69,22 @@ header {
 
 .register_button:hover,
 .login_button:hover {
-  background-color: #783f8eff;
-  color: #c8c6d7ff;
-  border: 1px solid #c8c6d7ff;
+  background-color: var(--plum);
+  color: var(--periwinkle);
+  border: 1px solid var(--periwinkle);
 }
 
 .login_button {
-  color: #d6abac;
-  border: solid 1px #d6abac;
+  color: var(--dusty-rose);
+  border: solid 1px var(--dusty-rose);
   border-radius: 10px;
   margin: 3px 0 0 10px;
 }
 
 .register_button {
-  border: solid 1px #d6abac;
-  background-color: #d6abac;
-  color: #2c0703ff;
+  border: solid 1px var(--dusty-rose);
+  background-color: var(--dusty-rose);
+  color: var(--dark-mahogany);
   border-radius: 10px;
   margin: 3px 0 0 10px;
 }
@@ -116,7 +116,7 @@ header {
 .hamburger_btn i,
 .search_toggle_btn i {
   font-size: 1.2rem;
-  color: #ebd4cbff;
+  color: var(--linen);
 }
 
 .hamburger_btn.active i {
@@ -181,7 +181,7 @@ header {
   display: none;
   align-items: center;
   gap: 8px;
-  background-color: #b6465fff;
+  background-color: var(--crimson);
   padding: 8px 12px;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
@@ -198,14 +198,14 @@ header {
   flex: 1;
   padding: 8px 12px;
   border-radius: 10px;
-  border: solid 1px #ebd4cbff;
+  border: solid 1px var(--linen);
   background-color: transparent;
-  color: #ebd4cbff;
+  color: var(--linen);
   font-size: 1rem;
 }
 
 .mobile_search_bar input::placeholder {
-  color: #ebd4cbff;
+  color: var(--linen);
 }
 
 .search_close_btn {
@@ -217,11 +217,16 @@ header {
 
 .search_close_btn i {
   font-size: 1rem;
-  color: #ebd4cbff;
+  color: var(--linen);
 }
 
 /* Responsive (tablet) */
 @media (min-width: 768px) and (max-width: 1024px) {
+  header {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
   .hamburger_btn,
   .search_toggle_btn {
     display: flex;

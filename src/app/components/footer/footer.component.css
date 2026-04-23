@@ -1,12 +1,12 @@
 footer {
-  background-color: #890620ff;
+  background-color: var(--burgundy);
   display: flex;
-  color: #ebd4cbff;
+  color: var(--linen);
   margin: 0 -8px -8px -8px;
 }
 
 footer a {
-  color: #ebd4cbff;
+  color: var(--linen);
   text-decoration: none;
 }
 
