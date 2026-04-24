@@ -7,10 +7,13 @@ import {Profile} from '../../models/profile/profile.interface';
 import {User} from '../../models/user/user.interface';
 import {Product} from '../../models/product/product.interface';
 import {ProfileService} from '../../services/profile.service';
-import {take} from 'rxjs';
+import {UserService} from '../../services/user.service';
+import {ProductService} from '../../services/product.service';
+import {take, firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-profile',
+  standalone: true,
   imports: [CommonModule, PhotoRow],
   templateUrl: './profile.component.html',
   styleUrls: ['../../components/product-info/product-info.component.css', './profile.component.css'],
@@ -21,31 +24,38 @@ export class ProfilePage implements OnInit {
   products: Product[] = [];
   isOwner = false;
 
-  constructor(private route: ActivatedRoute, private profilePageService: ProfileService, private authService: AuthService, private cdr: ChangeDetectorRef) {
+  constructor(
+    private route: ActivatedRoute,
+    private profilePageService: ProfileService,
+    private userService: UserService,
+    private productService: ProductService,
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
+  ) {
   }
 
   async ngOnInit(): Promise<void> {
-    const seller = this.route.snapshot.queryParamMap.get("seller");
+    const seller = this.route.snapshot.queryParamMap.get('seller');
+    if (!seller) return;
 
-    const [profileJson, productsJson, usersJson] = await Promise.all([
+    const [profileJson, products, user] = await Promise.all([
       this.profilePageService.fetchProfile(),
-      this.profilePageService.fetchProducts(),
-      this.profilePageService.fetchUsers()
+      firstValueFrom(this.productService.getProducts()),
+      firstValueFrom(this.userService.getUserBySeller(seller))
     ]);
 
     this.profileData = profileJson.profile;
-    this.products = productsJson?.products?.filter(p => p.seller === seller);
-    this.user = usersJson?.users?.find(u => u.seller === seller) ?? null;
-
+    this.products = products.filter(p => p.seller === seller);
+    this.user = user ?? null;
 
     this.authService.currentUser$.pipe(take(1)).subscribe(async firebaseUser => {
       if (firebaseUser) {
         const loggedUser = await this.authService.getLoggedUser(firebaseUser.uid);
-        this.isOwner = !!loggedUser && !!seller && loggedUser['seller'] === seller;
+        this.isOwner = !!loggedUser && loggedUser['seller'] === seller;
       } else {
         this.isOwner = false;
       }
-    })
-    this.cdr.detectChanges();
+      this.cdr.detectChanges();
+    });
   }
 }
