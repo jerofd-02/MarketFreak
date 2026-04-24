@@ -3,30 +3,49 @@
   <div class="form_container">
     <form class="form_group" (ngSubmit)="onSubmit()">
       <div class="element">
-        <label for="name">{{ config.fields[0].label }}</label>
+        <label for="name">{{ config.fields.name.label }}</label>
         <input type="text" [(ngModel)]="registerData.name" name="name" id="name"
-               [placeholder]="config.fields[0].placeholder" required/>
+               [placeholder]="config.fields.name.placeholder" required/>
       </div>
       <div class="element">
-        <label for="username">{{ config.fields[1].label }}</label>
+        <label for="username">{{ config.fields.username.label }}</label>
         <input type="text" [(ngModel)]="registerData.seller" name="username" id="username"
-               [placeholder]="config.fields[1].placeholder" required minlength="3" maxlength="20"
+               [placeholder]="config.fields.username.placeholder" required minlength="3" maxlength="20"
                pattern="[a-zA-Z0-9]+"/>
       </div>
       <div class="element">
-        <label for="email">{{ config.fields[2].label }}</label>
+        <label for="email">{{ config.fields.email.label }}</label>
         <input type="email" [(ngModel)]="registerData.email" name="email" id="email"
-               [placeholder]="config.fields[2].placeholder" required/>
+               [placeholder]="config.fields.email.placeholder" required/>
       </div>
       <div class="element">
-        <label for="password">{{ config.fields[3].label }}</label>
+        <label for="password">{{ config.fields.password.label }}</label>
         <input type="password" [(ngModel)]="registerData.password" name="password" id="password"
-               [placeholder]="config.fields[3].placeholder" required minlength="8"/>
+               [placeholder]="config.fields.password.placeholder" required minlength="8"/>
       </div>
       <div class="element">
-        <label for="password_confirm">{{ config.fields[4].label }}</label>
+        <label for="password_confirm">{{ config.fields.password_confirm.label }}</label>
         <input type="password" [(ngModel)]="registerData.password_confirm" name="password_confirm" id="password_confirm"
-               [placeholder]="config.fields[4].placeholder" required minlength="8"/>
+               [placeholder]="config.fields.password_confirm.placeholder" required minlength="8"/>
+      </div>
+      <div class="element">
+        <label for="location">{{ config.fields.location.label }}</label>
+        <input id="location" name="location" type="text" [(ngModel)]="registerData.location"
+               [placeholder]="config.fields.location.placeholder" required disabled>
+      </div>
+      <div class="element">
+        <label for="province">{{ config.fields.province.label }}</label>
+        <select [(ngModel)]="registerData.province" name="province" id="province" required>
+          <option value="" disabled selected>{{ config.fields.province.placeholder }}</option>
+          @for (option of config.fields.province.options; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </div>
+      <div class="element">
+        <label for="description">{{ config.fields.description.label }}</label>
+        <textarea [(ngModel)]="registerData.description" name="description" id="description"
+                  [placeholder]="config.fields.description.placeholder"></textarea>
       </div>
       <button type="submit" class="button" [disabled]="loading">
         {{ loading ? 'Cargando...' : config.submitLabel }}
@@ -38,8 +57,8 @@
   </div>
   <div>
     <span class="register_password_forgot">
-      {{ config.registerLink.text }}
-      <a routerLink="/login">{{ config.registerLink.linkText }}</a>
+      {{ config.loginLink.text }}
+      <a routerLink="/login">{{ config.loginLink.linkText }}</a>
     </span>
   </div>
 }

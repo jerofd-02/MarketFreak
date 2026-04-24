@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {RegisterConfig, RegisterData} from '../../models/register/register.interface';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {RegisterService} from '../../services/register.service';
 import {AuthService} from '../../services/auth.service';
@@ -9,7 +9,8 @@ import {AuthService} from '../../services/auth.service';
   selector: 'app-register',
   imports: [
     FormsModule,
-    RouterLink
+    RouterLink,
+    ReactiveFormsModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['../form-style-page/form-style-page.component.css']
@@ -20,7 +21,11 @@ export class RegisterComponent implements OnInit {
     seller: '',
     email: '',
     password: '',
-    password_confirm: ''
+    password_confirm: '',
+    location: 'España',
+    province: '',
+    description: '',
+    photo: 'assets/images/misc/placeholder_image.png'
   };
 
   config?: RegisterConfig;
@@ -54,6 +59,9 @@ export class RegisterComponent implements OnInit {
         this.registerData.seller,
         this.registerData.email,
         this.registerData.password,
+        this.registerData.photo,
+        this.registerData.province,
+        this.registerData.description
       );
     } catch (error) {
       this.errorMessage = error as string;

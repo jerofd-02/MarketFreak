@@ -12,12 +12,14 @@ import {
 import {Observable} from 'rxjs';
 
 export interface LoggedUser {
-  name: string;
-  photo?: string;
-  seller: string;
+  description: string;
   email: string;
-  location?: string;
-  description?: string;
+  location: string;
+  name: string;
+  password: string;
+  photo: string;
+  seller: string;
+  province: string;
 }
 
 @Injectable({providedIn: 'root'})
@@ -43,16 +45,26 @@ export class AuthService {
     }
   }
 
-  async register(name: string, username: string, email: string, password: string): Promise<void> {
+  async register(
+    name: string,
+    seller: string,
+    email: string,
+    password: string,
+    photo: string,
+    province: string,
+    description: string,
+  ): Promise<void> {
     try {
       const credential = await createUserWithEmailAndPassword(this.auth, email, password);
 
       await setDoc(doc(this.firestore, 'users', credential.user.uid), {
         uid: credential.user.uid,
         name,
-        seller: username,
+        seller,
         email,
-        createdAt: new Date()
+        photo,
+        province,
+        description,
       });
 
       this.router.navigate([""]);
