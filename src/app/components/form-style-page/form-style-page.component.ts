@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { FormStyleData } from '../../models/form-style-page/form-style-page.interface';
@@ -6,12 +6,15 @@ import {DynamicFormService} from '../../services/form-style-page.service';
 
 @Component({
   selector: 'app-form-style-page',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-style-page.component.html',
   styleUrl: './form-style-page.component.css',
 })
 export class FormStylePageComponent implements OnChanges {
   @Input() formData: FormStyleData | null = null;
+  @Input() isSubmitting = false;
+  @Output() formSubmit = new EventEmitter<{ formValue: any, images: File[] }>();
 
   form!: FormGroup;
   imagePreviews: { src: string; file: File }[] = [];
@@ -91,8 +94,11 @@ export class FormStylePageComponent implements OnChanges {
     const imageRequired = this.formData?.fields['image']?.validation?.required ?? false;
     const sinImagenes = imageRequired && this.imagePreviews.length === 0;
 
-    if (this.form.valid && !sinImagenes) {
-      console.log({ ...this.form.value, images: this.imagePreviews.map(p => p.file) });
+    if (this.form.valid && !sinImagenes && !this.isSubmitting) {
+      this.formSubmit.emit({
+        formValue: this.form.value,
+        images: this.imagePreviews.map(p => p.file)
+      });
     } else {
       this.form.markAllAsTouched();
       if (sinImagenes) {

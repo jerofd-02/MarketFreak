@@ -4,6 +4,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { ContactService } from '../../services/contact.service';
 import { FormStyleData } from '../../models/form-style-page/form-style-page.interface';
 import { FormStylePageComponent } from '../../components/form-style-page/form-style-page.component';
+import {FirestoreService} from '../../services/firestore.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -14,10 +16,13 @@ import { FormStylePageComponent } from '../../components/form-style-page/form-st
 })
 export class ContactComponent implements OnInit, OnDestroy {
   formData: FormStyleData | null = null;
+  isSubmitting = false;
   private destroy$ = new Subject<void>();
 
   constructor(
     private contactService: ContactService,
+    private firestoreService: FirestoreService,
+    private router: Router,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
   ) {}
@@ -30,6 +35,29 @@ export class ContactComponent implements OnInit, OnDestroy {
         this.formData = data;
         this.cdr.detectChanges();
       });
+    });
+  }
+
+  async onFormSubmit(event: { formValue: any, images: File[] }): Promise<void> {
+    this.isSubmitting = true;
+    const timestamp = Date.now().toString();
+
+    const imageUrls = event.images.length > 0
+      ? await this.firestoreService.uploadImages(event.images, `support-request/${timestamp}`)
+      : [];
+
+    const data = {
+      ...event.formValue,
+      images: imageUrls,
+      createdAt: new Date()
+    };
+
+    this.firestoreService.saveDocument('support-request', data).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: (err) => {
+        console.error('Error al guardar consulta:', err);
+        this.isSubmitting = false;
+      }
     });
   }
 

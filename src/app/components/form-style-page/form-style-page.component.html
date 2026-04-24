@@ -6,7 +6,7 @@
         @if (isFile(key)) {
           <div class="add-photo">
             @if (imagePreviews.length === 0) {
-              <i class="fa fa-camera"></i>
+              <i class="fas fa-cloud-upload"></i>
               <p>{{ formData.fields[key].placeholder }}</p>
             } @else if (formData.fields[key].maxImages) {
               <p>{{ imagePreviews.length }} / {{ formData.fields[key].maxImages }}</p>
@@ -63,7 +63,9 @@
         }
       }
 
-      <button type="submit" class="button">{{ formData.submitButton }}</button>
+      <button type="submit" class="button" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Enviando...' : formData.submitButton }}
+      </button>
     </form>
   </div>
 }
