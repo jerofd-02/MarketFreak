@@ -90,7 +90,7 @@ header {
 }
 
 .header_profile_photo {
-  display: none;
+  display: inline-block;
   width: 40px;
   height: 40px;
   border-radius: 50%;
