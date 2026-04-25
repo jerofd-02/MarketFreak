@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const productId = Number(this.route.snapshot.paramMap.get('id'));
+    const productId = this.route.snapshot.paramMap.get('id') ?? '';
 
     this.productService.getProductById(productId).pipe(
       takeUntil(this.destroy$)

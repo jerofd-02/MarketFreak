@@ -1,35 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Firestore, collection, collectionData, doc, docData, query, where, orderBy, limit } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { Product } from '../models/product/product.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private dataUrl = 'assets/data/products.json';
-  private products$!: Observable<Product[]>;
 
-  constructor(private http: HttpClient) {
-    this.products$ = this.http.get<{ products: Product[] }>(this.dataUrl).pipe(
-      map(data => data.products),
-    );
-  }
+  constructor(private firestore: Firestore) {}
 
   getProducts(): Observable<Product[]> {
-    return this.products$;
+    const ref = collection(this.firestore, 'products');
+    return collectionData(ref, { idField: 'id' }) as Observable<Product[]>;
   }
 
-  getProductById(id: number): Observable<Product | undefined> {
-    return this.products$.pipe(
-      map(products => products.find(p => p.id === id))
+  getProductById(id: string): Observable<Product | undefined> {
+    const ref = doc(this.firestore, 'products', id);
+    return docData(ref, { idField: 'id' }) as Observable<Product | undefined>;
+  }
+
+  getRelatedProducts(currentId: string, seller: string, limitCount = 4): Observable<Product[]> {
+    const ref = collection(this.firestore, 'products');
+    const q = query(
+      ref,
+      where('seller', '==', seller),
+      limit(limitCount + 1)
     );
-  }
 
-  getRelatedProducts(currentId: number, seller: string, limit = 4): Observable<Product[]> {
-    return this.products$.pipe(
-      map(products => products
-        .filter(p => p.id !== currentId && p.seller === seller)
-        .slice(0, limit)
-      )
+    return collectionData(q, { idField: 'id' }).pipe(
+      map(products => (products as Product[]).filter(p => p.id !== currentId).slice(0, limitCount))
     );
   }
 }

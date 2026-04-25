@@ -44,7 +44,7 @@ export class ProductPage implements OnInit, OnDestroy {
     this.route.paramMap.pipe(
       takeUntil(this.destroy$),
       switchMap(params => {
-        const id = Number(params.get('id'));
+        const id = params.get('id') ?? '';
         return this.productService.getProductById(id);
       }),
       tap(product => {

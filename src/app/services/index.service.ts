@@ -1,15 +1,17 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
-import {CarouselItem, IndexData, Product, ProductsData} from '../models/product/product.interface';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { CarouselItem, IndexData, Product } from '../models/product/product.interface';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class IndexService {
-  private productsUrl = 'assets/data/products.json';
   private indexUrl = 'assets/data/index.json';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(
+    private http: HttpClient,
+    private firestore: Firestore
+  ) {}
 
   getCarousel(): Observable<CarouselItem> {
     return this.http.get<IndexData>(this.indexUrl).pipe(
@@ -24,9 +26,8 @@ export class IndexService {
   }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<ProductsData>(this.productsUrl).pipe(
-      map(data => data.products)
-    );
+    const ref = collection(this.firestore, 'products');
+    return collectionData(ref, { idField: 'id' }) as Observable<Product[]>;
   }
 
   getRandomProducts(count: number = 8): Observable<Product[]> {

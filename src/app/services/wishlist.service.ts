@@ -33,7 +33,7 @@ export class WishlistService {
         map(products => {
           if (!wishlist) return [];
           return wishlist.products
-            .map(entry => products.find(p => p.id === entry.id))
+            .map(entry => products.find(p => p.id === String(entry.id)))
             .filter((p): p is Product => p !== undefined);
         })
       ))
