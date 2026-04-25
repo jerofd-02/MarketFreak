@@ -46,8 +46,14 @@ export class ContactComponent implements OnInit, OnDestroy {
       ? await this.firestoreService.uploadImages(event.images, `support-request/${timestamp}`)
       : [];
 
+    const problemOptions = this.formData?.fields['problem']?.options ?? [];
+    const problemLabel = problemOptions.find(
+      opt => opt.value === event.formValue.problem
+    )?.label ?? event.formValue.problem;
+
     const data = {
       ...event.formValue,
+      problem: problemLabel,
       images: imageUrls,
       createdAt: new Date()
     };
