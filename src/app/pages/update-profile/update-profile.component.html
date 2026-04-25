@@ -29,14 +29,21 @@
       <label for="province">{{ fields['province']?.label }}</label>
       <select id="province" formControlName="province" required>
         @for (opt of fields['province']?.options; track opt.value) {
-          <option value="opt.value">{{ opt.label }}</option>
+          <option [value]="opt.value">{{ opt.label }}</option>
         }
       </select>
     </div>
     <div class="element">
       <label for="description">{{ fields['description']?.label }}</label>
-      <textarea id="description" [placeholder]="fields['description']?.placeholder"></textarea>
+      <textarea id="description" formControlName="description"
+                [placeholder]="fields['description']?.placeholder"></textarea>
     </div>
-    <button type="submit" class="button">{{ submitLabel }}</button>
+    @if (errorMessage) {
+      <p class="">{{ errorMessage }}</p>
+    }
+    @if (successMessage) {
+      <p class="">{{ successMessage }}</p>
+    }
+    <button type="submit" class="button">{{ loading ? 'Guardando...' : submitLabel }}</button>
   </form>
 </div>

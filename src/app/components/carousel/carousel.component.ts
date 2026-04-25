@@ -1,10 +1,9 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, HostListener, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {CarouselItem} from '../../models/product/product.interface';
-import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-carousel',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
 })
@@ -26,6 +25,14 @@ export class CarouselComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.stopAutoplay();
+  }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.stopAutoplay();
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.startAutoplay();
   }
 
   startAutoplay(): void {

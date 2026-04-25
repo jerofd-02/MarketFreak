@@ -5,6 +5,13 @@
   border-bottom: solid 5px var(--burgundy);
 }
 
+.carousel_container {
+  display: flex;
+  width: 500px;
+  align-items: center;
+  align-self: flex-start;
+}
+
 .product_side {
   display: flex;
   flex-direction: column;
@@ -100,6 +107,7 @@
 
   .carousel_container {
     width: 350px;
+    align-self: flex-start;
   }
 
   .product_buttons {

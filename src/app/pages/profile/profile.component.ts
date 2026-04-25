@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {PhotoRow} from '../../components/photo-row/photo-row.component';
 import {AuthService} from '../../services/auth.service';
 import {Profile} from '../../models/profile/profile.interface';
@@ -14,7 +14,7 @@ import {take, firstValueFrom} from 'rxjs';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, PhotoRow],
+  imports: [CommonModule, PhotoRow, RouterLink],
   templateUrl: './profile.component.html',
   styleUrls: ['../../components/product-info/product-info.component.css', './profile.component.css'],
 })

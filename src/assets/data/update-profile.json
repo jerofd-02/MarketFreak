@@ -7,8 +7,8 @@
         "icon": "fas fa-cloud-upload"
       },
       "username": {
-        "label": "Nombre de usuario",
-        "placeholder": "Introduce tu nombre de usuario..."
+        "label": "Nombre",
+        "placeholder": "Introduce tu nombre..."
       },
       "location": {
         "label": "Ubicación"

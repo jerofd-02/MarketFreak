@@ -6,9 +6,7 @@ import {FormField, FormFields} from '../../models/form-style-page/form-style-pag
 
 @Component({
   selector: 'app-update-profile',
-  imports: [
-    ReactiveFormsModule
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './update-profile.component.html',
   styleUrls: ['../../components/form-style-page/form-style-page.component.css', 'update-profile.component.css']
 })
@@ -18,6 +16,9 @@ export class UpdateProfile implements OnInit {
   submitLabel = '';
   avatarPreview: string | null = null;
   avatarFileName: string | null = null;
+  errorMessage?: string;
+  successMessage?: string;
+  loading: boolean = false;
 
   constructor(private fb: FormBuilder, private updateProfileService: UpdateProfileService, private cdr: ChangeDetectorRef) {
   }
@@ -26,7 +27,7 @@ export class UpdateProfile implements OnInit {
     this.form = this.fb.group({
       avatar: [UPDATE_PROFILE_DEFAULTS.avatar],
       username: [UPDATE_PROFILE_DEFAULTS.username],
-      location: [{ value: UPDATE_PROFILE_DEFAULTS.location, disabled: true }],
+      location: [{value: UPDATE_PROFILE_DEFAULTS.location, disabled: true}],
       province: [UPDATE_PROFILE_DEFAULTS.province],
       description: [UPDATE_PROFILE_DEFAULTS.description],
     });
@@ -36,7 +37,25 @@ export class UpdateProfile implements OnInit {
       this.submitLabel = data.submitButton;
     });
 
-    this.cdr.detectChanges();
+    this.loadUserData();
+  }
+
+  async loadUserData(): Promise<void> {
+    try {
+      const data = await this.updateProfileService.getCurrentUserData();
+      if (data) {
+        this.form.patchValue({
+          username: data.name,
+          province: data.province,
+          description: data.description,
+          avatar: data.photo,
+        });
+        this.avatarPreview = data.photo;
+        this.cdr.detectChanges();
+      }
+    } catch (error) {
+      this.errorMessage = "Error al cargar los datos del usuario.";
+    }
   }
 
   getField(name: string): FormField | undefined {
@@ -49,7 +68,7 @@ export class UpdateProfile implements OnInit {
     if (!file) return;
 
     this.avatarFileName = file.name;
-    this.form.patchValue({ avatar: file });
+    this.form.patchValue({avatar: file});
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -58,8 +77,32 @@ export class UpdateProfile implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  onSubmit(): void {
-    const formValue: UpdateProfileForm = this.form.getRawValue();
-    console.log("Formulario enviado: ", formValue);
+  async onSubmit(): Promise<void> {
+    this.errorMessage = undefined;
+    this.successMessage = undefined;
+    this.loading = true;
+
+    try {
+      const formValue: UpdateProfileForm = this.form.getRawValue();
+      let photoUrl: string = typeof formValue.avatar === 'string' ? formValue.avatar : this.avatarPreview ?? '';
+
+      if (formValue.avatar instanceof File) {
+        photoUrl = await this.updateProfileService.uploadPhoto(formValue.avatar);
+      }
+
+      await this.updateProfileService.updateUserData({
+        name: formValue.username,
+        province: formValue.province,
+        description: formValue.description,
+        photo: photoUrl,
+      });
+
+      this.successMessage = "Perfil actualizado correctamente.";
+    } catch (error) {
+      this.errorMessage = "Error al actualizar el perfil.";
+    } finally {
+      this.loading = false;
+      this.cdr.detectChanges();
+    }
   }
 }

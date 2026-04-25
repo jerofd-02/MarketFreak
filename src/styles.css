@@ -47,3 +47,7 @@ i {
   width: 33.33%;
   padding: 10px;
 }
+
+.carousel-divider {
+  border-bottom: solid 5px var(--burgundy);
+}
