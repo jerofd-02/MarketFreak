@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angula
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Subject, takeUntil, forkJoin } from 'rxjs';
+import {Subject, takeUntil, combineLatest} from 'rxjs';
 import { SearchProductService } from '../../services/search-product.service';
 import { ProductService } from '../../services/product.service';
 import { Filter, FilterRange } from '../../models/search-product/search-product.interface';
@@ -49,7 +49,7 @@ export class SearchProductComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    forkJoin({
+    combineLatest({
       filters: this.searchProductService.getFilters(),
       products: this.productService.getProducts()
     }).pipe(takeUntil(this.destroy$))
