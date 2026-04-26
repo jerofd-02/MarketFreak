@@ -36,7 +36,7 @@ export class UpdateProfileService {
     const user = this.auth.currentUser;
     if (!user) throw new Error('No hay usuario autenticado');
 
-    const storageRef = ref(this.storage, `avatars/${user.uid}`);
+    const storageRef = ref(this.storage, `users/${user.uid}`);
     await uploadBytes(storageRef, file);
     return await getDownloadURL(storageRef);
   }

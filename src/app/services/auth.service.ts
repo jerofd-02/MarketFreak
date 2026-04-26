@@ -10,6 +10,7 @@ import {
   User as FirebaseUser
 } from '@angular/fire/auth';
 import {Observable} from 'rxjs';
+import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage';
 
 export interface LoggedUser {
   description: string;
@@ -26,6 +27,7 @@ export class AuthService {
   private auth = inject(Auth);
   private firestore = inject(Firestore);
   private router = inject(Router);
+  private storage = inject(Storage);
 
   currentUser$: Observable<FirebaseUser | null>;
 
@@ -57,12 +59,14 @@ export class AuthService {
     try {
       const credential = await createUserWithEmailAndPassword(this.auth, email, password);
 
+      const finalPhoto = photo ? photo : await this.getRandomAvatar();
+
       await setDoc(doc(this.firestore, 'users', credential.user.uid), {
         name,
         seller,
         email,
         password,
-        photo,
+        photo: finalPhoto,
         location: `${province}, ${location}`,
         description,
       });
@@ -82,6 +86,13 @@ export class AuthService {
     const docRef = doc(this.firestore, 'users', uid);
     const snapshot = await getDoc(docRef);
     return snapshot.exists() ? snapshot.data() as LoggedUser : null;
+  }
+
+  private async getRandomAvatar(): Promise<string> {
+    const folderRef = ref(this.storage, 'users/default-images');
+    const result = await listAll(folderRef);
+    const randomItem = result.items[Math.floor(Math.random() * result.items.length)];
+    return await getDownloadURL(randomItem);
   }
 
   private handleError(error: any) {

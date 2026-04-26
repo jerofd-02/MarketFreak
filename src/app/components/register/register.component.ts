@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     location: 'España',
     province: '',
     description: '',
-    photo: 'assets/images/misc/placeholder_image.png'
+    photo: ''
   };
 
   config?: RegisterConfig;
