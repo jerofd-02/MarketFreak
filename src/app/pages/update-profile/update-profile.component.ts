@@ -46,7 +46,7 @@ export class UpdateProfile implements OnInit {
       if (data) {
         this.form.patchValue({
           username: data.name,
-          province: data.province,
+          province: data.location,
           description: data.description,
           avatar: data.photo,
         });
@@ -92,7 +92,7 @@ export class UpdateProfile implements OnInit {
 
       await this.updateProfileService.updateUserData({
         name: formValue.username,
-        province: formValue.province,
+        location: formValue.province,
         description: formValue.description,
         photo: photoUrl,
       });

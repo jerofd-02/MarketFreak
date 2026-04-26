@@ -19,7 +19,6 @@ export interface LoggedUser {
   password: string;
   photo: string;
   seller: string;
-  province: string;
 }
 
 @Injectable({providedIn: 'root'})
@@ -52,18 +51,19 @@ export class AuthService {
     password: string,
     photo: string,
     province: string,
+    location: string,
     description: string,
   ): Promise<void> {
     try {
       const credential = await createUserWithEmailAndPassword(this.auth, email, password);
 
       await setDoc(doc(this.firestore, 'users', credential.user.uid), {
-        uid: credential.user.uid,
         name,
         seller,
         email,
+        password,
         photo,
-        province,
+        location: `${province}, ${location}`,
         description,
       });
 

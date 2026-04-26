@@ -61,6 +61,7 @@ export class RegisterComponent implements OnInit {
         this.registerData.password,
         this.registerData.photo,
         this.registerData.province,
+        this.registerData.location,
         this.registerData.description
       );
     } catch (error) {

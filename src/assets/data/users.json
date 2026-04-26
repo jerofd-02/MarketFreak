@@ -5,7 +5,7 @@
       "name": "Armin Keenan",
       "email": "armin.keenan@example.com",
       "password": "validacionformulario",
-      "photo": "assets/images/user-images/ren_pfp.jpg",
+      "photo": "https://firebasestorage.googleapis.com/v0/b/marketfreak-58bf9.firebasestorage.app/o/users%2Fren_pfp.jpg?alt=media&token=1cfd12e4-94a1-4f1f-adda-57bda437ac2b",
       "location": "Madrid, España",
       "description": "Coleccionista apasionado desde hace más de 15 años, especializado en figuras de acción y mangas de edición limitada. Todos mis artículos están en perfecto estado y proceden de mi colección personal. Envío a toda España con embalaje seguro y número de seguimiento."
     },
@@ -14,7 +14,7 @@
       "name": "Kasumi Yoshizawa 🎀",
       "email": "kasumi.yoshizawa@example.com",
       "password": "abcdefgh",
-      "photo": "assets/images/user-images/sumi_pfp.jpg",
+      "photo": "https://firebasestorage.googleapis.com/v0/b/marketfreak-58bf9.firebasestorage.app/o/avatars%2FvD2QsN0GXqQ7HC5bBBKr6NDyqB43?alt=media&token=1a11d738-d18e-4fb2-a956-8c90ee66b4ca",
       "location": "Barcelona, España",
       "description": "Apasionada coleccionista de figuras de anime y mangas shoujo desde hace más de 8 años. Especializada en ediciones limitadas y artículos exclusivos importados directamente de Japón. Cada figura que vendo viene en perfecto estado, con su caja original y todos los accesorios incluidos. ¡Si buscas algo en concreto, no dudes en preguntarme!"
     },
@@ -23,7 +23,7 @@
       "name": "Pedro Sánchez",
       "email": "pedro.sanchez@example.com",
       "password": "pass1234",
-      "photo": "assets/images/user-images/pfp_3.jpg",
+      "photo": "https://firebasestorage.googleapis.com/v0/b/marketfreak-58bf9.firebasestorage.app/o/users%2Fpfp_3.jpg?alt=media&token=1cf59e83-5efe-4952-b7d5-a96b3e13b41a",
       "location": "Valencia, España",
       "description": "Especialista en monedas antiguas y billetes de colección. Cada pieza que vendo ha sido verificada y catalogada con su correspondiente certificado de autenticidad. Llevo más de 10 años en el mundo del coleccionismo numismático y ofrezco asesoramiento gratuito a compradores interesados."
     }
