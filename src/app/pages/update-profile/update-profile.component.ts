@@ -44,9 +44,11 @@ export class UpdateProfile implements OnInit {
     try {
       const data = await this.updateProfileService.getCurrentUserData();
       if (data) {
+        const province = data.location?.split(',')[0]?.trim() ?? '';
+
         this.form.patchValue({
           username: data.name,
-          province: data.location,
+          province: province,
           description: data.description,
           avatar: data.photo,
         });
@@ -92,7 +94,7 @@ export class UpdateProfile implements OnInit {
 
       await this.updateProfileService.updateUserData({
         name: formValue.username,
-        location: formValue.province,
+        location: `${formValue.province}, España`,
         description: formValue.description,
         photo: photoUrl,
       });

@@ -17,79 +17,79 @@
         "label": "Comunidad autónoma",
         "options": [
           {
-            "value": "andalucia",
+            "value": "Andalucía",
             "label": "Andalucía"
           },
           {
-            "value": "aragon",
+            "value": "Aragón",
             "label": "Aragón"
           },
           {
-            "value": "asturias",
+            "value": "Asturias",
             "label": "Asturias"
           },
           {
-            "value": "baleares",
+            "value": "Islas Baleares",
             "label": "Islas Baleares"
           },
           {
-            "value": "canarias",
+            "value": "Islas Canarias",
             "label": "Islas Canarias"
           },
           {
-            "value": "cantabria",
+            "value": "Cantabria",
             "label": "Cantabria"
           },
           {
-            "value": "castilla_la_mancha",
+            "value": "Castilla-La Mancha",
             "label": "Castilla-La Mancha"
           },
           {
-            "value": "castilla_y_leon",
+            "value": "Castilla y León",
             "label": "Castilla y León"
           },
           {
-            "value": "cataluna",
+            "value": "Cataluña",
             "label": "Cataluña"
           },
           {
-            "value": "extremadura",
+            "value": "Extremadura",
             "label": "Extremadura"
           },
           {
-            "value": "galicia",
+            "value": "Galicia",
             "label": "Galicia"
           },
           {
-            "value": "la_rioja",
+            "value": "La Rioja",
             "label": "La Rioja"
           },
           {
-            "value": "madrid",
+            "value": "Comunidad de Madrid",
             "label": "Comunidad de Madrid"
           },
           {
-            "value": "murcia",
+            "value": "Región de Murcia",
             "label": "Región de Murcia"
           },
           {
-            "value": "navarra",
+            "value": "Comunidad Foral de Navarra",
             "label": "Comunidad Foral de Navarra"
           },
           {
-            "value": "pais_vasco",
+            "value": "País Vasco",
             "label": "País Vasco"
           },
           {
-            "value": "valencia",
+            "value": "Comunidad Valenciana",
             "label": "Comunidad Valenciana"
           },
           {
-            "value": "ceuta",
+            "value": "Ceuta",
             "label": "Ceuta"
           },
           {
-            "value": "melilla",
+            "value": "Melilla",
             "label": "Melilla"
           }
         ]
