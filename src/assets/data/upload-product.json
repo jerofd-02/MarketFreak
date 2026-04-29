@@ -27,13 +27,35 @@
           "required": true
         },
         "options": [
-          { "value": "", "label": "Selecciona una categoría", "disabled": true },
-          { "value": "figures", "label": "Figuras y estatuillas" },
-          { "value": "coins", "label": "Monedas y billetes" },
-          { "value": "stamps", "label": "Sellos y postales" },
-          { "value": "comics", "label": "Cómics y libros" },
-          { "value": "cards", "label": "Cartas coleccionables" },
-          { "value": "others", "label": "Otros" }
+          {
+            "value": "",
+            "label": "Selecciona una categoría",
+            "disabled": true
+          },
+          {
+            "value": "figures",
+            "label": "Figuras y estatuillas"
+          },
+          {
+            "value": "coins",
+            "label": "Monedas y billetes"
+          },
+          {
+            "value": "stamps",
+            "label": "Sellos y postales"
+          },
+          {
+            "value": "comics",
+            "label": "Cómics y libros"
+          },
+          {
+            "value": "cards",
+            "label": "Cartas coleccionables"
+          },
+          {
+            "value": "others",
+            "label": "Otros"
+          }
         ]
       },
       "description": {

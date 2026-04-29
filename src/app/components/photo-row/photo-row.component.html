@@ -11,7 +11,7 @@
 
   @if (addProductButton) {
     <div class="photo_item">
-      <a [href]="addProductButton.href" class="add-product-button">
+      <a [href]="addProductButton.routerLink" class="add-product-button">
         <i [class]="addProductButton.icon"></i>
         {{ addProductButton.label }}
       </a>

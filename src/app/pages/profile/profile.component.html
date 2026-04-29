@@ -18,7 +18,7 @@
       }
     </div>
     @if (isOwner) {
-      <a [routerLink]="['/update-profile']" class="profile-button">{{ profileData?.editButton?.label }}</a>
+      <a [routerLink]="profileData?.editButton?.routerLink" class="profile-button">{{ profileData?.editButton?.label }}</a>
     }
   </div>
 </div>

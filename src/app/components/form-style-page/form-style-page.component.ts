@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { FormStyleData } from '../../models/form-style-page/form-style-page.interface';
+import {CommonModule} from '@angular/common';
+import {FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormStyleData} from '../../models/form-style-page/form-style-page.interface';
 import {DynamicFormService} from '../../services/form-style-page.service';
+import {Product} from '../../models/product/product.interface';
 
 @Component({
   selector: 'app-form-style-page',
@@ -19,12 +20,35 @@ export class FormStylePageComponent implements OnChanges {
   form!: FormGroup;
   imagePreviews: { src: string; file: File }[] = [];
   imageError = false;
+  @Input() existingValues!: Product | null;
 
-  constructor(private dynamicFormService: DynamicFormService) {}
+  constructor(private dynamicFormService: DynamicFormService) {
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formData'] && this.formData) {
       this.form = this.dynamicFormService.buildForm(this.formData.fields);
+    }
+
+    if (this.form && this.existingValues) {
+      const cleanPrice = parseFloat(
+        this.existingValues.price.replace('€', '').replace(',', '.')
+      )
+
+      const categoryOptions = this.formData?.fields['category']?.options ?? [];
+      const categoryOption = categoryOptions.find(opt => opt.label === this.existingValues!.category);
+
+      this.form.patchValue({
+        product_name: this.existingValues.name,
+        price: cleanPrice,
+        category: categoryOption?.value,
+        description: this.existingValues.description,
+      });
+
+      this.imagePreviews = this.existingValues.images.map(url => ({
+        src: url,
+        file: null as any
+      }));
     }
   }
 
@@ -55,7 +79,7 @@ export class FormStylePageComponent implements OnChanges {
       if (this.imagePreviews.length >= maxImages) return;
 
       const yaExiste = this.imagePreviews.some(p =>
-        p.file.name === file.name && p.file.size === file.size
+        p.file && p.file.name === file.name && p.file.size === file.size
       );
       if (yaExiste) return;
 
@@ -93,11 +117,12 @@ export class FormStylePageComponent implements OnChanges {
   onSubmit(): void {
     const imageRequired = this.formData?.fields['image']?.validation?.required ?? false;
     const sinImagenes = imageRequired && this.imagePreviews.length === 0;
+    const newImages = this.imagePreviews.filter(p => p.file !== null);
 
     if (this.form.valid && !sinImagenes && !this.isSubmitting) {
       this.formSubmit.emit({
         formValue: this.form.value,
-        images: this.imagePreviews.map(p => p.file)
+        images: newImages.map(p => p.file)
       });
     } else {
       this.form.markAllAsTouched();

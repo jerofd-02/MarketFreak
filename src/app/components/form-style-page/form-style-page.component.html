@@ -15,7 +15,7 @@
             <div class="file_preview">
               @for (preview of imagePreviews; track preview.src; let i = $index) {
                 <div class="preview_item">
-                  <img [src]="preview.src" [alt]="preview.file.name">
+                  <img [src]="preview.src" [alt]="preview.file.name ?? ''">
                   <button class="remove_btn" type="button"
                           (click)="removePreview(i); $event.stopPropagation()">✕</button>
                 </div>

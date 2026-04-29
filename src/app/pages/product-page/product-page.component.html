@@ -18,8 +18,14 @@
         <app-product-info [product]="product"/>
 
         <div class="product_buttons">
-          <a [routerLink]="['/wishlist']" class="wishlist_button">{{ ui?.wishlistButton }}</a>
-          <a [routerLink]="['/payment', product.id]" class="buy_button">{{ ui?.buyButton }}</a>
+          @if (isOwner) {
+            <a [routerLink]="['/upload-product']" [queryParams]="{ edit: product.id }"
+               class="wishlist_button">Editar</a>
+            <a (click)="deleteProduct()" class="buy_button">Eliminar</a>
+          } @else {
+            <a [routerLink]="['/wishlist']" class="wishlist_button">{{ ui?.wishlistButton }}</a>
+            <a [routerLink]="['/payment', product.id]" class="buy_button">{{ ui?.buyButton }}</a>
+          }
         </div>
 
       </div>

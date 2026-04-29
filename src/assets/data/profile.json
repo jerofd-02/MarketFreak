@@ -3,11 +3,11 @@
     "productsTitle": "Productos del vendedor",
     "editButton": {
       "label": "Editar perfil",
-      "href": "update-profile.html"
+      "routerLink": "/update-profile"
     },
     "addProductButton": {
       "label": "Añadir producto",
-      "href": "upload-product.html",
+      "routerLink": "/upload-product",
       "icon": "fa fa-plus"
     }
   }

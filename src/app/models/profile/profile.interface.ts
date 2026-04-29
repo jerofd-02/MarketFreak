@@ -1,11 +1,11 @@
 export interface EditButton {
   label: string;
-  href: string;
+  routerLink: string;
 }
 
 export interface AddProductButton {
   label: string;
-  href: string;
+  routerLink: string;
   icon: string;
 }
 
