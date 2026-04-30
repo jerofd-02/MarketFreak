@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {FormStyleData} from '../../models/form-style-page/form-style-page.interface';
@@ -15,33 +15,37 @@ import {Product} from '../../models/product/product.interface';
 export class FormStylePageComponent implements OnChanges {
   @Input() formData: FormStyleData | null = null;
   @Input() isSubmitting = false;
-  @Output() formSubmit = new EventEmitter<{ formValue: any, images: File[] }>();
+  @Input() existingValues!: Product | null;
+  @Output() formSubmit = new EventEmitter<{ formValue: any; images: File[], existingImageUrls: string[] }>();
 
   form!: FormGroup;
-  imagePreviews: { src: string; file: File }[] = [];
+  imagePreviews: { src: string; file: File | null }[] = [];
   imageError = false;
-  @Input() existingValues!: Product | null;
+  private patched = false;
 
-  constructor(private dynamicFormService: DynamicFormService) {
-  }
+  constructor(private dynamicFormService: DynamicFormService, private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formData'] && this.formData) {
       this.form = this.dynamicFormService.buildForm(this.formData.fields);
     }
 
-    if (this.form && this.existingValues) {
+    if (this.form && this.existingValues && !this.patched) {
+      this.patched = true;
+
       const cleanPrice = parseFloat(
         this.existingValues.price.replace('€', '').replace(',', '.')
       )
 
       const categoryOptions = this.formData?.fields['category']?.options ?? [];
-      const categoryOption = categoryOptions.find(opt => opt.label === this.existingValues!.category);
+      const categoryValue = categoryOptions.find(
+        opt => opt.label === this.existingValues!.category
+      )?.value ?? this.existingValues;
 
       this.form.patchValue({
         product_name: this.existingValues.name,
         price: cleanPrice,
-        category: categoryOption?.value,
+        category: categoryValue,
         description: this.existingValues.description,
       });
 
@@ -85,10 +89,11 @@ export class FormStylePageComponent implements OnChanges {
 
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.imagePreviews.push({
+        this.imagePreviews = [...this.imagePreviews, {
           src: e.target?.result as string,
-          file
-        });
+            file
+        }];
+        this.cdr.detectChanges();
       };
       reader.readAsDataURL(file);
     });
@@ -97,8 +102,10 @@ export class FormStylePageComponent implements OnChanges {
     input.value = '';
   }
 
-  removePreview(index: number): void {
-    this.imagePreviews.splice(index, 1);
+  removePreview(index: number, event?: MouseEvent): void {
+    event?.stopPropagation();
+    this.imagePreviews = this.imagePreviews.filter((_, i) => i !== index);
+    this.cdr.detectChanges();
   }
 
   getErrorMessage(key: string): string {
@@ -117,12 +124,13 @@ export class FormStylePageComponent implements OnChanges {
   onSubmit(): void {
     const imageRequired = this.formData?.fields['image']?.validation?.required ?? false;
     const sinImagenes = imageRequired && this.imagePreviews.length === 0;
-    const newImages = this.imagePreviews.filter(p => p.file !== null);
+    const newImages = this.imagePreviews.filter(p => p.file != null);
 
     if (this.form.valid && !sinImagenes && !this.isSubmitting) {
       this.formSubmit.emit({
         formValue: this.form.value,
-        images: newImages.map(p => p.file)
+        images: newImages.map(p => p.file).filter((f): f is File => f !== null),
+        existingImageUrls: this.imagePreviews.filter(p => p.file == null).map(p => p.src),
       });
     } else {
       this.form.markAllAsTouched();

@@ -8,6 +8,7 @@ import {FirestoreService} from '../../services/firestore.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../models/product/product.interface';
 import {ProductService} from '../../services/product.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-upload-product',
@@ -31,6 +32,7 @@ export class UploadProductComponent implements OnInit, OnDestroy {
     private ngZone: NgZone,
     private route: ActivatedRoute,
     private productService: ProductService,
+    private authService: AuthService,
   ) {
   }
 
@@ -55,17 +57,19 @@ export class UploadProductComponent implements OnInit, OnDestroy {
     }
   }
 
-  async onFormSubmit(event: { formValue: any, images: File[] }): Promise<void> {
+  async onFormSubmit(event: { formValue: any, images: File[], existingImageUrls: string[] }): Promise<void> {
     this.isSubmitting = true;
     const timestamp = Date.now().toString();
 
     const newImageFiles = event.images;
+    const existingUrls = event.existingImageUrls ?? [];
     let imageUrls: string[];
 
     if (newImageFiles.length > 0) {
-      imageUrls = await this.firestoreService.uploadImages(newImageFiles, `productos/${timestamp}`);
+      const newUrls= await this.firestoreService.uploadImages(newImageFiles, `productos/${timestamp}`)
+      imageUrls = [...existingUrls, ...newUrls];
     } else {
-      imageUrls = this.existingProduct?.images ?? [];
+      imageUrls = existingUrls;
     }
 
     const categoryOptions = this.formData?.fields['category']?.options ?? [];
@@ -73,12 +77,16 @@ export class UploadProductComponent implements OnInit, OnDestroy {
       opt => opt.value === event.formValue.category
     )?.label ?? event.formValue.category;
 
+    const firebaseUser = await firstValueFrom(this.authService.currentUser$);
+    const loggedUser = firebaseUser ? await this.authService.getLoggedUser(firebaseUser.uid) : null;
+    const seller = this.existingProduct?.seller ?? loggedUser?.['seller'] ?? '';
+
     const data = {
       name: event.formValue.product_name,
-      price: String(event.formValue.price),
+      price: new Intl.NumberFormat('es-ES', {style: 'currency', currency: 'EUR'}).format(event.formValue.price),
       category: categoryLabel,
       description: event.formValue.description,
-      seller: this.existingProduct?.seller,
+      seller: seller,
       dateAdded: new Date().toISOString().split('T')[0],
       image: imageUrls[0],
       images: imageUrls,
