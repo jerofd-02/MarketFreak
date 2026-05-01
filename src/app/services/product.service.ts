@@ -4,13 +4,14 @@ import {
   collectionData,
   deleteDoc,
   doc,
-  docData,
+  docData, documentId,
   Firestore,
+  getDocs,
   limit,
   query,
   where
 } from '@angular/fire/firestore';
-import {map, Observable} from 'rxjs';
+import {forkJoin, from, map, Observable} from 'rxjs';
 import {Product} from '../models/product/product.interface';
 
 @Injectable({providedIn: 'root'})
@@ -45,5 +46,22 @@ export class ProductService {
   async deleteProduct(product: Product) {
     const ref = doc(this.firestore, `products/${product.id}`);
     return deleteDoc(ref);
+  }
+
+  getProductsByIds(ids: string[]): Observable<Product[]> {
+    const chunks: string[][] = [];
+    for (let i = 0; i < ids.length; i += 30) {
+      chunks.push(ids.slice(i, i + 30));
+    }
+
+    const fetches = chunks.map(chunk => {
+      const ref = collection(this.firestore, 'products');
+      const q = query(ref, where(documentId(), 'in', chunk));
+      return from(getDocs(q)).pipe(
+        map(snap => snap.docs.map(d => ({id: d.id, ...d.data()} as Product)))
+      );
+    });
+
+    return forkJoin(fetches).pipe(map(results => results.flat()));
   }
 }

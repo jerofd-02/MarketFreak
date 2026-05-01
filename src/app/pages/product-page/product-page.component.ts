@@ -12,6 +12,7 @@ import {CarouselItem, Product} from '../../models/product/product.interface';
 import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {ProductPageUI} from '../../models/product-page/product-page.interface';
 import {AuthService} from '../../services/auth.service';
+import {WishlistService} from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-product-page',
@@ -27,6 +28,8 @@ export class ProductPage implements OnInit, OnDestroy {
   carousel: CarouselItem | null = null;
   ui: ProductPageUI | null = null;
   isOwner = false;
+  isInWishlist = false;
+  isWishlistLoading = false;
 
   private destroy$ = new Subject<void>();
 
@@ -37,9 +40,9 @@ export class ProductPage implements OnInit, OnDestroy {
     private userService: UserService,
     private authService: AuthService,
     private productPageService: ProductPageService,
-    private cdr: ChangeDetectorRef
-  ) {
-  }
+    private cdr: ChangeDetectorRef,
+    private wishlistService: WishlistService
+  ) {}
 
   ngOnInit(): void {
     this.productPageService.getUI().pipe(
@@ -64,6 +67,13 @@ export class ProductPage implements OnInit, OnDestroy {
           this.productService.getRelatedProducts(product.id, product.seller).pipe(
             takeUntil(this.destroy$)
           ).subscribe(products => this.relatedProducts = products);
+
+          this.wishlistService.isInWishlist(String(product.id)).pipe(
+            takeUntil(this.destroy$)
+          ).subscribe(inWishlist => {
+            this.isInWishlist = inWishlist;
+            this.cdr.detectChanges();
+          })
 
           firstValueFrom(this.authService.currentUser$).then(async firebaseUser => {
             if (firebaseUser) {
@@ -90,6 +100,22 @@ export class ProductPage implements OnInit, OnDestroy {
       this.destroy$.next();
       await this.productService.deleteProduct(this.product);
       this.router.navigate(['/profile'], {queryParams: {seller}})
+    }
+  }
+
+  async toggleWishlist(): Promise<void> {
+    if (!this.product || this.isWishlistLoading) return;
+    this.isWishlistLoading = true;
+    try {
+      if (this.isInWishlist) {
+        await this.wishlistService.removeFromWishlist(String(this.product.id));
+      } else {
+        await this.wishlistService.addToWishlist(String(this.product.id));
+      }
+      this.isInWishlist = !this.isInWishlist;
+    } finally {
+      this.isWishlistLoading = false;
+      this.cdr.detectChanges();
     }
   }
 

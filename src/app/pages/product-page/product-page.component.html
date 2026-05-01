@@ -23,8 +23,10 @@
                class="wishlist_button">Editar</a>
             <a (click)="deleteProduct()" class="buy_button">Eliminar</a>
           } @else {
-            <a [routerLink]="['/wishlist']" class="wishlist_button">{{ ui?.wishlistButton }}</a>
-            <a [routerLink]="['/payment', product.id]" class="buy_button">{{ ui?.buyButton }}</a>
+            <a class="wishlist_button" (click)="toggleWishlist()" [class.active]="isInWishlist">
+              {{ isInWishlist ? ui?.wishlistButtonActive : ui?.wishlistButton }}
+            </a>
+            <a [routerLink]=" ['/payment', product.id]" class="buy_button">{{ ui?.buyButton }}</a>
           }
         </div>
 

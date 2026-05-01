@@ -4,7 +4,7 @@ export interface SortOption {
 }
 
 export interface WishlistEntry {
-  id: number;
+  id: string;
   dateAdded: string;
 }
 

@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
-import { WishlistService } from '../../services/wishlist.service';
-import { SortOption } from '../../models/wishlist/wishlist.interface';
-import { Product } from '../../models/product/product.interface';
+import {Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {from, of, Subject, switchMap, takeUntil} from 'rxjs';
+import {WishlistService} from '../../services/wishlist.service';
+import {SortOption} from '../../models/wishlist/wishlist.interface';
+import {Product} from '../../models/product/product.interface';
 import {PhotoRow} from '../../components/photo-row/photo-row.component';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -22,15 +23,13 @@ export class WishlistComponent implements OnInit, OnDestroy {
   searchQuery: string = '';
   selectedSort: string = '';
 
-  // TODO: sustituir por el usuario autenticado
-  private currentSeller = 'armin.keenan';
-
   private destroy$ = new Subject<void>();
 
   constructor(
     private wishlistService: WishlistService,
     private cdr: ChangeDetectorRef,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -53,8 +52,18 @@ export class WishlistComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.wishlistService.getProductsBySeller(this.currentSeller).pipe(
-      takeUntil(this.destroy$)
+    this.authService.currentUser$.pipe(
+      takeUntil(this.destroy$),
+      switchMap(firebaseUser => {
+        if (!firebaseUser) return of([]);
+        return from(this.authService.getLoggedUser(firebaseUser.uid)).pipe(
+          switchMap(loggedUser => {
+            const seller = loggedUser?.['seller'];
+            if (!seller) return of([]);
+            return this.wishlistService.getProductsBySeller(seller);
+          })
+        );
+      })
     ).subscribe(products => {
       this.ngZone.run(() => {
         this.products = products;

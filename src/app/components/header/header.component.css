@@ -126,18 +126,18 @@ header {
 .mobile_menu {
   position: fixed;
   top: 0;
-  right: -100%;
+  left: -100%;
   width: min(280px, 80vw);
   height: 100vh;
   background-color: white;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   padding: 80px 32px 32px;
-  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile_menu.open {
-  right: 0;
+  left: 0;
 }
 
 .mobile_menu ul {

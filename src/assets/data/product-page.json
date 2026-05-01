@@ -2,6 +2,7 @@
   "ui": {
     "relatedTitle": "Más productos de este vendedor",
     "wishlistButton": "Añadir a wishlist",
+    "wishlistButtonActive": "Quitar de wishlist",
     "buyButton": "Comprar ahora"
   }
 }

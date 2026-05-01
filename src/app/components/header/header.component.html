@@ -18,6 +18,9 @@
       @if (user) {
         <img [src]=user.photo alt="Foto de perfil" class="header_profile_photo" id="profileButton" [title]="user.name"
              (click)="goToProfile()">
+        <a routerLink="/wishlist" class="login_button" aria-label="Mi wishlist">
+          <i class="fas fa-heart"></i>
+        </a>
       }
       @if (!user) {
         <a routerLink="/login" class="login_button" id="loginButton">{{ header.login_button.label }}</a>
@@ -54,6 +57,9 @@
           } @else {
             <li>
               <a (click)="goToProfile(); closeMenu()">{{ user.name }}</a>
+            </li>
+            <li>
+              <a routerLink="/wishlist" (click)="closeMenu()">Mi lista de deseos</a>
             </li>
             <li>
               <a href="#" (click)="logout(); $event.preventDefault()">Cerrar sesión</a>
