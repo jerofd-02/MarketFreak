@@ -1,13 +1,14 @@
 @if (carousel) {
-  <div class="carousel">
-    <div class="carousel_viewport">
+  <div class="carousel-wrapper w-100">
+    <div class="carousel_viewport overflow-hidden">
       @for (img of carousel.images; track img; let i = $index) {
-        <div class="carousel_slide" [class.active]="i === currentSlide">
-          <img [src]="img" [alt]="carousel.alt">
+        <div class="carousel_slide" [class.active]="i === currentSlide"
+             [class.fade-out]="i === currentSlide && !isVisible">
+          <img [src]="img" [alt]="carousel.alt" class="d-block w-100">
         </div>
       }
     </div>
-    <div class="carousel_navigation">
+    <div class="carousel_navigation text-center mt-2 mb-2">
       @for (img of carousel.images; track img; let i = $index) {
         <button class="carousel_navigation-button" [class.active]="i === currentSlide" (click)="setSlide(i)"></button>
       }

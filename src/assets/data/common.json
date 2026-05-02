@@ -16,17 +16,17 @@
     "social": [
       {
         "name": "Instagram",
-        "icon": "fa-brands fa-instagram",
+        "icon": "bi bi-instagram",
         "url": "https://www.instagram.com"
       },
       {
         "name": "X",
-        "icon": "fa-brands fa-x-twitter",
+        "icon": "bi bi-twitter-x",
         "url": "https://www.x.com"
       },
       {
         "name": "Facebook",
-        "icon": "fa-brands fa-facebook",
+        "icon": "bi bi-facebook",
         "url": "https://www.facebook.com"
       }
     ],

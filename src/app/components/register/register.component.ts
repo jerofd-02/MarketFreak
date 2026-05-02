@@ -1,9 +1,27 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {RegisterConfig, RegisterData} from '../../models/register/register.interface';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RegisterConfig} from '../../models/register/register.interface';
+import {
+  AbstractControl, AbstractControlOptions,
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {RegisterService} from '../../services/register.service';
 import {AuthService} from '../../services/auth.service';
+
+function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+  const password = control.get('password');
+  const confirm = control.get('confirmPassword');
+  if (password && confirm && password.value !== confirm.value) {
+    confirm.setErrors({passwordMismatch: true});
+    return {passwordMismatch: true};
+  }
+  return null;
+}
 
 @Component({
   selector: 'app-register',
@@ -16,26 +34,36 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['../form-style-page/form-style-page.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerData: RegisterData = {
-    name: '',
-    seller: '',
-    email: '',
-    password: '',
-    password_confirm: '',
-    location: 'España',
-    province: '',
-    description: '',
-    photo: ''
-  };
-
   config?: RegisterConfig;
   errorMessage?: string;
   loading = false;
+  form!: FormGroup;
 
-  constructor(private registerService: RegisterService, private authService: AuthService, private cdr: ChangeDetectorRef) {
+  constructor(
+    private registerService: RegisterService,
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder
+  ) {
   }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      seller: ['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+        Validators.pattern(/^[a-zA-Z0-9]+$/)
+      ]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirm: ['', Validators.required],
+      location: [{value: 'España', disabled: true}],
+      province: ['', Validators.required],
+      description: ['']
+    }, {validator: passwordMatchValidator} as AbstractControlOptions);
+
     this.registerService.getData().subscribe({
       next: (data) => {
         this.config = data;
@@ -44,30 +72,48 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  get name() {
+    return this.form.get('name')!;
+  }
+
+  get seller() {
+    return this.form.get('seller')!;
+  }
+
+  get email() {
+    return this.form.get('email')!;
+  }
+
+  get password() {
+    return this.form.get('password')!;
+  }
+
+  get password_confirm() {
+    return this.form.get('password_confirm')!;
+  }
+
+  get province() {
+    return this.form.get('province')!;
+  }
+
   async onSubmit() {
-    if (this.registerData.password != this.registerData.password_confirm) {
-      alert("Las contraseñas no coinciden.");
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
       return;
     }
 
     this.errorMessage = undefined;
     this.loading = true;
 
+    const {name, seller, email, password, province, description} = this.form.getRawValue();
+
     try {
-      await this.authService.register(
-        this.registerData.name,
-        this.registerData.seller,
-        this.registerData.email,
-        this.registerData.password,
-        this.registerData.photo,
-        this.registerData.province,
-        this.registerData.location,
-        this.registerData.description
-      );
+      await this.authService.register(name, seller, email, password, '', province, 'España', description);
     } catch (error) {
       this.errorMessage = error as string;
     } finally {
       this.loading = false;
+      this.cdr.detectChanges();
     }
   }
 }

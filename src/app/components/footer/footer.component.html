@@ -1,23 +1,28 @@
 @if (footer) {
-  <footer>
-    <div class="column">
-      @for (social of footer.social; track social.name) {
-        <div class="footer_item">
-          <a [href]="social.url" target="_blank">
-            <i [class]="social.icon"></i>
-            <span>{{ social.name }}</span>
-          </a><br/>
+  <footer class="py-3">
+    <div class="container-fluid px-0">
+      <div class="row flex-wrap mx-0">
+        <div class="col-12 col-lg-4 order-last order-lg-first d-flex flex-row flex-lg-column justify-content-center
+        align-items-center align-items-lg-start gap-3 gap-lg-0 py-2">
+          @for (social of footer.social; track social.name) {
+            <div class="footer_item mb-lg-2">
+              <a [href]="social.url" target="_blank" class="d-flex align-items-center gap-2">
+                <i [class]="social.icon"></i>
+                <span class="d-none d-lg-inline">{{ social.name }}</span>
+              </a>
+            </div>
+          }
         </div>
-      }
-    </div>
 
-    @for (column of footer.columns; track column.title) {
-      <div class="column">
-        <h1>{{ column.title }}</h1>
-        @for (link of column.links; track link.url) {
-          <a [href]="link.url">{{ link.label }}</a>
+        @for (column of footer.columns; track column.title) {
+          <div class="col-6 col-lg-4 order-md-1 order-lg-2">
+            <h1 class="fw-bold">{{ column.title }}</h1>
+            @for (link of column.links; track link.url) {
+              <a [href]="link.url" class="d-block mb-1">{{ link.label }}</a>
+            }
+          </div>
         }
       </div>
-    }
+    </div>
   </footer>
 }

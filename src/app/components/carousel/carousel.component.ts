@@ -11,9 +11,9 @@ export class CarouselComponent implements OnChanges, OnDestroy {
   @Input() carousel: CarouselItem | null = null;
   currentSlide: number = 0;
   private intervalId: any = null;
+  isVisible: boolean = true;
 
-  constructor(private cdr: ChangeDetectorRef) {
-  }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['carousel'] && this.carousel) {
@@ -37,8 +37,7 @@ export class CarouselComponent implements OnChanges, OnDestroy {
 
   startAutoplay(): void {
     this.intervalId = setInterval(() => {
-      this.currentSlide = (this.currentSlide + 1) % this.carousel!.images.length;
-      this.cdr.detectChanges();
+      this.transition((this.currentSlide + 1) % this.carousel!.images.length);
     }, 3000);
   }
 
@@ -53,7 +52,18 @@ export class CarouselComponent implements OnChanges, OnDestroy {
     if (index === this.currentSlide) return;
     this.currentSlide = index;
     this.stopAutoplay();
+    this.transition(index);
     this.startAutoplay();
+  }
+
+  private transition(index: number): void {
+    this.isVisible = false;
     this.cdr.detectChanges();
+
+    setTimeout(() => {
+      this.currentSlide = index;
+      this.isVisible = true;
+      this.cdr.detectChanges();
+    }, 3400);
   }
 }

@@ -1,8 +1,8 @@
-<div class="photo_row">
+<div class="row g-3 mx-2 mx-md-2 mx-lg-3 mb-4">
   @for (product of products; track product.id) {
-    <div class="photo_item">
-      <a [routerLink]="['/product-page', product.id]" class="img">
-        <img [src]="product.image" [alt]="product.alt">
+    <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+      <a [routerLink]="['/product-page', product.id]" class="img-wrapper">
+        <img [src]="product.image" [alt]="product.alt" class="w-100">
       </a>
       <p class="text_element">{{ product.name }}</p>
       <p class="price_element">{{ product.price }}</p>
@@ -10,8 +10,9 @@
   }
 
   @if (addProductButton) {
-    <div class="photo_item">
-      <a [href]="addProductButton.routerLink" class="add-product-button">
+    <div class="photo_item col-6 col-md-4 col-lg-3 col-xl-2">
+      <a [href]="addProductButton.routerLink" class="add-product-button d-flex flex-column align-items-center
+        justify-content-center">
         <i [class]="addProductButton.icon"></i>
         {{ addProductButton.label }}
       </a>

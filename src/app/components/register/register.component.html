@@ -1,61 +1,102 @@
 @if (config) {
   <h1 class="header-text">{{ config.title }}</h1>
   <div class="form_container">
-    <form class="form_group" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="element">
-        <label for="name">{{ config.fields.name.label }}</label>
-        <input type="text" [(ngModel)]="registerData.name" name="name" id="name"
-               [placeholder]="config.fields.name.placeholder" required/>
+        <label for="name" class="form-label">{{ config.fields.name.label }}</label>
+        <input type="text" id="name" formControlName="name" class="form-control"
+               [class.is-invalid]="name.invalid && name.touched" [placeholder]="config.fields.name.placeholder"/>
+        @if (name.touched && name.hasError('required')) {
+          <span class="input_error">El nombre es obligatorio.</span>
+        }
       </div>
+
       <div class="element">
-        <label for="username">{{ config.fields.username.label }}</label>
-        <input type="text" [(ngModel)]="registerData.seller" name="username" id="username"
-               [placeholder]="config.fields.username.placeholder" required minlength="3" maxlength="20"
-               pattern="[a-zA-Z0-9]+"/>
+        <label for="username" class="form-label">{{ config.fields.username.label }}</label>
+        <input type="text" id="username" formControlName="seller" class="form-control"
+               [class.is-invalid]="seller.invalid && seller.touched"
+               [placeholder]="config.fields.username.placeholder"/>
+        @if (seller.touched && seller.hasError('required')) {
+          <span class="input_error">El nombre de usuario es obligatorio.</span>
+        } @else if (seller.touched && seller.hasError('minlength')) {
+          <span class="input_error">Mínimo 3 caracteres.</span>
+        } @else if (seller.touched && seller.hasError('maxlength')) {
+          <span class="input_error">Máximo 20 caracteres.</span>
+        } @else if (seller.touched && seller.hasError('pattern')) {
+          <span class="input_error">Solo letras y números, sin espacios.</span>
+        }
       </div>
+
       <div class="element">
-        <label for="email">{{ config.fields.email.label }}</label>
-        <input type="email" [(ngModel)]="registerData.email" name="email" id="email"
-               [placeholder]="config.fields.email.placeholder" required/>
+        <label for="email" class="form-label">{{ config.fields.email.label }}</label>
+        <input type="email" id="email" formControlName="email" class="form-control"
+               [class.is-invalid]="email.invalid && email.touched" [placeholder]="config.fields.email.placeholder"/>
+        @if (email.touched && email.hasError('required')) {
+          <span class="input_error">El email es obligatorio.</span>
+        } @else if (email.touched && email.hasError('email')) {
+          <span class="input_error">Introduce un email válido.</span>
+        }
       </div>
+
       <div class="element">
-        <label for="password">{{ config.fields.password.label }}</label>
-        <input type="password" [(ngModel)]="registerData.password" name="password" id="password"
-               [placeholder]="config.fields.password.placeholder" required minlength="8"/>
+        <label for="password" class="form-label">{{ config.fields.password.label }}</label>
+        <input type="password" id="password" formControlName="password" class="form-control"
+               [class.is-invalid]="password.invalid && password.touched"
+               [placeholder]="config.fields.password.placeholder"/>
+        @if (password.touched && password.hasError('required')) {
+          <span class="input_error">La contraseña es obligatoria.</span>
+        } @else if (password.touched && password.hasError('minlength')) {
+          <span class="input_error">Mínimo 8 caracteres.</span>
+        }
       </div>
+
       <div class="element">
-        <label for="password_confirm">{{ config.fields.password_confirm.label }}</label>
-        <input type="password" [(ngModel)]="registerData.password_confirm" name="password_confirm" id="password_confirm"
-               [placeholder]="config.fields.password_confirm.placeholder" required minlength="8"/>
+        <label for="password_confirm" class="form-label">{{ config.fields.password_confirm.label }}</label>
+        <input type="password" id="password_confirm" formControlName="password_confirm" class="form-control"
+               [class.is-invalid]="password_confirm.invalid && password_confirm.touched"
+               [placeholder]="config.fields.password_confirm.placeholder"/>
+        @if (password_confirm.touched && password_confirm.hasError('required')) {
+          <span class="input_error">Confrima tu contraseña.</span>
+        } @else if (password_confirm.touched && password_confirm.hasError('passwordMismatch')) {
+          <span class="input_error">Las contraseñas no coinciden.</span>
+        }
       </div>
+
       <div class="element">
-        <label for="location">{{ config.fields.location.label }}</label>
-        <input id="location" name="location" type="text" [(ngModel)]="registerData.location"
-               [placeholder]="config.fields.location.placeholder" required disabled>
+        <label for="location" class="form-label">{{ config.fields.location.label }}</label>
+        <input type="text" id="location" formControlName="location" class="form-control"
+               [placeholder]="config.fields.location.placeholder"/>
       </div>
+
       <div class="element">
-        <label for="province">{{ config.fields.province.label }}</label>
-        <select [(ngModel)]="registerData.province" name="province" id="province" required>
-          <option value="" disabled selected>{{ config.fields.province.placeholder }}</option>
+        <label for="province" class="form-label">{{ config.fields.province.label }}</label>
+        <select id="province" formControlName="province" class="form-select"
+                [class.is-invalid]="province.invalid && province.touched">
+          <option value="" disabled>{{ config.fields.province.placeholder }}</option>
           @for (option of config.fields.province.options; track option.value) {
             <option [value]="option.value">{{ option.label }}</option>
           }
         </select>
+        @if (province.touched && province.hasError('required')) {
+          <span class="input_error">Selecciona una provincia.</span>
+        }
       </div>
+
       <div class="element">
-        <label for="description">{{ config.fields.description.label }}</label>
-        <textarea [(ngModel)]="registerData.description" name="description" id="description"
+        <label for="description" class="form-label">{{ config.fields.description.label }}</label>
+        <textarea id="description" formControlName="description" class="form-control"
                   [placeholder]="config.fields.description.placeholder"></textarea>
       </div>
-      <button type="submit" class="button" [disabled]="loading">
+      <button type="submit" class="button w-100" [disabled]="loading">
         {{ loading ? 'Cargando...' : config.submitLabel }}
       </button>
       @if (errorMessage) {
-        <p>{{ errorMessage }}</p>
+        <p class="input_error text-center">{{ errorMessage }}</p>
       }
     </form>
   </div>
-  <div>
+
+  <div class="mt-2">
     <span class="register_password_forgot">
       {{ config.loginLink.text }}
       <a routerLink="/login">{{ config.loginLink.linkText }}</a>

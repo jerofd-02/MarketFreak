@@ -1,23 +1,18 @@
-.photo_row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 20px;
-  margin: 10px 15px 15px 15px;
-}
-
-.photo_item {
+.img-wrapper {
+  display: block;
   width: 100%;
-}
-
-.photo_row img {
-  width: 100%;
-  height: auto;
   aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: 0.3s;
 }
 
-.photo_row img:hover {
+.img-wrapper:hover img {
   border: 1px solid var(--plum);
 }
 
@@ -33,10 +28,6 @@
 }
 
 .add-product-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   aspect-ratio: 1/1;
   background-color: transparent;
@@ -57,19 +48,4 @@
 
 .add-product-button:hover {
   background-color: var(--blush);
-}
-
-@media (max-width: 767px) {
-  .photo_row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 8px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .photo_row {
-    max-width: 100%;
-    margin: 10px;
-  }
 }

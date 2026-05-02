@@ -7,43 +7,33 @@
 :host-context(.home-carousel) {
   max-width: 100%;
   margin: 0 auto;
-  object-fit: contain;
 }
 
-.carousel {
+.carousel-wrapper {
   margin-top: 10px;
-  width: 100%;
 }
 
 .carousel_viewport {
-  width: 100%;
+  position: relative;
   overflow: hidden;
-}
-
-.carousel_viewport::-webkit-scrollbar {
-  display: none;
 }
 
 .carousel_slide {
   display: none;
-  width: 100%;
 }
 
 .carousel_slide.active {
   display: block;
+  animation: slideIn 0.4s ease-in-out;
+}
+
+.carousel_slide.active.fadeOut {
+  animation: slideOut 0.4s ease-in-out forwards;
 }
 
 .carousel_slide img {
-  width: 100%;
-  height: auto;
   max-height: 400px;
   object-fit: contain;
-  display: block;
-}
-
-.carousel_navigation {
-  text-align: center;
-  margin: 10px;
 }
 
 .carousel_navigation-button {
@@ -55,6 +45,7 @@
   background-color: #D9D9D9;
   cursor: pointer;
   border: none;
+  transition: background-color 0.2s ease;
 }
 
 .carousel_navigation-button:focus,
@@ -65,4 +56,26 @@
 
 .carousel_navigation-button.active {
   background-color: var(--raspberry);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }

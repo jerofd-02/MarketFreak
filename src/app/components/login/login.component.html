@@ -1,26 +1,39 @@
 @if (config) {
   <h1 class="header-text">{{ config.title }}</h1>
   <div class="form_container">
-    <form class="form_group" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="element">
-        <label for="email">{{ config.fields[0].label }}</label>
-        <input type="email" [(ngModel)]="loginData.email" name="email" id="email"
-               [placeholder]="config.fields[0].placeholder" required/>
+        <label for="email" class="form-label">{{ config.fields[0].label }}</label>
+        <input type="email" id="email" formControlName="email" class="form-control"
+               [class.is-invalid]="email.invalid && email.touched" [placeholder]="config.fields[0].placeholder"/>
+        @if (email.touched && email.hasError('required')) {
+          <span class="input_error">El email es obligatorio</span>
+        } @else if (email.touched && email.hasError('email')) {
+          <span class="input_error">Introduce un email válido</span>
+        }
       </div>
+
       <div class="element">
-        <label for="password">{{ config.fields[1].label }}</label>
-        <input type="password" [(ngModel)]="loginData.password" name="password" id="password"
-               [placeholder]="config.fields[1].placeholder" required minlength="8"/>
+        <label for="password" class="form-label">{{ config.fields[1].label }}</label>
+        <input type="password" id="password" formControlName="password" class="form-control"
+               [class.is-invalid]="password.invalid && password.touched" [placeholder]="config.fields[1].placeholder"/>
+        @if (password.touched && password.hasError('required')) {
+          <span class="input_error">El contraseña es obligatoria</span>
+        } @else if (password.touched && password.hasError('email')) {
+          <span class="input_error">Mínimo 8 caracteres</span>
+        }
       </div>
-      <button type="submit" class="button" [disabled]="loading" (click)="onSubmit()">
+
+      <button type="submit" class="button w-100" [disabled]="loading">
         {{ loading ? 'Cargando...' : config.submitLabel }}
       </button>
       @if (errorMessage) {
-        <p>{{ errorMessage }}</p>
+        <p class="input_error text-center">{{ errorMessage }}</p>
       }
     </form>
+
   </div>
-  <div>
+  <div class="mt-2">
     <span class="register_password_forgot">
       {{ config.forgotLink.text }}
       <a href="#">{{ config.forgotLink.linkText }}</a>
