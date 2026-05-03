@@ -35,9 +35,6 @@ export class UpdateProfile implements OnInit {
       avatar: [UPDATE_PROFILE_DEFAULTS.avatar],
       username: [UPDATE_PROFILE_DEFAULTS.username, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
-        Validators.pattern(/^[a-zA-Z0-9]+$/),
       ]],
       location: [{value: UPDATE_PROFILE_DEFAULTS.location, disabled: true}],
       province: [UPDATE_PROFILE_DEFAULTS.province, Validators.required],

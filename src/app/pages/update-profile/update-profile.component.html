@@ -27,12 +27,6 @@
                [placeholder]="fields['username']?.placeholder"/>
         @if (username.touched && username.hasError('required')) {
           <span class="input-error">El nombre de usuario es obligatorio.</span>
-        } @else if (username.touched && username.hasError('minlength')) {
-          <span class="input-error">Mínimo 3 caracteres.</span>
-        } @else if (username.touched && username.hasError('maxlength')) {
-          <span class="input-error">Máximo 20 caracteres.</span>
-        } @else if (username.touched && username.hasError('pattern')) {
-          <span class="input-error">Solo letras y números, sin espacios</span>
         }
       </div>
 
