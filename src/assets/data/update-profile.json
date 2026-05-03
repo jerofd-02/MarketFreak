@@ -4,7 +4,7 @@
       "avatar": {
         "label": "Foto de perfil",
         "placeholder": "Arrastra tu foto aquí o haz clic para seleccionar",
-        "icon": "fas fa-cloud-upload"
+        "icon": "bi bi-cloud-upload"
       },
       "username": {
         "label": "Nombre",
@@ -15,6 +15,7 @@
       },
       "province": {
         "label": "Comunidad autónoma",
+        "placeholder": "Selecciona una comunidad autónoma...",
         "options": [
           {
             "value": "Andalucía",

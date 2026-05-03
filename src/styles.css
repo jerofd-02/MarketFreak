@@ -60,4 +60,6 @@ i {
 
 .carousel-divider {
   border-bottom: solid 5px var(--burgundy);
+  margin: 0 auto;
+  width: calc(100% - 30px);
 }

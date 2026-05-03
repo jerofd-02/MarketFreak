@@ -8,7 +8,7 @@
     "addProductButton": {
       "label": "Añadir producto",
       "routerLink": "/upload-product",
-      "icon": "fa fa-plus"
+      "icon": "bi bi-plus"
     }
   }
 }

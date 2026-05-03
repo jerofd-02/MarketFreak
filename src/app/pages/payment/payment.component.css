@@ -3,11 +3,6 @@
   max-width: 1000px;
 }
 
-.border-burgundy {
-  border-color: var(--burgundy) !important;
-  border-bottom-width: 5px !important;
-}
-
 .product-img {
   width: 300px;
   height: 300px;

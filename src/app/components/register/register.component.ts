@@ -1,7 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {RegisterConfig} from '../../models/register/register.interface';
 import {
-  AbstractControl, AbstractControlOptions,
+  AbstractControl,
+  AbstractControlOptions,
   FormBuilder,
   FormGroup,
   FormsModule,
@@ -44,8 +45,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

@@ -1,6 +1,8 @@
 @if (items) {
-  @for (item of items; track item) {
-    <h1>{{ item?.question }}</h1>
-    <p>{{ item?.answer }}</p>
-  }
+  <div class="m-3">
+    @for (item of items; track item) {
+      <h1>{{ item?.question }}</h1>
+      <p>{{ item?.answer }}</p>
+    }
+  </div>
 }

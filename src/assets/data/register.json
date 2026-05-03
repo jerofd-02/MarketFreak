@@ -33,7 +33,7 @@
       },
       "province": {
         "label": "Comunidad autónoma",
-        "placeholder": "Selecciona...",
+        "placeholder": "Selecciona una comunidad autónoma...",
         "options": [
           {
             "value": "Andalucía",

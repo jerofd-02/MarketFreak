@@ -13,6 +13,7 @@ import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {ProductPageUI} from '../../models/product-page/product-page.interface';
 import {AuthService} from '../../services/auth.service';
 import {WishlistService} from '../../services/wishlist.service';
+import {Auth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-product-page',
@@ -41,7 +42,8 @@ export class ProductPage implements OnInit, OnDestroy {
     private authService: AuthService,
     private productPageService: ProductPageService,
     private cdr: ChangeDetectorRef,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    private auth: Auth
   ) {}
 
   ngOnInit(): void {
@@ -105,6 +107,10 @@ export class ProductPage implements OnInit, OnDestroy {
 
   async toggleWishlist(): Promise<void> {
     if (!this.product || this.isWishlistLoading) return;
+    if (!this.auth.currentUser) {
+      this.router.navigate(['/login'], {queryParams: {returnUrl: this.router.url}});
+      return;
+    }
     this.isWishlistLoading = true;
     try {
       if (this.isInWishlist) {

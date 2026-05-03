@@ -1,8 +1,7 @@
 footer {
   background-color: var(--burgundy);
   color: var(--linen);
-  margin: 0 -8px -8px -8px;
-  padding: 0 8px;
+  overflow: hidden;
 }
 
 footer a {

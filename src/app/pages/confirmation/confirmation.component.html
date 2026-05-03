@@ -1,47 +1,58 @@
-<div class="page_container">
-  <div class="product_information">
-    <div class="information">
-      <h1>{{ orderData?.productName }}</h1>
-      <p>{{ orderData?.productPrice }}</p>
-      <p>{{ orderData?.productCategory }}</p>
-      <p id="description"> {{ orderData?.productDescription }}</p>
+<div class="container py-4">
+  <div class="mx-auto rounded-2 p-4 p-md-5 page-container">
+
+    <div class="d-flex flex-column flex-md-row gap-4 gap-md-5 pb-4 carousel-divider">
+
+      <div class="d-flex justify-content-center order-first order-md-last flex-md-shrink-0">
+        <img [src]="orderData?.productImage" [alt]="orderData?.productAlt"
+             class="object-fit-cover rounded-2 product-img">
+      </div>
+
+      <div class="flex-grow-1">
+        <h1 class="h3">{{ orderData?.productName }}</h1>
+        <p class="fw-semibold">{{ orderData?.productPrice }}</p>
+        <p class="text-muted">{{ orderData?.productCategory }}</p>
+        <p class="product-description">{{ orderData?.productDescription }}</p>
+      </div>
+
     </div>
-    <div class="photo">
-      <img [src]="orderData?.productImage" [alt]="orderData?.productAlt">
+
+    <div class="mt-4">
+      @if (paymentUI) {
+        <p class="fw-bold mb-1">{{ paymentUI.paymentMethods.title }}</p>
+      }
+      @if (orderData) {
+        <p>{{ getPaymentLabel() }}</p>
+      }
     </div>
+
+    <div class="mt-3">
+      @if (paymentUI) {
+        <p class="fw-bold mb-1">{{ paymentUI.shipmentMethods.title }}</p>
+      }
+      @if (orderData) {
+        <p>{{ getShipmentLabel() }}</p>
+      }
+    </div>
+
+    <div class="mt-3">
+      @if (paymentUI) {
+        <p class="fw-bold mb-1">{{ paymentUI.sellerInfo.title }}</p>
+      }
+      @if (seller) {
+        <p class="mb-1">{{ seller.name }}</p>
+        <p class="mb-1 text-muted">{{ '@' + seller.seller }}</p>
+        <p class="mb-1 text-muted">{{ seller.location }}</p>
+      }
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="d-grid d-md-flex justify-content-md-center mt-4">
+        <button type="submit" class="confirm-btn px-4 py-2 rounded-3 border">
+          Confirmar pedido
+        </button>
+      </div>
+    </form>
+
   </div>
-
-  <div class="payment_method">
-    @if (paymentUI) {
-      <p class="category_title">{{ paymentUI.paymentMethods.title }}</p>
-    }
-    @if (orderData) {
-      <p>{{ orderData.payment }}</p>
-    }
-  </div>
-
-  <div class="shipment_method">
-    @if (paymentUI) {
-      <p class="category_title">{{ paymentUI.shipmentMethods.title }}</p>
-    }
-    @if (orderData) {
-      <p>{{ orderData.payment }}</p>
-    }
-  </div>
-
-
-  <div class="seller_information">
-    @if (paymentUI) {
-      <p class="category_title">{{ paymentUI.sellerInfo.title }}</p>
-    }
-    @if (seller) {
-      <p>{{ seller.name }}</p>
-      <p>{{ '@' + seller.seller }}</p>
-      <p>{{ seller.location }}</p>
-    }
-  </div>
-
-  <form (ngSubmit)="onSubmit()">
-    <button class="confirm_button" type="submit">Confirmar pedido</button>
-  </form>
 </div>

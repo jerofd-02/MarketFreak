@@ -17,8 +17,12 @@ export class Confirmation implements OnInit {
   seller: User | null = null;
   public paymentUI : PaymentUI | null = null;
 
-  constructor(private router: Router, private http: HttpClient, private paymentService: PaymentService, private cdr: ChangeDetectorRef) {
-  }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private paymentService: PaymentService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     const raw = sessionStorage.getItem('orderData');
@@ -44,6 +48,16 @@ export class Confirmation implements OnInit {
       },
       error: (err) => console.error("Error fetching users: ", err)
     });
+  }
+
+  getPaymentLabel(): string {
+    return this.paymentUI?.paymentMethods.options
+      .find(o => o.value === this.orderData?.payment)?.label ?? this.orderData?.payment ?? '';
+  }
+
+  getShipmentLabel(): string {
+    return this.paymentUI?.shipmentMethods.options
+      .find(o => o.value === this.orderData?.shipment)?.label ?? this.orderData?.shipment ?? '';
   }
 
   onSubmit(): void {

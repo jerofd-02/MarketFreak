@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {LoginConfig} from '../../models/login/login.interface';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {LoginService} from '../../services/login.service';
 import {AuthService} from '../../services/auth.service';
@@ -28,11 +28,13 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
 
@@ -63,6 +65,8 @@ export class LoginComponent implements OnInit {
 
     try {
       await this.authService.login(this.email.value, this.password.value);
+      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      await this.router.navigateByUrl(returnUrl);
     } catch (error) {
       this.errorMessage = error as string;
     } finally {

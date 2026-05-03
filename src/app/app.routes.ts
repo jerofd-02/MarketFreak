@@ -12,6 +12,7 @@ import {SearchProductComponent} from './pages/search-product/search-product.comp
 import {ProfilePage} from './pages/profile/profile.component';
 import {UpdateProfile} from './pages/update-profile/update-profile.component';
 import {Confirmation} from './pages/confirmation/confirmation.component';
+import {authGuard} from './guards/auth-guard';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,12 +20,12 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'product-page/:id', component: ProductPage},
   {path: 'faq', component: FaqComponent},
-  {path: 'wishlist', component: WishlistComponent},
-  {path: 'payment/:id', component: PaymentComponent},
+  {path: 'wishlist', component: WishlistComponent, canActivate: [authGuard]},
+  {path: 'payment/:id', component: PaymentComponent, canActivate: [authGuard]},
   {path: 'contact', component: ContactComponent},
-  {path: 'upload-product', component: UploadProductComponent},
+  {path: 'upload-product', component: UploadProductComponent, canActivate: [authGuard]},
   {path: 'search-product', component: SearchProductComponent},
   {path: 'profile', component: ProfilePage},
-  {path: 'update-profile', component: UpdateProfile},
-  {path: 'confirmation', component: Confirmation}
+  {path: 'update-profile', component: UpdateProfile, canActivate: [authGuard]},
+  {path: 'confirmation', component: Confirmation, canActivate: [authGuard]},
 ];

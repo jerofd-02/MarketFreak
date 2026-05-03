@@ -1,5 +1,7 @@
 <main class="container-fluid px-0">
-  <app-carousel [carousel]="carousel" class="home-carousel carousel-divider"></app-carousel>
+  <div class="carousel-divider">
+    <app-carousel [carousel]="carousel" class="home-carousel"></app-carousel>
+  </div>
   <h1 class="px-3 mt-3">{{ mainTitle }}</h1>
   <app-photo-row [products]="products"></app-photo-row>
 </main>

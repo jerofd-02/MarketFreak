@@ -1,46 +1,48 @@
 @if (config) {
-  <h1 class="header-text">{{ config.title }}</h1>
-  <div class="form_container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="element">
-        <label for="email" class="form-label">{{ config.fields[0].label }}</label>
-        <input type="email" id="email" formControlName="email" class="form-control"
-               [class.is-invalid]="email.invalid && email.touched" [placeholder]="config.fields[0].placeholder"/>
-        @if (email.touched && email.hasError('required')) {
-          <span class="input_error">El email es obligatorio</span>
-        } @else if (email.touched && email.hasError('email')) {
-          <span class="input_error">Introduce un email válido</span>
+  <h1 class="text-center mt-4">{{ config.title }}</h1>
+  <div class="d-flex flex-column align-items-center mt-4">
+
+    <div class="mx-auto rounded-3 p-3 form-container">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="email" class="form-label">{{ config.fields[0].label }}</label>
+          <input type="email" id="email" formControlName="email" class="form-control"
+                 [class.is-invalid]="email.invalid && email.touched" [placeholder]="config.fields[0].placeholder"/>
+          @if (email.touched && email.hasError('required')) {
+            <span class="input-error">El email es obligatorio</span>
+          } @else if (email.touched && email.hasError('email')) {
+            <span class="input-error">Introduce un email válido</span>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">{{ config.fields[1].label }}</label>
+          <input type="password" id="password" formControlName="password" class="form-control"
+                 [class.is-invalid]="password.invalid && password.touched"
+                 [placeholder]="config.fields[1].placeholder"/>
+          @if (password.touched && password.hasError('required')) {
+            <span class="input-error">El contraseña es obligatoria.</span>
+          } @else if (password.touched && password.hasError('minlength')) {
+            <span class="input-error">Mínimo 8 caracteres.</span>
+          }
+        </div>
+
+        <div class="d-grid d-md-flex justify-content-md-center mt-3">
+          <button type="submit" class="form-btn px-4 py-2 rounded-3 border" [disabled]="loading">
+            {{ loading ? 'Cargando...' : config.submitLabel }}
+          </button>
+        </div>
+        @if (errorMessage) {
+          <p class="input-error text-center mt-2">{{ errorMessage }}</p>
         }
-      </div>
 
-      <div class="element">
-        <label for="password" class="form-label">{{ config.fields[1].label }}</label>
-        <input type="password" id="password" formControlName="password" class="form-control"
-               [class.is-invalid]="password.invalid && password.touched" [placeholder]="config.fields[1].placeholder"/>
-        @if (password.touched && password.hasError('required')) {
-          <span class="input_error">El contraseña es obligatoria</span>
-        } @else if (password.touched && password.hasError('email')) {
-          <span class="input_error">Mínimo 8 caracteres</span>
-        }
-      </div>
 
-      <button type="submit" class="button w-100" [disabled]="loading">
-        {{ loading ? 'Cargando...' : config.submitLabel }}
-      </button>
-      @if (errorMessage) {
-        <p class="input_error text-center">{{ errorMessage }}</p>
-      }
-    </form>
-
+      </form>
+    </div>
   </div>
-  <div class="mt-2">
-    <span class="register_password_forgot">
-      {{ config.forgotLink.text }}
-      <a href="#">{{ config.forgotLink.linkText }}</a>
-    </span>
-    <span class="register_password_forgot">
-      {{ config.registerLink.text }}
-      <a routerLink="/register">{{ config.registerLink.linkText }}</a>
-    </span>
+  <div class="mt-2 text-center">
+    <p>{{ config.forgotLink.text }} <a href="#">{{ config.forgotLink.linkText }}</a></p>
+    <p>{{ config.registerLink.text }} <a routerLink="/register">{{ config.registerLink.linkText }}</a></p>
   </div>
 }
