@@ -9,6 +9,7 @@
 - [Despliegue](#despliegue)
 - [Estructura del proyecto: componentes y funcionalidad](#estructura-del-proyecto-componentes-y-funcionalidad)
 - [Estructura de datos en Firebase y Firestore](#estructura-de-datos-en-firebase-y-firestore)
+- [Incidencias](#incidencias)
 
 ## Proyecto
 ### Nombre
@@ -90,3 +91,7 @@ Las imágenes de todas las colecciones se almacenan en Firebase Storage, guardá
     <img src="src/assets/images/screenshots/user-firestore-screenshot.png" alt="Colección de usuarios de MarketFreak" style="align-content: center"/>
     <p style="align-content: center">Captura de colección de users.</p>
 </div>
+
+## Incidencias
+- Por el header parece que no estas autenticado pero si lo estás, simplemente dale a actualizar o F5
+- Cuando se mezclan los filtros de fecha y precio en search-product, se solapan entre sí y no funciona correctamente.
