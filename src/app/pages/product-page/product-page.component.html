@@ -1,32 +1,40 @@
 @if (product) {
-  <main class="product_container_page">
+  <div class="container-fluid px-3 px-md-4 py-4">
 
-    <div class="product_container">
-      <div class="carousel_container">
+    <div class="d-flex flex-column flex-md-row gap-3 gap-md-4 pb-4 border-bottom border-burgundy">
+
+      <div class="carousel-wrapper flex-shrink-0">
         <app-carousel [carousel]="carousel"></app-carousel>
       </div>
 
-      <div class="product_side">
+      <div class="d-flex flex-column w-100">
 
-        <div class="user_reference">
+        <div class="d-flex align-items-center gap-2 mt-2 mb-3">
           @if (user) {
-            <img [src]="user.photo" [alt]="user.name">
-            <a [routerLink]="['/profile']" [queryParams]=" {seller: product.seller}">{{ user.name }}</a>
+            <img [src]="user.photo" [alt]="user.name"
+                 class="rounded-circle object-fit-cover"
+                 style="width:45px; height:45px;">
+            <a [routerLink]="['/profile']" [queryParams]="{seller: product.seller}"
+               class="text-dark fw-bold text-decoration-none">
+              {{ user.name }}
+            </a>
           }
         </div>
 
         <app-product-info [product]="product"/>
 
-        <div class="product_buttons">
+        <div class="d-flex flex-column flex-md-row gap-2 gap-md-4 mt-4">
           @if (isOwner) {
             <a [routerLink]="['/upload-product']" [queryParams]="{ edit: product.id }"
-               class="wishlist_button">Editar</a>
-            <a (click)="deleteProduct()" class="buy_button">Eliminar</a>
+               class="product-btn wishlist-btn text-center">Editar</a>
+            <a (click)="deleteProduct()" class="product-btn buy-btn text-center">Eliminar</a>
           } @else {
-            <a class="wishlist_button" (click)="toggleWishlist()" [class.active]="isInWishlist">
+            <a class="product-btn wishlist-btn text-center" (click)="toggleWishlist()"
+               [class.active]="isInWishlist">
               {{ isInWishlist ? ui?.wishlistButtonActive : ui?.wishlistButton }}
             </a>
-            <a [routerLink]=" ['/payment', product.id]" class="buy_button">{{ ui?.buyButton }}</a>
+            <a [routerLink]="['/payment', product.id]"
+               class="product-btn buy-btn text-center">{{ ui?.buyButton }}</a>
           }
         </div>
 
@@ -34,9 +42,9 @@
     </div>
 
     @if (relatedProducts.length > 0) {
-      <h1 class="related_title">{{ ui?.relatedTitle }}</h1>
+      <h1 class="h4 fw-bold mt-4 mb-3">{{ ui?.relatedTitle }}</h1>
       <app-photo-row [products]="relatedProducts"/>
     }
 
-  </main>
+  </div>
 }
