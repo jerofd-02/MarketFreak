@@ -1,70 +1,94 @@
 @if (formData && form) {
-  <div class="form_container">
-    <form class="form_group" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="container py-3">
+    <div class="mx-auto rounded-3 p-3 form-container">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-      @for (key of getFieldKeys(); track key) {
-        @if (isFile(key)) {
-          <div class="add-photo">
-            @if (imagePreviews.length === 0) {
-              <i class="fas fa-cloud-upload"></i>
-              <p>{{ formData.fields[key].placeholder }}</p>
-            } @else if (formData.fields[key].maxImages) {
-              <p>{{ imagePreviews.length }} / {{ formData.fields[key].maxImages }}</p>
+        @for (key of getFieldKeys(); track key) {
+
+          @if (isFile(key)) {
+            <div class="add-photo mb-2 position-relative rounded-3">
+              @if (imagePreviews.length === 0) {
+                <i class="bi bi-cloud-upload fs-4"></i>
+                <p class="mb-0 small">{{ formData.fields[key].placeholder }}</p>
+              } @else if (formData.fields[key].maxImages) {
+                <p class="mb-0 small">{{ imagePreviews.length }} / {{ formData.fields[key].maxImages }}</p>
+              }
+              <input type="file" accept="image/*" multiple
+                     class="position-absolute top-0 start-0 w-100 h-100 opacity-0"
+                     style="cursor:pointer;"
+                     (change)="onFileChange($event)">
+              <div class="d-flex flex-wrap gap-2 mt-2">
+                @for (preview of imagePreviews; track $index; let i = $index) {
+                  <div class="preview-item position-relative">
+                    <img [src]="preview.src" [alt]="preview.file?.name ?? ''"
+                         class="rounded-2 object-fit-cover" style="width:100px; height:100px;">
+                    <button class="remove-btn position-absolute top-0 end-0 border-0 rounded-circle
+                                   d-flex align-items-center justify-content-center"
+                            type="button" (click)="removePreview($index, $event)">
+                      <i class="bi bi-x" style="font-size:11px;"></i>
+                    </button>
+                  </div>
+                }
+              </div>
+            </div>
+            @if (imageError) {
+              <span class="input-error d-block ms-1 mb-2">Debes añadir al menos una imagen</span>
             }
-            <input type="file" accept="image/*" multiple (change)="onFileChange($event)">
-            <div class="file_preview">
-              @for (preview of imagePreviews; track $index; let i = $index) {
-                <div class="preview_item">
-                  <img [src]="preview.src" [alt]="preview.file?.name ?? ''">
-                  <button class="remove_btn" type="button" (click)="removePreview($index, $event)">✕</button>
-                </div>
+
+          } @else if (isSelect(key)) {
+            <div class="mb-3">
+              <label [for]="key" class="form-label">{{ formData.fields[key].label }}</label>
+              <select [id]="key" [formControlName]="key"
+                      class="form-select"
+                      [class.is-invalid]="form.get(key)?.invalid && form.get(key)?.touched">
+                @for (option of formData.fields[key].options; track option.value) {
+                  <option [value]="option.value" [disabled]="option.disabled ?? false">
+                    {{ option.label }}
+                  </option>
+                }
+              </select>
+              @if (form.get(key)?.invalid && form.get(key)?.touched) {
+                <span class="input-error d-block ms-1">{{ getErrorMessage(key) }}</span>
               }
             </div>
-          </div>
-          @if (imageError) {
-            <span class="input_error">Debes añadir al menos una imagen</span>
-          }
-        } @else if (isSelect(key)) {
-          <div class="element">
-            <label [for]="key">{{ formData.fields[key].label }}</label>
-            <select [id]="key" [formControlName]="key">
-              @for (option of formData.fields[key].options; track option.value) {
-                <option [value]="option.value" [disabled]="option.disabled ?? false">
-                  {{ option.label }}
-                </option>
-              }
-            </select>
-            @if (form.get(key)?.invalid && form.get(key)?.touched) {
-              <span class="input_error">{{ getErrorMessage(key) }}</span>
-            }
-          </div>
-        } @else if (isTextarea(key)) {
-          <div class="element">
-            <label [for]="key">{{ formData.fields[key].label }}</label>
-            <textarea [id]="key" [formControlName]="key"
-                      [placeholder]="formData.fields[key].placeholder ?? ''">
-            </textarea>
-            @if (form.get(key)?.invalid && form.get(key)?.touched) {
-              <span class="input_error">{{ getErrorMessage(key) }}</span>
-            }
-          </div>
-        } @else {
-          <div class="element">
-            <label [for]="key">{{ formData.fields[key].label }}</label>
-            <input [type]="formData.fields[key].type ?? 'text'"
-                   [id]="key" [formControlName]="key"
-                   [placeholder]="formData.fields[key].placeholder ?? ''"
-                   [step]="formData.fields[key].step ?? null">
-            @if (form.get(key)?.invalid && form.get(key)?.touched) {
-              <span class="input_error">{{ getErrorMessage(key) }}</span>
-            }
-          </div>
-        }
-      }
 
-      <button type="submit" class="button" [disabled]="isSubmitting">
-        {{ isSubmitting ? 'Enviando...' : formData.submitButton }}
-      </button>
-    </form>
+          } @else if (isTextarea(key)) {
+            <div class="mb-3">
+              <label [for]="key" class="form-label">{{ formData.fields[key].label }}</label>
+              <textarea [id]="key" [formControlName]="key"
+                        [placeholder]="formData.fields[key].placeholder ?? ''"
+                        class="form-control"
+                        [class.is-invalid]="form.get(key)?.invalid && form.get(key)?.touched">
+              </textarea>
+              @if (form.get(key)?.invalid && form.get(key)?.touched) {
+                <span class="input-error d-block ms-1">{{ getErrorMessage(key) }}</span>
+              }
+            </div>
+
+          } @else {
+            <div class="mb-3">
+              <label [for]="key" class="form-label">{{ formData.fields[key].label }}</label>
+              <input [type]="formData.fields[key].type ?? 'text'"
+                     [id]="key" [formControlName]="key"
+                     [placeholder]="formData.fields[key].placeholder ?? ''"
+                     [step]="formData.fields[key].step ?? null"
+                     class="form-control"
+                     [class.is-invalid]="form.get(key)?.invalid && form.get(key)?.touched">
+              @if (form.get(key)?.invalid && form.get(key)?.touched) {
+                <span class="input-error d-block ms-1">{{ getErrorMessage(key) }}</span>
+              }
+            </div>
+          }
+
+        }
+
+        <div class="d-grid d-md-flex justify-content-md-center mt-3">
+          <button type="submit" class="form-btn px-4 py-2 rounded-3 border" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Enviando...' : formData.submitButton }}
+          </button>
+        </div>
+
+      </form>
+    </div>
   </div>
 }

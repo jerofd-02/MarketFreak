@@ -1,3 +1,94 @@
+.form-container {
+  background-color: var(--dusty-rose);
+  width: 95%;
+  max-width: 420px;
+}
+
+.form-control,
+.form-select {
+  border-color: var(--crimson);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--dark-purple);
+  box-shadow: 0 0 0 0.2rem rgba(88, 28, 135, 0.2);
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+  color: var(--tomato-red);
+}
+
+.input-error {
+  color: var(--tomato-red);
+  font-size: 0.8rem;
+}
+
+.form-btn {
+  background: var(--crimson);
+  color: var(--linen);
+  border-color: var(--linen) !important;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-btn:hover {
+  background-color: var(--plum);
+  color: var(--periwinkle);
+  border-color: var(--periwinkle) !important;
+}
+
+.add-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+  color: var(--crimson);
+  border: 2px dashed var(--crimson);
+  padding: 15px;
+  font-size: 15px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.add-photo i {
+  color: var(--crimson);
+}
+
+.add-photo p {
+  color: var(--raspberry);
+}
+
+.remove-btn {
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .form-container {
+    width: 75%;
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    width: 95%;
+    max-width: 100%;
+  }
+
+  .form-btn {
+    width: 100%;
+  }
+}
+
+/** OLD CSS */
 .header-text {
   margin: 20px 0 10px 0;
   font-size: 30px;
@@ -208,3 +299,4 @@
     height: 80px;
   }
 }
+

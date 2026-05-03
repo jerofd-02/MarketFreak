@@ -1,116 +1,58 @@
-.page_container {
+.page-container {
   background-color: var(--rose-tan);
-  width: 1000px;
   max-width: 1000px;
-  margin: 60px auto;
-  padding: 50px;
-  border-radius: 8px;
 }
 
-.product_information {
-  display: flex;
-  border-bottom: solid 5px var(--burgundy);
-  gap: 70px;
+.border-burgundy {
+  border-color: var(--burgundy) !important;
+  border-bottom-width: 5px !important;
 }
 
-.information {
-  flex: 1;
+.product-img {
+  width: 300px;
+  height: 300px;
 }
 
-#description {
+.product-description {
   max-width: 500px;
 }
 
-.photo {
-  flex: 0 0 500px;
-}
-
-.photo img {
-  width: 300px;
-  height: 300px;
-  margin: 0 0 20px 100px;
-}
-
-.category_title {
-  font-weight: bold;
-}
-
-.confirm_button {
-  display: block;
-  margin: 30px auto 0 auto;
-  padding: 12px 25px;
+.confirm-btn {
   background: var(--crimson);
   color: var(--linen);
-  border: 1px solid var(--linen);
-  border-radius: 10px;
+  border-color: var(--linen) !important;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.confirm_button:hover {
+.confirm-btn:hover {
   background-color: var(--plum);
   color: var(--periwinkle);
-  border: 1px solid var(--periwinkle);
+  border-color: var(--periwinkle) !important;
 }
 
-/* Tablet landscape (responsive) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .page_container {
-    width: 100%;
-    margin: 30px auto;
-    padding: 30px;
-  }
-
-  .product_information {
-    gap: 30px;
-  }
-
-  .photo {
-    flex: 0 0 250px;
-  }
-
-  .photo img {
+  .product-img {
     width: 220px;
     height: 220px;
-    margin-left: 0;
   }
 
-  #description {
+  .product-description {
     max-width: 100%;
   }
 }
 
-/* Movil (responsive) */
 @media (max-width: 767px) {
-  .page_container {
-    width: 100%;
-    margin: 15px auto;
-    padding: 20px;
-  }
-
-  .product_information {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .photo {
-    flex: none;
-    display: flex;
-    justify-content: center;
-    order: -1;
-  }
-
-  .photo img {
+  .product-img {
     width: 200px;
     height: 200px;
-    margin-left: 0;
   }
 
-  #description {
+  .product-description {
     max-width: 100%;
   }
 
-  .confirm_button {
+  .confirm-btn {
     width: 100%;
   }
 }
