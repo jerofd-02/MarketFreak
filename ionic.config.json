@@ -1,0 +1,7 @@
+{
+  "name": "MarketFreak",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
