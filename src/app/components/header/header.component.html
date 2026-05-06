@@ -1,131 +1,129 @@
 @if (header) {
-  <header class="d-flex flex-wrap align-items-center justify-content-between px-2 py-1"
-          style="background-color: var(--crimson);">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="header-toolbar">
 
-    <div class="d-flex align-items-center gap-2">
-      <a routerLink="/" class="logo">
-        <img [src]="header.image.src" [alt]="header.image.alt" style="height:60px; width:auto;">
-      </a>
-      <button class="btn d-flex d-lg-none align-items-center justify-content-center p-0 border-0 bg-transparent"
-              style="width:40px; height:40px;"
-              (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
-        <i [class]="menuOpen ? 'bi bi-x-lg fs-5 hamburger-icon' : 'bi bi-list fs-5 hamburger-icon'"></i>
-      </button>
-    </div>
+      <div class="d-flex flex-wrap align-items-center justify-content-between px-2 py-1">
 
-    <div class="position-relative d-none d-lg-block flex-grow-1 mx-3">
-      <i class="bi bi-search position-absolute" style="top:50%; transform:translateY(-50%); left:10px; color:var(--linen);"></i>
-      <input type="text"
-             class="form-control bg-transparent border ps-5 header-input"
-             [placeholder]="header.nav_bar"
-             [(ngModel)]="searchQuery"
-             (keydown)="onSearch($event)">
-    </div>
+        <div class="d-flex align-items-center gap-2">
+          <a routerLink="/" class="logo">
+            <img [src]="header.image.src" [alt]="header.image.alt" style="height:60px; width:auto;">
+          </a>
+          <ion-button fill="clear" class="d-flex d-lg-none header-icon-btn"
+                      (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
+            <i [class]="menuOpen ? 'bi bi-x-lg fs-5 hamburger-icon' : 'bi bi-list fs-5 hamburger-icon'"></i>
+          </ion-button>
+        </div>
 
-    <div class="d-flex align-items-center gap-2 m-2 position-relative" style="z-index:1;">
-      @if (user) {
-        <img [src]="user.photo" alt="Foto de perfil"
-             class="rounded-circle object-fit-cover me-1 d-none d-lg-inline-block"
-             style="width:40px; height:40px; cursor:pointer;"
-             [title]="user.name"
-             (click)="goToProfile()">
-        <a routerLink="/wishlist"
-           class="btn header-btn-outline rounded-3 px-2 py-1 d-none d-lg-inline-flex"
-           aria-label="Mi wishlist">
-          <i class="bi bi-heart"></i>
+        <div class="position-relative d-none d-lg-block flex-grow-1 mx-3">
+          <i class="bi bi-search position-absolute"
+             style="top:50%; transform:translateY(-50%); left:10px; color:var(--linen);"></i>
+          <input type="text"
+                 class="form-control bg-transparent border ps-5 header-input"
+                 [placeholder]="header.nav_bar"
+                 [(ngModel)]="searchQuery"
+                 (keydown)="onSearch($event)">
+        </div>
+
+        <div class="d-flex align-items-center gap-2 m-2 position-relative" style="z-index:1;">
+          @if (user) {
+            <img [src]="user.photo" alt="Foto de perfil"
+                 class="rounded-circle object-fit-cover me-1 d-none d-lg-inline-block header-avatar"
+                 [title]="user.name"
+                 (click)="goToProfile()">
+            <ion-button fill="outline" routerLink="/wishlist" class="header-btn-outline" aria-label="Mi wishlist">
+              <i class="bi bi-heart"></i>
+            </ion-button>
+            <ion-button fill="solid" class="header-btn-filled" (click)="logout()">
+              Cerrar sesión
+            </ion-button>
+          }
+          @if (!user) {
+            <ion-button fill="outline" routerLink="/login" id="loginButton"
+                        class="d-none d-lg-inline-flex header-btn-outline">
+              {{ header.login_button.label }}
+            </ion-button>
+            <ion-button fill="solid" routerLink="/register" id="registerButton"
+                        class="d-none d-lg-inline-flex header-btn-filled">
+              {{ header.register_button.label }}
+            </ion-button>
+          }
+
+          <ion-button fill="clear" class="d-flex d-lg-none header-icon-btn"
+                      aria-label="Buscar" (click)="toggleSearch()">
+            <i class="bi bi-search text-white fs-5"></i>
+          </ion-button>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 px-2 py-2 w-100 search-bar-mobile"
+             [class.d-flex]="searchOpen"
+             [class.d-none]="!searchOpen">
+          <input type="text"
+                 class="form-control bg-transparent border flex-grow-1 header-input"
+                 [placeholder]="header.nav_bar"
+                 [(ngModel)]="searchQuery"
+                 (keydown)="onSearch($event)">
+          <ion-button fill="clear" class="header-icon-btn" (click)="toggleSearch()">
+            <i class="bi bi-x-lg text-white"></i>
+          </ion-button>
+        </div>
+
+      </div>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="position-fixed top-0 start-0 w-100 h-100 overlay"
+       [class.d-block]="menuOpen"
+       [class.d-none]="!menuOpen"
+       (click)="closeMenu()">
+  </div>
+
+  <nav class="position-fixed top-0 h-100 bg-white shadow side-menu"
+       [style.left]="menuOpen ? '0' : '-100%'">
+    <ul class="list-unstyled d-flex flex-column gap-2">
+      <li>
+        <a routerLink="/" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
+           (click)="closeMenu()">
+          <i class="bi bi-house me-2"></i>Inicio
         </a>
-        <a href="#"
-           class="btn header-btn-filled rounded-3 px-3 py-1 d-none d-lg-inline-flex"
-           (click)="logout(); $event.preventDefault()">
-          Cerrar sesión
-        </a>
-      }
+      </li>
       @if (!user) {
-        <a routerLink="/login" id="loginButton"
-           class="btn header-btn-outline rounded-3 px-2 py-1 text-decoration-none d-none d-lg-inline-flex">
-          {{ header.login_button.label }}
-        </a>
-        <a routerLink="/register" id="registerButton"
-           class="btn header-btn-filled rounded-3 px-3 py-1 text-decoration-none d-none d-lg-inline-flex">
-          {{ header.register_button.label }}
-        </a>
-      }
-
-      <button class="btn d-flex d-lg-none align-items-center justify-content-center p-0 border-0 bg-transparent"
-              style="width:40px; height:40px;"
-              aria-label="Buscar" (click)="toggleSearch()">
-        <i class="bi bi-search text-white fs-5"></i>
-      </button>
-    </div>
-
-    <div class="align-items-center gap-2 px-2 py-2 w-100"
-         [class.d-flex]="searchOpen"
-         [class.d-none]="!searchOpen"
-         style="background-color: var(--crimson); order:999;">
-      <input type="text"
-             class="form-control bg-transparent border flex-grow-1 header-input"
-             [placeholder]="header.nav_bar"
-             [(ngModel)]="searchQuery"
-             (keydown)="onSearch($event)">
-      <button class="btn p-1 border-0 bg-transparent" (click)="toggleSearch()">
-        <i class="bi bi-x-lg text-white"></i>
-      </button>
-    </div>
-
-    <div class="position-fixed top-0 start-0 w-100 h-100"
-         [class.d-block]="menuOpen"
-         [class.d-none]="!menuOpen"
-         style="background:rgba(154,56,80,0.5); backdrop-filter:blur(2px); z-index:999;"
-         (click)="closeMenu()">
-    </div>
-
-    <nav class="position-fixed top-0 h-100 bg-white shadow"
-         style="width:min(280px, 80vw); z-index:1000; padding: 80px 32px 32px;
-                transition: left 0.35s cubic-bezier(0.4,0,0.2,1);"
-         [style.left]="menuOpen ? '0' : '-100%'">
-      <ul class="list-unstyled d-flex flex-column gap-2">
         <li>
-          <a routerLink="/" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
+          <a routerLink="/login"
+             class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
              (click)="closeMenu()">
-            <i class="bi bi-house me-2"></i>Inicio
+            <i class="bi bi-box-arrow-in-right me-2"></i>{{ header.login_button.label }}
           </a>
         </li>
-        @if (!user) {
-          <li>
-            <a routerLink="/login" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
-               (click)="closeMenu()">
-              <i class="bi bi-box-arrow-in-right me-2"></i>{{ header.login_button.label }}
-            </a>
-          </li>
-          <li>
-            <a routerLink="/register" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
-               (click)="closeMenu()">
-              <i class="bi bi-person-plus me-2"></i>{{ header.register_button.label }}
-            </a>
-          </li>
-        } @else {
-          <li>
-            <a class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
-               style="cursor:pointer;"
-               (click)="goToProfile(); closeMenu()">
-              <i class="bi bi-person-circle me-2"></i>{{ user.name }}
-            </a>
-          </li>
-          <li>
-            <a routerLink="/wishlist" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
-               (click)="closeMenu()">
-              <i class="bi bi-heart me-2"></i>Mi lista de deseos
-            </a>
-          </li>
-          <li>
-            <a href="#" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
-               (click)="logout(); $event.preventDefault()">
-              <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
-
-  </header>
+        <li>
+          <a routerLink="/register"
+             class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
+             (click)="closeMenu()">
+            <i class="bi bi-person-plus me-2"></i>{{ header.register_button.label }}
+          </a>
+        </li>
+      } @else {
+        <li>
+          <a class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
+             style="cursor:pointer;"
+             (click)="goToProfile(); closeMenu()">
+            <i class="bi bi-person-circle me-2"></i>{{ user.name }}
+          </a>
+        </li>
+        <li>
+          <a routerLink="/wishlist"
+             class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
+             (click)="closeMenu()">
+            <i class="bi bi-heart me-2"></i>Mi lista de deseos
+          </a>
+        </li>
+        <li>
+          <a href="#" class="d-block px-2 py-3 text-decoration-none text-dark border-bottom mobile-link"
+             (click)="logout(); $event.preventDefault()">
+            <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
 }

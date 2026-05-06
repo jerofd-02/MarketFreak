@@ -5,14 +5,14 @@ import {LayoutService} from '../../services/layout.service';
 import {Router, RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {AuthService, LoggedUser} from '../../services/auth.service';
-import {Subscription} from 'rxjs';
+import {IonButton, IonHeader, IonToolbar} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, IonHeader, IonToolbar, IonButton],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   header!: Header;
@@ -27,8 +27,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.cdr.detectChanges();
     }
   }
-
-  private userSub?: Subscription;
 
   constructor(
     private layoutService: LayoutService,
@@ -47,14 +45,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       error: (err) => console.error('Error al cargar el header:', err)
     });
 
-    this.userSub = this.authService.currentUser$.subscribe(async firebaseUser => {
-      if (firebaseUser) {
-        this.user = await this.authService.getLoggedUser(firebaseUser.uid) as LoggedUser;
-      } else {
-        this.user = null;
-      }
-      this.cdr.detectChanges();
-    });
 
     const params = new URLSearchParams(window.location.search);
     const query = params.get('q');

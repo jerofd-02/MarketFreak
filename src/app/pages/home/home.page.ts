@@ -1,24 +1,25 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {CarouselComponent} from "../../components/carousel/carousel.component";
-import {PhotoRow} from "../../components/photo-row/photo-row.component";
 import {CarouselItem, Product} from '../../models/product/product.interface';
 import {IndexService} from '../../services/index.service';
+import {CarouselComponent} from '../../components/carousel/carousel.component';
+import {PhotoRow} from '../../components/photo-row/photo-row.component';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-home',
-  imports: [
-    CarouselComponent,
-    PhotoRow,
-  ],
-  templateUrl: './home.component.html',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  imports: [CarouselComponent, PhotoRow, PageLayoutComponent],
 })
-export class HomeComponent implements OnInit {
+export class HomePage implements OnInit {
   carousel: CarouselItem | null = null;
   mainTitle: string = '';
   products: Product[] = [];
 
-  constructor(private indexService: IndexService, private cdr: ChangeDetectorRef) {
-  }
+  constructor(
+    private indexService: IndexService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.indexService.getCarousel().subscribe({

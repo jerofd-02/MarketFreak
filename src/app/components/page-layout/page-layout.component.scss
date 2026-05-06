@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+ion-toolbar {
+  --background: var(--burgundy);
+  --color: var(--linen);
+}
+
+::ng-deep ion-toolbar a {
+  color: var(--linen) !important;
+  text-decoration: none;
+}
+
+::ng-deep ion-toolbar .footer_item i {
+  font-size: 1.4rem;
+  color: var(--linen) !important;
+}
+
+@media (min-width: 992px) {
+  ::ng-deep ion-toolbar .footer_item i {
+    font-size: 1rem;
+  }
+}

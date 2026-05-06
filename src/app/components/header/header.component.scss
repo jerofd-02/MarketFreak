@@ -1,0 +1,98 @@
+.header-toolbar {
+  --background: var(--crimson);
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --min-height: auto;
+}
+
+.header-input {
+  border-color: var(--linen) !important;
+  border-radius: 10px;
+  color: var(--linen);
+  padding-left: 2.2rem !important;
+}
+
+.header-input::placeholder {
+  color: var(--linen);
+  opacity: 1;
+}
+
+.header-input:focus {
+  box-shadow: none;
+  border-color: var(--linen) !important;
+}
+
+.header-btn-outline {
+  --color: var(--dusty-rose);
+  --border-color: var(--dusty-rose);
+  --border-radius: 8px;
+}
+
+::ng-deep .header-btn-outline:hover {
+  --background: var(--plum);
+  --color: var(--periwinkle);
+  --border-color: var(--periwinkle);
+}
+
+.header-btn-filled {
+  --background: var(--dusty-rose);
+  --color: var(--dark-mahogany);
+  --border-radius: 8px;
+}
+
+::ng-deep .header-btn-filled:hover {
+  --background: var(--plum);
+  --color: var(--periwinkle);
+  --border-color: var(--periwinkle);
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.header-icon-btn {
+  width: 40px;
+  height: 40px;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.hamburger-icon {
+  color: var(--linen);
+}
+
+.mobile-link {
+  transition: padding-left 0.2s ease;
+}
+
+.mobile-link:hover {
+  padding-left: 16px !important;
+}
+
+nav .mobile-link .bi {
+  color: var(--burgundy);
+}
+
+nav .mobile-link:hover .bi {
+  color: var(--plum);
+}
+
+.search-bar-mobile {
+  background-color: var(--crimson);
+  order: 999;
+}
+
+.overlay {
+  background: rgba(154, 56, 80, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+.side-menu {
+  width: min(280px, 80vw);
+  z-index: 1000;
+  padding: 80px 32px 32px;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
