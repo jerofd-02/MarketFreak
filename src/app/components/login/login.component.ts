@@ -5,6 +5,8 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {LoginService} from '../../services/login.service';
 import {AuthService} from '../../services/auth.service';
+import {IonInput} from '@ionic/angular/standalone';
+import {PageLayoutComponent} from '../page-layout/page-layout.component';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +15,12 @@ import {AuthService} from '../../services/auth.service';
     RouterLink,
     CommonModule,
     ReactiveFormsModule,
+    IonInput,
+    RouterLink,
+    PageLayoutComponent
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['../form-style-page/form-style-page.component.css']
+  styleUrls: ['../form-style-page/form-style-page.component.scss', "login.component.scss"]
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
@@ -30,7 +35,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

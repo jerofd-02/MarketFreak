@@ -1,110 +1,114 @@
 @if (config) {
-  <h1 class="text-center mt-4">{{ config.title }}</h1>
-  <div class="d-flex flex-column align-items-center mt-4">
+  <app-page-layout>
+    <h1 class="text-center mt-4">{{ config.title }}</h1>
+    <div class="d-flex flex-column align-items-center mt-4">
 
-    <div class="mx-auto rounded-3 p-3 form-container">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mx-auto rounded-3 p-3 form-container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-        <div class="mb-3">
-          <label for="name" class="form-label">{{ config.fields.name.label }}</label>
-          <input type="text" id="name" formControlName="name" class="form-control"
-                 [class.is-invalid]="name.invalid && name.touched" [placeholder]="config.fields.name.placeholder"/>
-          @if (name.touched && name.hasError('required')) {
-            <span class="input-error">El nombre es obligatorio.</span>
-          }
-        </div>
-
-        <div class="mb-3">
-          <label for="username" class="form-label">{{ config.fields.username.label }}</label>
-          <input type="text" id="username" formControlName="seller" class="form-control"
-                 [class.is-invalid]="seller.invalid && seller.touched"
-                 [placeholder]="config.fields.username.placeholder"/>
-          @if (seller.touched && seller.hasError('required')) {
-            <span class="input-error">El nombre de usuario es obligatorio.</span>
-          } @else if (seller.touched && seller.hasError('minlength')) {
-            <span class="input-error">Mínimo 3 caracteres.</span>
-          } @else if (seller.touched && seller.hasError('maxlength')) {
-            <span class="input-error">Máximo 20 caracteres.</span>
-          } @else if (seller.touched && seller.hasError('pattern')) {
-            <span class="input-error">Solo letras y números, sin espacios.</span>
-          }
-        </div>
-
-        <div class="mb-3">
-          <label for="email" class="form-label">{{ config.fields.email.label }}</label>
-          <input type="email" id="email" formControlName="email" class="form-control"
-                 [class.is-invalid]="email.invalid && email.touched" [placeholder]="config.fields.email.placeholder"/>
-          @if (email.touched && email.hasError('required')) {
-            <span class="input-error">El email es obligatorio.</span>
-          } @else if (email.touched && email.hasError('email')) {
-            <span class="input-error">Introduce un email válido.</span>
-          }
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">{{ config.fields.password.label }}</label>
-          <input type="password" id="password" formControlName="password" class="form-control"
-                 [class.is-invalid]="password.invalid && password.touched"
-                 [placeholder]="config.fields.password.placeholder"/>
-          @if (password.touched && password.hasError('required')) {
-            <span class="input-error">La contraseña es obligatoria.</span>
-          } @else if (password.touched && password.hasError('minlength')) {
-            <span class="input-error">Mínimo 8 caracteres.</span>
-          }
-        </div>
-
-        <div class="mb-3">
-          <label for="password_confirm" class="form-label">{{ config.fields.password_confirm.label }}</label>
-          <input type="password" id="password_confirm" formControlName="password_confirm" class="form-control"
-                 [class.is-invalid]="password_confirm.invalid && password_confirm.touched"
-                 [placeholder]="config.fields.password_confirm.placeholder"/>
-          @if (password_confirm.touched && password_confirm.hasError('required')) {
-            <span class="input-error">Confrima tu contraseña.</span>
-          } @else if (password_confirm.touched && password_confirm.hasError('passwordMismatch')) {
-            <span class="input-error">Las contraseñas no coinciden.</span>
-          }
-        </div>
-
-        <div class="mb-3">
-          <label for="location" class="form-label">{{ config.fields.location.label }}</label>
-          <input type="text" id="location" formControlName="location" class="form-control"
-                 [placeholder]="config.fields.location.placeholder"/>
-        </div>
-
-        <div class="mb-3">
-          <label for="province" class="form-label">{{ config.fields.province.label }}</label>
-          <select id="province" formControlName="province" class="form-select"
-                  [class.is-invalid]="province.invalid && province.touched">
-            <option value="" disabled>{{ config.fields.province.placeholder }}</option>
-            @for (option of config.fields.province.options; track option.value) {
-              <option [value]="option.value">{{ option.label }}</option>
+          <div class="mb-3">
+            <label for="name" class="form-label">{{ config.fields.name.label }}</label>
+            <ion-input type="text" id="name" formControlName="name" fill="outline"
+                       [placeholder]="config.fields.name.placeholder"
+                       [class.is-invalid]="name.invalid && name.touched"></ion-input>
+            @if (name.touched && name.hasError('required')) {
+              <span class="input-error">El nombre es obligatorio.</span>
             }
-          </select>
-          @if (province.touched && province.hasError('required')) {
-            <span class="input-error">Selecciona una provincia.</span>
+          </div>
+
+          <div class="mb-3">
+            <label for="username" class="form-label">{{ config.fields.username.label }}</label>
+            <ion-input type="text" id="username" formControlName="seller" fill="outline"
+                       [class.is-invalid]="seller.invalid && seller.touched"
+                       [placeholder]="config.fields.username.placeholder"></ion-input>
+            @if (seller.touched && seller.hasError('required')) {
+              <span class="input-error">El nombre de usuario es obligatorio.</span>
+            } @else if (seller.touched && seller.hasError('minlength')) {
+              <span class="input-error">Mínimo 3 caracteres.</span>
+            } @else if (seller.touched && seller.hasError('maxlength')) {
+              <span class="input-error">Máximo 20 caracteres.</span>
+            } @else if (seller.touched && seller.hasError('pattern')) {
+              <span class="input-error">Solo letras y números, sin espacios.</span>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">{{ config.fields.email.label }}</label>
+            <ion-input type="email" id="email" formControlName="email" fill="outline"
+                       [placeholder]="config.fields.email.placeholder"
+                       [class.is-invalid]="email.invalid && email.touched"></ion-input>
+            @if (email.touched && email.hasError('required')) {
+              <span class="input-error">El email es obligatorio.</span>
+            } @else if (email.touched && email.hasError('email')) {
+              <span class="input-error">Introduce un email válido.</span>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">{{ config.fields.password.label }}</label>
+            <ion-input type="password" id="password" formControlName="password" fill="outline"
+                       [placeholder]="config.fields.password.placeholder"
+                       [class.is-invalid]="password.invalid && password.touched"></ion-input>
+            @if (password.touched && password.hasError('required')) {
+              <span class="input-error">La contraseña es obligatoria.</span>
+            } @else if (password.touched && password.hasError('minlength')) {
+              <span class="input-error">Mínimo 8 caracteres.</span>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="password_confirm" class="form-label">{{ config.fields.password_confirm.label }}</label>
+            <ion-input type="password" id="password_confirm" formControlName="password_confirm" fill="outline"
+                       [placeholder]="config.fields.password_confirm.placeholder"
+                       [class.is-invalid]="password_confirm.invalid && password_confirm.touched"></ion-input>
+            @if (password_confirm.touched && password_confirm.hasError('required')) {
+              <span class="input-error">Confrima tu contraseña.</span>
+            } @else if (password_confirm.touched && password_confirm.hasError('passwordMismatch')) {
+              <span class="input-error">Las contraseñas no coinciden.</span>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-label">{{ config.fields.location.label }}</label>
+            <ion-input type="text" id="location" formControlName="location" fill="outline"
+                       [placeholder]="config.fields.location.placeholder"></ion-input>
+          </div>
+
+          <div class="mb-3">
+            <label for="province" class="form-label">{{ config.fields.province.label }}</label>
+            <ion-select id="province" formControlName="province" interface="popover" fill="outline"
+                        [placeholder]="config.fields.province.placeholder"
+                        [class.is-invalid]="province.invalid && province.touched">
+              @for (option of config.fields.province.options; track option.value) {
+                <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+              }
+            </ion-select>
+            @if (province.touched && province.hasError('required')) {
+              <span class="input-error">Selecciona una provincia.</span>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">{{ config.fields.description.label }}</label>
+            <ion-textarea id="description" formControlName="description" fill="outline"
+                          [placeholder]="config.fields.description.placeholder"></ion-textarea>
+          </div>
+
+          <div class="d-grid d-md-flex justify-content-md-center mt-3">
+            <button type="submit" class="form-btn px-4 py-2 rounded-3 border" [disabled]="loading">
+              {{ loading ? 'Cargando...' : config.submitLabel }}
+            </button>
+          </div>
+          @if (errorMessage) {
+            <p class="input-error text-center mt-2">{{ errorMessage }}</p>
           }
-        </div>
+        </form>
 
-        <div class="mb-3">
-          <label for="description" class="form-label">{{ config.fields.description.label }}</label>
-          <textarea id="description" formControlName="description" class="form-control"
-                    [placeholder]="config.fields.description.placeholder"></textarea>
-        </div>
-
-        <div class="d-grid d-md-flex justify-content-md-center mt-3">
-          <button type="submit" class="form-btn px-4 py-2 rounded-3 border" [disabled]="loading">
-            {{ loading ? 'Cargando...' : config.submitLabel }}
-          </button>
-        </div>
-        @if (errorMessage) {
-          <p class="input-error text-center mt-2">{{ errorMessage }}</p>
-        }
-      </form>
-
+      </div>
     </div>
-  </div>
 
-  <div class="mt-2 text-center">
-    <p>{{ config.loginLink.text }} <a routerLink="/login">{{ config.loginLink.linkText }}</a></p>
-  </div>
+    <div class="mt-2 text-center">
+      <p>{{ config.loginLink.text }} <a routerLink="/login">{{ config.loginLink.linkText }}</a></p>
+    </div>
+  </app-page-layout>
 }

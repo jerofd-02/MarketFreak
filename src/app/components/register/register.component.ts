@@ -13,6 +13,8 @@ import {
 import {RouterLink} from '@angular/router';
 import {RegisterService} from '../../services/register.service';
 import {AuthService} from '../../services/auth.service';
+import {IonInput, IonSelect, IonSelectOption, IonTextarea} from '@ionic/angular/standalone';
+import {PageLayoutComponent} from '../page-layout/page-layout.component';
 
 function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password');
@@ -29,10 +31,15 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
   imports: [
     FormsModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonInput,
+    IonSelect,
+    IonSelectOption,
+    IonTextarea,
+    PageLayoutComponent
   ],
-  templateUrl: './register.component.html',
-  styleUrls: ['../form-style-page/form-style-page.component.css']
+  templateUrl: "./register.component.html",
+  styleUrls: ["../form-style-page/form-style-page.component.scss", "register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
   config?: RegisterConfig;

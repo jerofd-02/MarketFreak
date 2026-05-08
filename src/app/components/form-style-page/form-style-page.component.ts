@@ -10,7 +10,7 @@ import {Product} from '../../models/product/product.interface';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-style-page.component.html',
-  styleUrl: './form-style-page.component.css',
+  styleUrl: './form-style-page.component.scss',
 })
 export class FormStylePageComponent implements OnChanges {
   @Input() formData: FormStyleData | null = null;

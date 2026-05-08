@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   selector: 'app-update-profile',
   imports: [ReactiveFormsModule],
   templateUrl: './update-profile.component.html',
-  styleUrls: ['../../components/form-style-page/form-style-page.component.css', 'update-profile.component.css']
+  styleUrls: ['../../components/form-style-page/form-style-page.component.scss', 'update-profile.component.css']
 })
 export class UpdateProfile implements OnInit {
   form!: FormGroup;
