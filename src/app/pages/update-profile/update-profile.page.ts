@@ -4,14 +4,16 @@ import {UpdateProfileService} from '../../services/update-profile.service';
 import {UPDATE_PROFILE_DEFAULTS, UpdateProfileForm} from '../../models/update-profile/update-profile.interface';
 import {FormFields} from '../../models/form-style-page/form-style-page.interface';
 import {Router} from '@angular/router';
+import {IonInput, IonSelect, IonSelectOption, IonTextarea} from '@ionic/angular/standalone';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-update-profile',
-  imports: [ReactiveFormsModule],
-  templateUrl: './update-profile.component.html',
-  styleUrls: ['../../components/form-style-page/form-style-page.component.scss', 'update-profile.component.css']
+  imports: [ReactiveFormsModule, IonInput, IonSelect, IonSelectOption, IonTextarea, PageLayoutComponent],
+  templateUrl: './update-profile.page.html',
+  styleUrls: ['../../components/form-style-page/form-style-page.component.scss', 'update-profile.page.scss']
 })
-export class UpdateProfile implements OnInit {
+export class UpdateProfilePage implements OnInit {
   form!: FormGroup;
   fields: FormFields = {};
   submitLabel = '';

@@ -10,13 +10,14 @@ import {ProfileService} from '../../services/profile.service';
 import {UserService} from '../../services/user.service';
 import {ProductService} from '../../services/product.service';
 import {take, firstValueFrom} from 'rxjs';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, PhotoRow, RouterLink],
-  templateUrl: './profile.component.html',
-  styleUrls: ['../../components/product-info/product-info.component.css', './profile.component.css'],
+  imports: [CommonModule, PhotoRow, RouterLink, PageLayoutComponent],
+  templateUrl: './profile.page.html',
+  styleUrls: ['../../components/product-info/product-info.component.css', './profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
   profileData: Profile | null = null;

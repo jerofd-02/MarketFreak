@@ -1,18 +1,17 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ConfirmationPage} from './confirmation.page';
 
-import {UpdateProfile} from './update-profile.component';
-
-describe('UpdateProfileComponent', () => {
-  let component: UpdateProfile;
-  let fixture: ComponentFixture<UpdateProfile>;
+describe('ConfirmationPage', () => {
+  let component: ConfirmationPage;
+  let fixture: ComponentFixture<ConfirmationPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UpdateProfile]
+      imports: [ConfirmationPage]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(UpdateProfile);
+    fixture = TestBed.createComponent(ConfirmationPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

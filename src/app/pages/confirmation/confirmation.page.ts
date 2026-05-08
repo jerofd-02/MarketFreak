@@ -5,17 +5,18 @@ import {HttpClient} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {PaymentService} from '../../services/payment.service';
 import {PaymentUI} from '../../models/payment/payment.interface';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-confirmation',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './confirmation.component.html',
-  styleUrl: '../payment/payment.component.css',
+  imports: [CommonModule, FormsModule, PageLayoutComponent],
+  templateUrl: "./confirmation.page.html",
+  styleUrls: ["../payment/payment.component.css", "../confirmation/confirmation.page.scss"]
 })
-export class Confirmation implements OnInit {
+export class ConfirmationPage implements OnInit {
   orderData: OrderData | null = null;
   seller: User | null = null;
-  public paymentUI : PaymentUI | null = null;
+  public paymentUI: PaymentUI | null = null;
 
   constructor(
     private router: Router,

@@ -1,0 +1,76 @@
+<app-page-layout>
+  <div class="d-flex flex-column align-items-center mt-4">
+    <div class="mx-auto mb-4 rounded-3 p-3 form-container">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="avatar" class="form-label"> {{ fields['avatar']?.label }}</label>
+          <div class="add-photo" (click)="avatarInput.click()">
+            @if (avatarPreview) {
+              <div class="avatar-preview">
+                <img [src]="avatarPreview" alt="Vista previa">
+              </div>
+            } @else {
+              <i [class]="fields['avatar']?.icon"></i>
+              <p>{{ fields['avatar']?.placeholder }}</p>
+            }
+            @if (avatarFileName) {
+              <p>{{ avatarFileName }}</p>
+            }
+            <input #avatarInput id="avatar" type="file" accept="image/*" hidden (change)="onAvatarChange($event)">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="username" class="form-label">{{ fields['username']?.label }}</label>
+          <ion-input id="username" type="text" formControlName="username" fill="outline"
+                     [placeholder]="fields['username']?.placeholder"
+                     [class.is-invalid]="username.invalid && username.touched"></ion-input>
+          @if (username.touched && username.hasError('required')) {
+            <span class="input-error">El nombre de usuario es obligatorio.</span>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label">{{ fields['location']?.label }}</label>
+          <ion-input id="location" type="text" formControlName="location" fill="outline"
+                     [placeholder]="fields['location']?.placeholder"></ion-input>
+        </div>
+
+        <div class="mb-3">
+          <label for="province" class="form-label">{{ fields['province']?.label }}</label>
+          <ion-select id="province" formControlName="province" fill="outline" interface="popover"
+                      [placeholder]="fields['province']?.placeholder"
+                      [class.is-invalid]="province.invalid && province.touched">
+            @for (opt of fields['province']?.options; track opt.value) {
+              <ion-select-option [value]="opt.value">{{ opt.label }}</ion-select-option>
+            }
+          </ion-select>
+          @if (province.touched && province.hasError('required')) {
+            <span class="input-error">Selecciona una provincia.</span>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">{{ fields['description']?.label }}</label>
+          <ion-textarea id="description" formControlName="description" fill="outline" rows="6"
+                        [placeholder]="fields['description']?.placeholder"></ion-textarea>
+        </div>
+
+        @if (errorMessage) {
+          <p class="input-error text-center">{{ errorMessage }}</p>
+        }
+        @if (successMessage) {
+          <p class="text-center">{{ successMessage }}</p>
+        }
+
+        <div class="d-grid d-md-flex justify-content-md-center mt-3">
+          <button type="submit" class="form-btn px-4 py-2 rounded-3 border">
+            {{ loading ? 'Guardando...' : submitLabel }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</app-page-layout>
