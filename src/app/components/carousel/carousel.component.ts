@@ -6,6 +6,7 @@ import {CarouselItem} from '../../models/product/product.interface';
   imports: [],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
+  standalone: true
 })
 export class CarouselComponent implements OnChanges, OnDestroy {
   @Input() carousel: CarouselItem | null = null;

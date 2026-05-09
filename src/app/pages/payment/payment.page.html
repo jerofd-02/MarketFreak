@@ -1,0 +1,65 @@
+<app-page-layout>
+
+  @if (product && ui) {
+    <div class="container py-4">
+      <div class="mx-auto rounded-2 p-4 p-md-5 page-container">
+
+        <div class="d-flex flex-column flex-md-row gap-4 gap-md-5 pb-4 carousel-divider">
+
+          <div class="d-flex justify-content-center order-first order-md-last flex-md-shrink-0">
+            <img [src]="product.image" [alt]="product.alt"
+                 class="object-fit-cover rounded-2 product-img">
+          </div>
+
+          <div class="flex-grow-1">
+            <h1 class="h3">{{ product.name }}</h1>
+            <p class="fw-semibold">{{ product.price }}</p>
+            <p class="text-muted">{{ product.category }}</p>
+            <p class="product-description">{{ product.description }}</p>
+          </div>
+
+        </div>
+
+        <div class="mt-4">
+          <p class="fw-bold mb-2">{{ ui.paymentMethods.title }}</p>
+          @for (option of ui.paymentMethods.options; track option.id) {
+            <div class="form-check">
+              <input type="radio" class="form-check-input"
+                     name="payment"
+                     [id]="option.id"
+                     [value]="option.value"
+                     [(ngModel)]="selectedPayment">
+              <label class="form-check-label" [for]="option.id">{{ option.label }}</label>
+            </div>
+          }
+        </div>
+
+        <div class="mt-4">
+          <p class="fw-bold mb-2">{{ ui.shipmentMethods.title }}</p>
+          @for (option of ui.shipmentMethods.options; track option.id) {
+            <div class="form-check">
+              <input type="radio" class="form-check-input"
+                     name="shipment"
+                     [id]="option.id"
+                     [value]="option.value"
+                     [(ngModel)]="selectedShipment">
+              <label class="form-check-label" [for]="option.id">{{ option.label }}</label>
+            </div>
+          }
+        </div>
+
+        <div class="d-grid d-md-flex justify-content-md-center mt-4">
+          <ion-button class="confirm-btn" (click)="onConfirm()">
+            {{ ui.submitButton }}
+          </ion-button>
+        </div>
+
+      </div>
+    </div>
+
+  } @else {
+    <div class="d-flex justify-content-center align-items-center py-5">
+      <p class="text-muted">Cargando...</p>
+    </div>
+  }
+</app-page-layout>

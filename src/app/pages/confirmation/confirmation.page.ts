@@ -7,12 +7,13 @@ import {PaymentService} from '../../services/payment.service';
 import {PaymentUI} from '../../models/payment/payment.interface';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 import {OrderData, User} from '../../models/confirmation/confirmation.interface';
+import {IonButton} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-confirmation',
-  imports: [CommonModule, FormsModule, PageLayoutComponent],
+  imports: [CommonModule, FormsModule, IonButton, PageLayoutComponent],
   templateUrl: "./confirmation.page.html",
-  styleUrls: ["../payment/payment.component.css", "../confirmation/confirmation.page.scss"]
+  styleUrls: ["../payment/payment.page.scss", "../confirmation/confirmation.page.scss"]
 })
 export class ConfirmationPage implements OnInit {
   orderData: OrderData | null = null;

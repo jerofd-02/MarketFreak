@@ -13,17 +13,22 @@
 }
 
 .confirm-btn {
-  background: var(--crimson);
-  color: var(--linen);
-  border-color: var(--linen) !important;
-  cursor: pointer;
-  transition: 0.3s;
+  --background: var(--crimson);
+  --color: var(--linen);
+  --border-color: var(--linen);
+  --border-width: 1px;
+  --border-style: solid;
+  --border-radius: 12px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
 }
 
-.confirm-btn:hover {
-  background-color: var(--plum);
-  color: var(--periwinkle);
-  border-color: var(--periwinkle) !important;
+::ng-deep .confirm-btn:hover {
+  --background: var(--plum);
+  --color: var(--periwinkle);
+  --border-color: var(--periwinkle);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

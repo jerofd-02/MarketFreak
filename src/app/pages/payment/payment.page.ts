@@ -7,15 +7,17 @@ import {ProductService} from '../../services/product.service';
 import {PaymentService} from '../../services/payment.service';
 import {Product} from '../../models/product/product.interface';
 import {PaymentUI} from '../../models/payment/payment.interface';
+import {IonButton} from '@ionic/angular/standalone';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
-  templateUrl: './payment.component.html',
-  styleUrl: './payment.component.css',
+  imports: [CommonModule, RouterModule, FormsModule, IonButton, PageLayoutComponent],
+  templateUrl: './payment.page.html',
+  styleUrl: './payment.page.scss',
 })
-export class PaymentComponent implements OnInit, OnDestroy {
+export class PaymentPage implements OnInit, OnDestroy {
   product: Product | undefined;
   ui: PaymentUI | null = null;
   selectedPayment: string = '';

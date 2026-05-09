@@ -14,13 +14,15 @@ import {ProductPageUI} from '../../models/product-page/product-page.interface';
 import {AuthService} from '../../services/auth.service';
 import {WishlistService} from '../../services/wishlist.service';
 import {Auth} from '@angular/fire/auth';
+import {IonButton} from '@ionic/angular/standalone';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [CommonModule, RouterModule, PhotoRow, ProductInfo, CarouselComponent],
-  templateUrl: './product-page.component.html',
-  styleUrl: './product-page.component.css',
+  imports: [CommonModule, RouterModule, PhotoRow, ProductInfo, CarouselComponent, IonButton, PageLayoutComponent],
+  templateUrl: './product-page.page.html',
+  styleUrl: './product-page.page.scss',
 })
 export class ProductPage implements OnInit, OnDestroy {
   product: Product | undefined;

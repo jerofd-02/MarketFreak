@@ -33,6 +33,19 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/update-profile/update-profile.page').then((m) => m.UpdateProfilePage),
     canActivate: [authGuard]
   },
+
+  {
+    path: 'product-page/:id',
+    loadComponent: () =>
+      import('./pages/product-page/product-page.page').then(m => m.ProductPage)
+  },
+
+  {
+    path: 'payment/:id',
+    loadComponent: () =>
+      import('./pages/payment/payment.page').then(m => m.PaymentPage)
+  },
+
   {
     path: '',
     redirectTo: 'home',
