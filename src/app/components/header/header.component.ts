@@ -6,6 +6,7 @@ import {Router, RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {AuthService, LoggedUser} from '../../services/auth.service';
 import {IonButton, IonHeader, IonToolbar} from '@ionic/angular/standalone';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  private userSub?: Subscription;
+
   constructor(
     private layoutService: LayoutService,
     private authService: AuthService,
@@ -43,6 +46,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.cdr.detectChanges();
       },
       error: (err) => console.error('Error al cargar el header:', err)
+    });
+
+    this.userSub = this.authService.currentUser$.subscribe(async firebaseUser => {
+      if (firebaseUser) {
+        this.user = await this.authService.getLoggedUser(firebaseUser.uid) as LoggedUser;
+      } else {
+        this.user = null;
+      }
+      this.cdr.detectChanges();
     });
 
 
