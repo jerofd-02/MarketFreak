@@ -1,4 +1,4 @@
-interface OrderData {
+export interface OrderData {
   productName: string;
   productPrice: string;
   productCategory: string;
@@ -10,7 +10,7 @@ interface OrderData {
   seller: string;
 }
 
-interface User {
+export interface User {
   name: string;
   seller: string;
   location?: string;

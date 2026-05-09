@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {PaymentService} from '../../services/payment.service';
 import {PaymentUI} from '../../models/payment/payment.interface';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
+import {OrderData, User} from '../../models/confirmation/confirmation.interface';
 
 @Component({
   selector: 'app-confirmation',
