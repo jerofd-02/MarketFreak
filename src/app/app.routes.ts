@@ -59,6 +59,18 @@ export const routes: Routes = [
   },
 
   {
+    path: 'search-product',
+    loadComponent: () =>
+      import('./pages/search-product/search-product.page').then(m => m.SearchProductPage)
+  },
+
+  {
+    path: 'wishlist',
+    loadComponent: () =>
+      import('./pages/wishlist/wishlist.page').then(m => m.WishlistPage), canActivate: [authGuard]
+  },
+
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

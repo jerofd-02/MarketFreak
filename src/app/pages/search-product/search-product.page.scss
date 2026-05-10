@@ -6,20 +6,21 @@
 }
 
 .filter-toggle-btn {
-  background: var(--crimson);
-  color: var(--linen);
+  --background: var(--crimson);
+  --color: var(--linen);
+  --border-radius: 12px;
   font-size: 15px;
-  cursor: pointer;
-  transition: background 0.2s;
+  font-weight: bold;
 }
 
-.filter-toggle-btn:hover {
-  background: var(--raspberry);
+::ng-deep .filter-toggle-btn:hover {
+  --background: var(--raspberry);
 }
 
 .btn-icon {
   font-size: 13px;
   transition: transform 0.25s ease;
+  margin-left: auto;
 }
 
 .filter-toggle-btn.open .btn-icon {

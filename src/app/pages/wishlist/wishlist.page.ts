@@ -7,15 +7,16 @@ import {SortOption} from '../../models/wishlist/wishlist.interface';
 import {Product} from '../../models/product/product.interface';
 import {PhotoRow} from '../../components/photo-row/photo-row.component';
 import {AuthService} from '../../services/auth.service';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule, RouterModule, PhotoRow],
-  templateUrl: './wishlist.component.html',
-  styleUrl: './wishlist.component.css',
+  imports: [CommonModule, RouterModule, PhotoRow, PageLayoutComponent],
+  templateUrl: './wishlist.page.html',
+  styleUrl: './wishlist.page.scss',
 })
-export class WishlistComponent implements OnInit, OnDestroy {
+export class WishlistPage implements OnInit, OnDestroy {
   searchPlaceholder: string = '';
   sortOptions: SortOption[] = [];
   products: Product[] = [];

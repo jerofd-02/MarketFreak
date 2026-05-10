@@ -9,15 +9,17 @@ import { Filter, FilterRange } from '../../models/search-product/search-product.
 import { Product } from '../../models/product/product.interface';
 import { PhotoRow } from '../../components/photo-row/photo-row.component';
 import { RangeSliderComponent } from '../../components/range-slider/range-slider.component';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
+import {IonButton} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-search-product',
   standalone: true,
-  imports: [CommonModule, FormsModule, PhotoRow, RangeSliderComponent],
-  templateUrl: './search-product.component.html',
-  styleUrl: './search-product.component.css',
+  imports: [CommonModule, FormsModule, PhotoRow, RangeSliderComponent, PageLayoutComponent, IonButton],
+  templateUrl: './search-product.page.html',
+  styleUrl: './search-product.page.scss',
 })
-export class SearchProductComponent implements OnInit, OnDestroy {
+export class SearchProductPage implements OnInit, OnDestroy {
   filters: Filter[] = [];
   allProducts: Product[] = [];
   filteredProducts: Product[] = [];
