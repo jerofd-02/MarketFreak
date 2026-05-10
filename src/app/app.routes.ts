@@ -43,7 +43,7 @@ export const routes: Routes = [
   {
     path: 'payment/:id',
     loadComponent: () =>
-      import('./pages/payment/payment.page').then(m => m.PaymentPage)
+      import('./pages/payment/payment.page').then(m => m.PaymentPage), canActivate: [authGuard]
   },
 
   {
@@ -55,7 +55,7 @@ export const routes: Routes = [
   {
     path: 'upload-product',
     loadComponent: () =>
-      import('./pages/upload-product/upload-product.page').then(m => m.UploadProductPage)
+      import('./pages/upload-product/upload-product.page').then(m => m.UploadProductPage), canActivate: [authGuard]
   },
 
   {
