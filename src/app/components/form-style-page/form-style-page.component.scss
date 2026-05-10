@@ -21,11 +21,20 @@ ion-input {
 }
 
 .form-btn {
-  background: var(--crimson);
-  color: var(--linen);
-  border-color: var(--linen) !important;
-  cursor: pointer;
-  transition: 0.3s;
+  --background: var(--crimson);
+  --color: var(--linen);
+  --border-color: var(--linen);
+  --border-width: 1px;
+  --border-style: solid;
+  --border-radius: 12px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+}
+
+::ng-deep .form-btn:hover {
+  --background: var(--plum);
+  --color: var(--periwinkle);
+  --border-color: var(--periwinkle);
 }
 
 .form-btn:hover {

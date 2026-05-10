@@ -9,15 +9,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../models/product/product.interface';
 import {ProductService} from '../../services/product.service';
 import {AuthService} from '../../services/auth.service';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-upload-product',
   standalone: true,
-  imports: [CommonModule, FormStylePageComponent],
-  templateUrl: './upload-product.component.html',
-  styleUrl: './upload-product.component.css',
+  imports: [CommonModule, FormStylePageComponent, PageLayoutComponent],
+  templateUrl: './upload-product.page.html',
+  styleUrl: './upload-product.page.scss',
 })
-export class UploadProductComponent implements OnInit, OnDestroy {
+export class UploadProductPage implements OnInit, OnDestroy {
   formData: FormStyleData | null = null;
   isSubmitting = false;
   existingProduct: Product | null = null;

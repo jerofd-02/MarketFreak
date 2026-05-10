@@ -4,11 +4,12 @@ import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {FormStyleData} from '../../models/form-style-page/form-style-page.interface';
 import {DynamicFormService} from '../../services/form-style-page.service';
 import {Product} from '../../models/product/product.interface';
+import {IonButton, IonInput, IonSelect, IonSelectOption, IonTextarea} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-form-style-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, IonSelect, IonSelectOption, IonTextarea, IonButton, IonInput],
   templateUrl: './form-style-page.component.html',
   styleUrl: './form-style-page.component.scss',
 })

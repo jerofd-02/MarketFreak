@@ -47,6 +47,18 @@ export const routes: Routes = [
   },
 
   {
+    path: 'contact',
+    loadComponent: () =>
+      import('./pages/contact/contact.page').then(m => m.ContactPage)
+  },
+
+  {
+    path: 'upload-product',
+    loadComponent: () =>
+      import('./pages/upload-product/upload-product.page').then(m => m.UploadProductPage)
+  },
+
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

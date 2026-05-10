@@ -6,15 +6,16 @@ import { FormStyleData } from '../../models/form-style-page/form-style-page.inte
 import { FormStylePageComponent } from '../../components/form-style-page/form-style-page.component';
 import {FirestoreService} from '../../services/firestore.service';
 import {Router} from '@angular/router';
+import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormStylePageComponent],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css',
+  imports: [CommonModule, FormStylePageComponent, PageLayoutComponent],
+  templateUrl: './contact.page.html',
+  styleUrl: './contact.page.css',
 })
-export class ContactComponent implements OnInit, OnDestroy {
+export class ContactPage implements OnInit, OnDestroy {
   formData: FormStyleData | null = null;
   isSubmitting = false;
   private destroy$ = new Subject<void>();
