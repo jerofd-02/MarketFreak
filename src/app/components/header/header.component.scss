@@ -26,24 +26,33 @@
   --color: var(--dusty-rose);
   --border-color: var(--dusty-rose);
   --border-radius: 8px;
+  --border-width: 1px;
+  --border-style: solid;
 }
 
 ::ng-deep .header-btn-outline:hover {
   --background: var(--plum);
   --color: var(--periwinkle);
   --border-color: var(--periwinkle);
+  --border-width: 1px;
+  --border-style: solid;
 }
 
 .header-btn-filled {
   --background: var(--dusty-rose);
   --color: var(--dark-mahogany);
   --border-radius: 8px;
+  --border-color: var(--dusty-rose);
+  --border-width: 1px;
+  --border-style: solid;
 }
 
 ::ng-deep .header-btn-filled:hover {
   --background: var(--plum);
   --color: var(--periwinkle);
   --border-color: var(--periwinkle);
+  --border-width: 1px;
+  --border-style: solid;
 }
 
 .header-avatar {
@@ -88,6 +97,14 @@ nav .mobile-link:hover .bi {
   background: rgba(154, 56, 80, 0.5);
   backdrop-filter: blur(2px);
   z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.show-overlay {
+  visibility: visible;
+  opacity: 1;
 }
 
 .side-menu {
@@ -95,4 +112,9 @@ nav .mobile-link:hover .bi {
   z-index: 1000;
   padding: 80px 32px 32px;
   transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: white !important;
+}
+
+:host-context(body.menu-open) {
+  overflow: hidden;
 }

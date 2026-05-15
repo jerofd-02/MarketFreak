@@ -5,7 +5,7 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {LoginService} from '../../services/login.service';
 import {AuthService} from '../../services/auth.service';
-import {IonInput} from '@ionic/angular/standalone';
+import {IonButton, IonInput} from '@ionic/angular/standalone';
 import {PageLayoutComponent} from '../page-layout/page-layout.component';
 
 @Component({
@@ -17,7 +17,8 @@ import {PageLayoutComponent} from '../page-layout/page-layout.component';
     ReactiveFormsModule,
     IonInput,
     RouterLink,
-    PageLayoutComponent
+    PageLayoutComponent,
+    IonButton
   ],
   templateUrl: './login.component.html',
   styleUrls: ['../form-style-page/form-style-page.component.scss', "login.component.scss"]
