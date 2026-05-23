@@ -1,13 +1,13 @@
 import {Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {from, of, Subject, switchMap, takeUntil} from 'rxjs';
+import {of, Subject, switchMap, takeUntil} from 'rxjs';
 import {WishlistService} from '../../services/wishlist.service';
 import {SortOption} from '../../models/wishlist/wishlist.interface';
 import {Product} from '../../models/product/product.interface';
 import {PhotoRow} from '../../components/photo-row/photo-row.component';
-import {AuthService} from '../../services/auth.service';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -57,13 +57,7 @@ export class WishlistPage implements OnInit, OnDestroy {
       takeUntil(this.destroy$),
       switchMap(firebaseUser => {
         if (!firebaseUser) return of([]);
-        return from(this.authService.getLoggedUser(firebaseUser.uid)).pipe(
-          switchMap(loggedUser => {
-            const seller = loggedUser?.['seller'];
-            if (!seller) return of([]);
-            return this.wishlistService.getProductsBySeller(seller);
-          })
-        );
+        return this.wishlistService.getWishlistProducts();
       })
     ).subscribe(products => {
       this.ngZone.run(() => {

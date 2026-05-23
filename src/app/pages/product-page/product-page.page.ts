@@ -45,7 +45,7 @@ export class ProductPage implements OnInit, OnDestroy {
     private productPageService: ProductPageService,
     private cdr: ChangeDetectorRef,
     private wishlistService: WishlistService,
-    private auth: Auth
+    private auth: Auth,
   ) {}
 
   ngOnInit(): void {
@@ -66,8 +66,9 @@ export class ProductPage implements OnInit, OnDestroy {
             id: String(product.id),
             name: product.name,
             alt: product.alt,
-            images: product.images
+            images: product.images,
           };
+
           this.productService.getRelatedProducts(product.id, product.seller).pipe(
             takeUntil(this.destroy$)
           ).subscribe(products => this.relatedProducts = products);
@@ -77,7 +78,7 @@ export class ProductPage implements OnInit, OnDestroy {
           ).subscribe(inWishlist => {
             this.isInWishlist = inWishlist;
             this.cdr.detectChanges();
-          })
+          });
 
           firstValueFrom(this.authService.currentUser$).then(async firebaseUser => {
             if (firebaseUser) {
@@ -99,18 +100,18 @@ export class ProductPage implements OnInit, OnDestroy {
 
   async deleteProduct(): Promise<void> {
     if (!this.product) return;
-    if (confirm("¿Seguro que deseas eliminar este producto?")) {
+    if (confirm('¿Seguro que deseas eliminar este producto?')) {
       const seller = this.product.seller;
       this.destroy$.next();
       await this.productService.deleteProduct(this.product);
-      this.router.navigate(['/profile'], {queryParams: {seller}})
+      this.router.navigate(['/profile'], { queryParams: { seller } });
     }
   }
 
   async toggleWishlist(): Promise<void> {
     if (!this.product || this.isWishlistLoading) return;
     if (!this.auth.currentUser) {
-      this.router.navigate(['/login'], {queryParams: {returnUrl: this.router.url}});
+      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
       return;
     }
     this.isWishlistLoading = true;
