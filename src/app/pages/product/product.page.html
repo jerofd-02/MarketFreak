@@ -2,7 +2,7 @@
   @if (product) {
     <div class="container-fluid px-3 px-md-4 py-4">
 
-      <div class="d-flex flex-column flex-md-row gap-3 gap-md-4 pb-4 border-bottom border-burgundy">
+      <div class="d-flex flex-column flex-md-row gap-3 gap-md-4 pb-4 border-burgundy border-bottom">
 
         <div class="carousel-wrapper flex-shrink-0">
           <app-carousel [carousel]="carousel"></app-carousel>
@@ -12,13 +12,9 @@
 
           <div class="d-flex align-items-center gap-2 mt-2 mb-3">
             @if (user) {
-              <img [src]="user.photo" [alt]="user.name"
-                   class="rounded-circle object-fit-cover"
-                   style="width:45px; height:45px;">
+              <img [src]="user.photo" [alt]="user.name" class="rounded-circle object-fit-cover user-avatar">
               <a [routerLink]="['/profile']" [queryParams]="{seller: product.seller}"
-                 class="text-dark fw-bold text-decoration-none">
-                {{ user.name }}
-              </a>
+                 class="text-dark fw-bold text-decoration-none">{{ user.name }}</a>
             }
           </div>
 
@@ -34,9 +30,9 @@
                 Eliminar
               </ion-button>
             } @else {
-              <ion-button class="product-btn wishlist-btn" (click)="toggleWishlist()"
-                          [class.active]="isInWishlist">
-                {{ isInWishlist ? ui?.wishlistButtonActive : ui?.wishlistButton }}
+              <ion-button class="wishlist-btn" (click)="toggleWishlist()" [class.active]="isInWishlist">
+                <i class="bi wishlist-icon" [class.bi-heart]="!isInWishlist" [class.bi-heart-fill]="isInWishlist"
+                   [class.active]="isInWishlist" (click)="toggleWishlist()"></i>
               </ion-button>
               <ion-button class="product-btn buy-btn" [routerLink]="['/payment', product.id]">
                 {{ ui?.buyButton }}

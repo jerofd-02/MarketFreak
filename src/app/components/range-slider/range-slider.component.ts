@@ -1,12 +1,12 @@
-import { Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-range-slider',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './range-slider.component.html',
-  styleUrl: './range-slider.component.css',
+  styleUrl: './range-slider.component.scss',
 })
 export class RangeSliderComponent implements OnInit {
   @Input() min: number = 0;
@@ -42,11 +42,11 @@ export class RangeSliderComponent implements OnInit {
 
   onMinChange(value: number): void {
     this.currentMin = Math.min(value, this.currentMax);
-    this.rangeChange.emit({ min: this.currentMin, max: this.currentMax });
+    this.rangeChange.emit({min: this.currentMin, max: this.currentMax});
   }
 
   onMaxChange(value: number): void {
     this.currentMax = Math.max(value, this.currentMin);
-    this.rangeChange.emit({ min: this.currentMin, max: this.currentMax });
+    this.rangeChange.emit({min: this.currentMin, max: this.currentMax});
   }
 }

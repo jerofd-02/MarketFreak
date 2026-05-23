@@ -18,7 +18,7 @@ export interface RegisterConfig {
     email: { label: string, placeholder: string };
     password: { label: string, placeholder: string };
     password_confirm: { label: string, placeholder: string };
-    avatar: { label: string, placeholder: string };
+    avatar: { icon: string; label: string, placeholder: string };
     location: { label: string, placeholder: string };
     province: { label: string, placeholder: string, options: { value: string, label: string }[]; };
     description: { label: string, placeholder: string };

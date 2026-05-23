@@ -21,8 +21,8 @@ import {PageLayoutComponent} from '../../components/page-layout/page-layout.comp
   selector: 'app-product-page',
   standalone: true,
   imports: [CommonModule, RouterModule, PhotoRow, ProductInfo, CarouselComponent, IonButton, PageLayoutComponent],
-  templateUrl: './product-page.page.html',
-  styleUrl: './product-page.page.scss',
+  templateUrl: './product.page.html',
+  styleUrl: './product.page.scss',
 })
 export class ProductPage implements OnInit, OnDestroy {
   product: Product | undefined;
@@ -104,14 +104,14 @@ export class ProductPage implements OnInit, OnDestroy {
       const seller = this.product.seller;
       this.destroy$.next();
       await this.productService.deleteProduct(this.product);
-      this.router.navigate(['/profile'], { queryParams: { seller } });
+      this.router.navigate(['/profile'], {queryParams: {seller}});
     }
   }
 
   async toggleWishlist(): Promise<void> {
     if (!this.product || this.isWishlistLoading) return;
     if (!this.auth.currentUser) {
-      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+      this.router.navigate(['/login'], {queryParams: {returnUrl: this.router.url}});
       return;
     }
     this.isWishlistLoading = true;

@@ -11,8 +11,13 @@ import {PageLayoutComponent} from '../../components/page-layout/page-layout.comp
   selector: 'app-update-profile',
   imports: [ReactiveFormsModule, IonInput, IonSelect, IonSelectOption, IonTextarea, PageLayoutComponent],
   templateUrl: './update-profile.page.html',
-  styleUrls: ['../../components/form-style-page/form-style-page.component.scss', 'update-profile.page.scss']
+  styleUrls: [
+    '../../components/form-style-page/form-style-page.component.scss',
+    '../../components/register/register.component.scss',
+    'update-profile.page.scss'
+  ]
 })
+
 export class UpdateProfilePage implements OnInit {
   form!: FormGroup;
   fields: FormFields = {};

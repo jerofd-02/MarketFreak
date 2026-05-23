@@ -9,7 +9,7 @@ import {AddProductButton} from '../../models/profile/profile.interface';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './photo-row.component.html',
-  styleUrl: './photo-row.component.css',
+  styleUrl: './photo-row.component.scss',
 })
 export class PhotoRow {
   @Input() products: Product[] = [];

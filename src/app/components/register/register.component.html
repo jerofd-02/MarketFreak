@@ -69,6 +69,21 @@
           </div>
 
           <div class="mb-3">
+            <label for="avatar" class="form-label"> {{ config.fields.avatar.label }}</label>
+            <div class="add-photo" (click)="avatarInput.click()">
+              @if (avatarPreview) {
+                <div class="avatar-preview">
+                  <img [src]="avatarPreview" alt="Vista previa">
+                </div>
+              } @else {
+                <i [class]="config.fields.avatar.icon"></i>
+                <p>{{ config.fields.avatar.placeholder }}</p>
+              }
+              <input #avatarInput id="avatar" type="file" accept="image/*" hidden (change)="onAvatarSelected($event)">
+            </div>
+          </div>
+
+          <div class="mb-3">
             <label for="location" class="form-label">{{ config.fields.location.label }}</label>
             <ion-input type="text" id="location" formControlName="location" fill="outline"
                        [placeholder]="config.fields.location.placeholder"></ion-input>
@@ -90,7 +105,7 @@
 
           <div class="mb-3">
             <label for="description" class="form-label">{{ config.fields.description.label }}</label>
-            <ion-textarea id="description" formControlName="description" fill="outline"
+            <ion-textarea id="description" formControlName="description" fill="outline" rows="8"
                           [placeholder]="config.fields.description.placeholder"></ion-textarea>
           </div>
 

@@ -7,6 +7,11 @@
   width: 500px;
 }
 
+.user-avatar {
+  width: 45px;
+  height: 45px;
+}
+
 .product-btn {
   --border-radius: 8px;
   --padding-top: 12px;
@@ -22,12 +27,36 @@
   --border-color: var(--linen);
   --border-width: 1px;
   --border-style: solid;
+  --border-radius: 8px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+
+  &.active {
+    --background: var(--plum);
+  }
 }
 
 ::ng-deep .wishlist-btn:hover {
   --background: var(--plum);
   --color: var(--periwinkle);
   --border-color: var(--periwinkle);
+}
+
+.wishlist-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--periwinkle);
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  &.active {
+    color: var(--periwinkle);
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .buy-btn {
@@ -52,6 +81,10 @@
   .product-btn {
     width: 100%;
   }
+
+  .wishlist-btn {
+    width: 100%;
+  }
 }
 
 @media (max-width: 767px) {
@@ -60,6 +93,10 @@
   }
 
   .product-btn {
+    width: 100%;
+  }
+
+  .wishlist-btn {
     width: 100%;
   }
 }

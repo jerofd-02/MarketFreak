@@ -5,6 +5,25 @@
   flex: 1;
 }
 
+ion-header {
+  z-index: 998 !important;
+}
+
+ion-content {
+  --padding-bottom: 0;
+  flex: 1;
+}
+
+.page-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-footer {
+  margin-top: auto;
+}
+
 ion-toolbar {
   --background: var(--burgundy);
   --color: var(--linen);

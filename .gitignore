@@ -34,6 +34,8 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+.angular/
+.firebase/
 
 # System files
 .DS_Store

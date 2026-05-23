@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Subject, takeUntil } from 'rxjs';
-import { ContactService } from '../../services/contact.service';
-import { FormStyleData } from '../../models/form-style-page/form-style-page.interface';
-import { FormStylePageComponent } from '../../components/form-style-page/form-style-page.component';
+import {ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Subject, takeUntil} from 'rxjs';
+import {ContactService} from '../../services/contact.service';
+import {FormStyleData} from '../../models/form-style-page/form-style-page.interface';
+import {FormStylePageComponent} from '../../components/form-style-page/form-style-page.component';
 import {FirestoreService} from '../../services/firestore.service';
 import {Router} from '@angular/router';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
@@ -13,7 +13,7 @@ import {PageLayoutComponent} from '../../components/page-layout/page-layout.comp
   standalone: true,
   imports: [CommonModule, FormStylePageComponent, PageLayoutComponent],
   templateUrl: './contact.page.html',
-  styleUrl: './contact.page.css',
+  styleUrl: './contact.page.scss',
 })
 export class ContactPage implements OnInit, OnDestroy {
   formData: FormStyleData | null = null;

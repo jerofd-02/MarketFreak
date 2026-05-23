@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
   errorMessage?: string;
   loading = false;
   form!: FormGroup;
+  avatarPreview: string | null = null;
 
   constructor(
     private registerService: RegisterService,
@@ -104,6 +105,19 @@ export class RegisterComponent implements OnInit {
     return this.form.get('province')!;
   }
 
+  onAvatarSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.avatarPreview = e.target?.result as string;
+      this.cdr.detectChanges();
+    };
+    reader.readAsDataURL(file);
+  }
+
   async onSubmit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -116,7 +130,7 @@ export class RegisterComponent implements OnInit {
     const {name, seller, email, password, province, description} = this.form.getRawValue();
 
     try {
-      await this.authService.register(name, seller, email, password, '', province, 'España', description);
+      await this.authService.register(name, seller, email, password, this.avatarPreview ?? '', province, 'España', description);
     } catch (error) {
       this.errorMessage = error as string;
     } finally {

@@ -1,12 +1,14 @@
-<ion-header>
-  <app-header></app-header>
+<ion-header class="ion-no-border">
+    <app-header></app-header>
 </ion-header>
 
 <ion-content>
-  <ng-content></ng-content>
-  <ion-footer>
-    <ion-toolbar>
-      <app-footer></app-footer>
-    </ion-toolbar>
-  </ion-footer>
+  <div class="page-wrapper">
+    <ng-content></ng-content>
+    <ion-footer>
+      <ion-toolbar>
+        <app-footer></app-footer>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
 </ion-content>

@@ -9,7 +9,7 @@ import {Product} from '../../models/product/product.interface';
 import {ProfileService} from '../../services/profile.service';
 import {UserService} from '../../services/user.service';
 import {ProductService} from '../../services/product.service';
-import {take, firstValueFrom} from 'rxjs';
+import {firstValueFrom, take} from 'rxjs';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
@@ -17,8 +17,13 @@ import {PageLayoutComponent} from '../../components/page-layout/page-layout.comp
   standalone: true,
   imports: [CommonModule, PhotoRow, RouterLink, PageLayoutComponent],
   templateUrl: './profile.page.html',
-  styleUrls: ['../../components/product-info/product-info.component.css', './profile.page.scss'],
+  styleUrls: [
+    '../../components/product-info/product-info.component.scss',
+    './profile.page.scss',
+    '../product/product.page.scss'
+  ],
 })
+
 export class ProfilePage implements OnInit {
   profileData: Profile | null = null;
   user: User | null = null;
@@ -32,8 +37,7 @@ export class ProfilePage implements OnInit {
     private productService: ProductService,
     private authService: AuthService,
     private cdr: ChangeDetectorRef
-  ) {
-  }
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const seller = this.route.snapshot.queryParamMap.get('seller');

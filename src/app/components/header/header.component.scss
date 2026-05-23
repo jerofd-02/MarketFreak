@@ -94,7 +94,7 @@ nav .mobile-link:hover .bi {
 }
 
 .overlay {
-  background: rgba(154, 56, 80, 0.5);
+  background: color-mix(in srgb, var(--crimson) 50%, transparent);
   backdrop-filter: blur(2px);
   z-index: 999;
   visibility: hidden;
