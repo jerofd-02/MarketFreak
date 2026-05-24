@@ -5,7 +5,7 @@ import {CarouselItem} from '../../models/product/product.interface';
   selector: 'app-carousel',
   imports: [],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css',
+  styleUrl: './carousel.component.scss',
   standalone: true
 })
 export class CarouselComponent implements OnChanges, OnDestroy {

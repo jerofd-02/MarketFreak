@@ -10,7 +10,7 @@ import {
   User as FirebaseUser
 } from '@angular/fire/auth';
 import {Observable} from 'rxjs';
-import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage';
+import {getDownloadURL, listAll, ref, Storage} from '@angular/fire/storage';
 
 export interface LoggedUser {
   description: string;
@@ -32,15 +32,13 @@ export class AuthService {
   currentUser$: Observable<FirebaseUser | null>;
 
   constructor() {
-    this.currentUser$ = authState(this.auth)
+    this.currentUser$ = authState(this.auth);
   }
 
-  async login(email: string, password: string): Promise<void> {
+  async login(email: string, password: string): Promise<LoggedUser | null> {
     try {
       const credential = await signInWithEmailAndPassword(this.auth, email, password);
-      const loggedUser = await this.getLoggedUser(credential.user.uid);
-      console.log("Usuario autenticado: ", credential.user.uid);
-      this.router.navigate(['/profile'], {queryParams: {seller: loggedUser?.seller}});
+      return await this.getLoggedUser(credential.user.uid);
     } catch (error: any) {
       throw this.handleError(error);
     }
@@ -58,7 +56,6 @@ export class AuthService {
   ): Promise<void> {
     try {
       const credential = await createUserWithEmailAndPassword(this.auth, email, password);
-
       const finalPhoto = photo ? photo : await this.getRandomAvatar();
 
       await setDoc(doc(this.firestore, 'users', credential.user.uid), {

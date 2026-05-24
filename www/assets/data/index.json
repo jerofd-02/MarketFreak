@@ -1,0 +1,14 @@
+{
+  "image-loader": [
+    {
+      "id": "1",
+      "name": "Carrusel image",
+      "alt": "Foto del carrusel",
+      "images": [
+        "assets/images/misc/promo_image_1.png",
+        "assets/images/misc/promo_image_2.png"
+      ]
+    }
+  ],
+  "main_title": "Productos"
+}

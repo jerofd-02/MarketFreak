@@ -1,0 +1,74 @@
+{
+  "searchPlaceholder": "Buscar entre favoritos...",
+  "sortOptions": [
+    {
+      "value": "price_asc",
+      "label": "Precio: menor a mayor"
+    },
+    {
+      "value": "price_desc",
+      "label": "Precio: mayor a menor"
+    },
+    {
+      "value": "date_asc",
+      "label": "Añadido: más antiguo primero"
+    },
+    {
+      "value": "date_desc",
+      "label": "Añadido: más reciente primero"
+    }
+  ],
+  "wishlists": [
+    {
+      "seller": "armin.keenan",
+      "products": [
+        {
+          "id": 4,
+          "dateAdded": "2026-03-10"
+        },
+        {
+          "id": 7,
+          "dateAdded": "2026-03-07"
+        },
+        {
+          "id": 9,
+          "dateAdded": "2026-03-25"
+        }
+      ]
+    },
+    {
+      "seller": "kasumi.yoshizawa",
+      "products": [
+        {
+          "id": 1,
+          "dateAdded": "2026-02-14"
+        },
+        {
+          "id": 7,
+          "dateAdded": "2026-03-01"
+        },
+        {
+          "id": 10,
+          "dateAdded": "2026-03-20"
+        }
+      ]
+    },
+    {
+      "seller": "pedro.sanchez",
+      "products": [
+        {
+          "id": 2,
+          "dateAdded": "2026-01-30"
+        },
+        {
+          "id": 5,
+          "dateAdded": "2026-02-28"
+        },
+        {
+          "id": 10,
+          "dateAdded": "2026-03-22"
+        }
+      ]
+    }
+  ]
+}

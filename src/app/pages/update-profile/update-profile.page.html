@@ -65,9 +65,9 @@
         }
 
         <div class="d-grid d-md-flex justify-content-md-center mt-3">
-          <button type="submit" class="form-btn px-4 py-2 rounded-3 border">
+          <ion-button fill="solid" class="form-btn" type="submit" [disabled]="loading">
             {{ loading ? 'Guardando...' : submitLabel }}
-          </button>
+          </ion-button>
         </div>
 
       </form>

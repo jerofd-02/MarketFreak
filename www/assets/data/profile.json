@@ -1,0 +1,14 @@
+{
+  "profile": {
+    "productsTitle": "Productos del vendedor",
+    "editButton": {
+      "label": "Editar perfil",
+      "routerLink": "/update-profile"
+    },
+    "addProductButton": {
+      "label": "Añadir producto",
+      "routerLink": "/upload-product",
+      "icon": "bi bi-plus"
+    }
+  }
+}

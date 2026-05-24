@@ -4,12 +4,12 @@ import {UpdateProfileService} from '../../services/update-profile.service';
 import {UPDATE_PROFILE_DEFAULTS, UpdateProfileForm} from '../../models/update-profile/update-profile.interface';
 import {FormFields} from '../../models/form-style-page/form-style-page.interface';
 import {Router} from '@angular/router';
-import {IonInput, IonSelect, IonSelectOption, IonTextarea} from '@ionic/angular/standalone';
+import {IonButton, IonInput, IonSelect, IonSelectOption, IonTextarea} from '@ionic/angular/standalone';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-update-profile',
-  imports: [ReactiveFormsModule, IonInput, IonSelect, IonSelectOption, IonTextarea, PageLayoutComponent],
+  imports: [ReactiveFormsModule, IonInput, IonSelect, IonSelectOption, IonTextarea, PageLayoutComponent, IonButton],
   templateUrl: './update-profile.page.html',
   styleUrls: [
     '../../components/form-style-page/form-style-page.component.scss',

@@ -5,25 +5,28 @@
   margin-bottom: 20px;
 }
 
-.profile-button {
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.3s;
-  width: 200px;
-}
-
 .edit-profile-button {
-  background: var(--crimson);
-  color: var(--linen);
-  border: 1px solid var(--linen);
+  --background: var(--crimson);
+  --color: var(--linen);
+  --border-color: var(--linen);
+  --border-radius: 8px;
+  --border-width: 1px;
+  --border-style: solid;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --transition: background 0.3s, color 0.3s, border-color 0.3s;
+  width: 200px;
+  cursor: pointer;
 }
 
-.edit-profile-button:hover {
-  background-color: var(--plum);
-  color: var(--periwinkle);
-  border-color: var(--periwinkle);
+::ng-deep .edit-profile-button:hover {
+  --background: var(--plum);
+  --color: var(--periwinkle);
+  --border-color: var(--periwinkle);
+  --border-width: 1px;
+  --border-style: solid;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

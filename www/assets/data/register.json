@@ -1,0 +1,127 @@
+{
+  "register": {
+    "title": "Crear cuenta",
+    "fields": {
+      "name": {
+        "label": "Nombre completo",
+        "placeholder": "Ej: Juan García"
+      },
+      "username": {
+        "label": "Nombre de usuario",
+        "placeholder": "Ej: juan123"
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "Ej: juan@email.com"
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Mínimo 8 caracteres"
+      },
+      "password_confirm": {
+        "label": "Confirmar contraseña",
+        "placeholder": "Repite tu contraseña"
+      },
+      "avatar": {
+        "label": "Foto de perfil",
+        "placeholder": "Arrastra tu foto aquí o haz clic para seleccionar",
+        "icon": "bi bi-cloud-upload"
+      },
+      "location": {
+        "label": "País",
+        "placeholder": "España"
+      },
+      "province": {
+        "label": "Comunidad autónoma",
+        "placeholder": "Selecciona una comunidad autónoma...",
+        "options": [
+          {
+            "value": "Andalucía",
+            "label": "Andalucía"
+          },
+          {
+            "value": "Aragón",
+            "label": "Aragón"
+          },
+          {
+            "value": "Asturias",
+            "label": "Asturias"
+          },
+          {
+            "value": "Islas Baleares",
+            "label": "Islas Baleares"
+          },
+          {
+            "value": "Islas Canarias",
+            "label": "Islas Canarias"
+          },
+          {
+            "value": "Cantabria",
+            "label": "Cantabria"
+          },
+          {
+            "value": "Castilla-La Mancha",
+            "label": "Castilla-La Mancha"
+          },
+          {
+            "value": "Castilla y León",
+            "label": "Castilla y León"
+          },
+          {
+            "value": "Cataluña",
+            "label": "Cataluña"
+          },
+          {
+            "value": "Extremadura",
+            "label": "Extremadura"
+          },
+          {
+            "value": "Galicia",
+            "label": "Galicia"
+          },
+          {
+            "value": "La Rioja",
+            "label": "La Rioja"
+          },
+          {
+            "value": "Comunidad de Madrid",
+            "label": "Comunidad de Madrid"
+          },
+          {
+            "value": "Región de Murcia",
+            "label": "Región de Murcia"
+          },
+          {
+            "value": "Comunidad Foral de Navarra",
+            "label": "Comunidad Foral de Navarra"
+          },
+          {
+            "value": "País Vasco",
+            "label": "País Vasco"
+          },
+          {
+            "value": "Comunidad Valenciana",
+            "label": "Comunidad Valenciana"
+          },
+          {
+            "value": "Ceuta",
+            "label": "Ceuta"
+          },
+          {
+            "value": "Melilla",
+            "label": "Melilla"
+          }
+        ]
+      },
+      "description": {
+        "label": "Descripción",
+        "placeholder": "Cuéntanos sobre ti y tu colección..."
+      }
+    },
+    "submitLabel": "Registrarse",
+    "loginLink": {
+      "text": "¿Ya tienes cuenta?",
+      "linkText": "Inicia sesión"
+    }
+  }
+}

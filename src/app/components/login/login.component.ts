@@ -16,12 +16,11 @@ import {PageLayoutComponent} from '../page-layout/page-layout.component';
     CommonModule,
     ReactiveFormsModule,
     IonInput,
-    RouterLink,
     PageLayoutComponent,
     IonButton
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['../form-style-page/form-style-page.component.scss', "login.component.scss"]
+  styleUrls: ['../form-style-page/form-style-page.component.scss', 'login.component.scss']
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
@@ -71,9 +70,16 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     try {
-      await this.authService.login(this.email.value, this.password.value);
-      const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-      await this.router.navigateByUrl(returnUrl);
+      const loggedUser = await this.authService.login(this.email.value, this.password.value);
+      const returnUrl = this.route.snapshot.queryParams['returnUrl'];
+
+      if (returnUrl) {
+        await this.router.navigateByUrl(returnUrl);
+      } else {
+        await this.router.navigate(['/profile'], {
+          queryParams: {seller: loggedUser?.seller}
+        });
+      }
     } catch (error) {
       this.errorMessage = error as string;
     } finally {

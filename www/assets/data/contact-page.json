@@ -1,0 +1,64 @@
+{
+  "form": {
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "tu@email.com",
+        "type": "email",
+        "validation": {
+          "required": true,
+          "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        }
+      },
+      "name": {
+        "label": "Nombre",
+        "placeholder": "John",
+        "type": "text",
+        "validation": {
+          "required": true,
+          "minLength": 2
+        }
+      },
+      "surname": {
+        "label": "Apellido",
+        "placeholder": "Doe",
+        "type": "text",
+        "validation": {
+          "required": true,
+          "minLength": 2
+        }
+      },
+      "problem": {
+        "label": "Tipo de problema",
+        "type": "select",
+        "validation": {
+          "required": true
+        },
+        "options": [
+          { "value": "", "label": "Selecciona una opción", "disabled": true },
+          { "value": "payment", "label": "Problemas con el pago" },
+          { "value": "shipping", "label": "Envío o entrega" },
+          { "value": "product", "label": "Producto dañado o incorrecto" },
+          { "value": "account", "label": "Problemas con la cuenta" },
+          { "value": "seller", "label": "Reclamación sobre un vendedor" },
+          { "value": "other", "label": "Otro" }
+        ]
+      },
+      "description": {
+        "label": "Descripción",
+        "placeholder": "Describe tu problema con detalle...",
+        "type": "textarea",
+        "validation": {
+          "required": true,
+          "minLength": 10
+        }
+      },
+      "image": {
+        "placeholder": "Arrastra tu(s) foto(s) aquí o haz clic para seleccionar",
+        "type": "file",
+        "maxImages": 5
+      }
+    },
+    "submitButton": "Enviar consulta"
+  }
+}

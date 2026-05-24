@@ -20,10 +20,9 @@
 
         <div class="d-flex ion-flex-column flex-md-row gap-2 gap-md-4 mt-4">
           @if (isOwner) {
-            <a [routerLink]="profileData?.editButton?.routerLink"
-               class="profile-button edit-profile-button ion-text-center">
+            <ion-button class="edit-profile-button" [routerLink]="profileData?.editButton?.routerLink">
               {{ profileData?.editButton?.label }}
-            </a>
+            </ion-button>
           }
         </div>
 

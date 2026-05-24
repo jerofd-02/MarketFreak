@@ -11,11 +11,12 @@ import {UserService} from '../../services/user.service';
 import {ProductService} from '../../services/product.service';
 import {firstValueFrom, take} from 'rxjs';
 import {PageLayoutComponent} from '../../components/page-layout/page-layout.component';
+import {IonButton} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, PhotoRow, RouterLink, PageLayoutComponent],
+  imports: [CommonModule, PhotoRow, RouterLink, PageLayoutComponent, IonButton],
   templateUrl: './profile.page.html',
   styleUrls: [
     '../../components/product-info/product-info.component.scss',
