@@ -111,7 +111,7 @@ export class ProductPage implements OnInit, OnDestroy {
   async toggleWishlist(): Promise<void> {
     if (!this.product || this.isWishlistLoading) return;
     if (!this.auth.currentUser) {
-      this.router.navigate(['/login'], {queryParams: {returnUrl: this.router.url}});
+      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
       return;
     }
     this.isWishlistLoading = true;
@@ -119,7 +119,7 @@ export class ProductPage implements OnInit, OnDestroy {
       if (this.isInWishlist) {
         await this.wishlistService.removeFromWishlist(String(this.product.id));
       } else {
-        await this.wishlistService.addToWishlist(String(this.product.id));
+        await this.wishlistService.addToWishlist(this.product);
       }
       this.isInWishlist = !this.isInWishlist;
     } finally {

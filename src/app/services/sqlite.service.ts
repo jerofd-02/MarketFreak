@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { Capacitor } from '@capacitor/core';
+import {Product} from '../models/product/product.interface';
 
 @Injectable({ providedIn: 'root' })
 export class SqliteService {
@@ -15,12 +16,12 @@ export class SqliteService {
 
   // -------- WEB: LOCALSTORAGE --------
 
-  private getLocalWishlist(): { id: string; userId: string; dateAdded: string }[] {
+  private getLocalWishlist(): any[] {
     const data = localStorage.getItem(this.localStorageKey);
     return data ? JSON.parse(data) : [];
   }
 
-  private setLocalWishlist(items: { id: string; userId: string; dateAdded: string }[]): void {
+  private setLocalWishlist(items: any[]): void {
     localStorage.setItem(this.localStorageKey, JSON.stringify(items));
   }
 
@@ -38,46 +39,71 @@ export class SqliteService {
       await this.db.open();
       await this.db.execute(`
         CREATE TABLE IF NOT EXISTS wishlist (
-          id TEXT NOT NULL,
-          userId TEXT NOT NULL,
-          dateAdded TEXT NOT NULL,
-          PRIMARY KEY (id, userId)
-        );
+                                              id TEXT NOT NULL,
+                                              userId TEXT NOT NULL,
+                                              dateAdded TEXT NOT NULL,
+                                              name TEXT,
+                                              price TEXT,
+                                              image TEXT,
+                                              alt TEXT,
+                                              seller TEXT,
+                                              category TEXT,
+                                              description TEXT,
+                                              PRIMARY KEY (id, userId)
+          );
       `);
     }
   }
 
   // -------- CRUD (WEB + NATIVE) --------
 
-  async getWishlistIds(userId: string): Promise<{ id: string; dateAdded: string }[]> {
+  async getWishlistProducts(userId: string): Promise<Product[]> {
     if (this.platform === 'web') {
       return this.getLocalWishlist()
         .filter(item => item.userId === userId)
-        .map(({ id, dateAdded }) => ({ id, dateAdded }));
+        .map(({ id, name, price, image, alt, seller, dateAdded, category, description }) => ({
+          id, name, price, image, alt, seller, dateAdded, category, description, images: []
+        }));
     }
     await this.createSQLiteConnection();
     const result = await this.db!.query(
-      `SELECT id, dateAdded FROM wishlist WHERE userId = ?`,
+      `SELECT id, name, price, image, alt, seller, dateAdded, category, description
+       FROM wishlist WHERE userId = ?`,
       [userId]
     );
-    return result.values ?? [];
+    return (result.values ?? []).map(row => ({
+      ...row,
+      images: []
+    }));
   }
 
-  async addToWishlist(productId: string, userId: string): Promise<void> {
+  async addToWishlist(productId: string, userId: string, product: Product): Promise<void> {
     const dateAdded = new Date().toISOString().split('T')[0];
     if (this.platform === 'web') {
       const items = this.getLocalWishlist();
       const exists = items.some(i => i.id === productId && i.userId === userId);
       if (!exists) {
-        items.push({ id: productId, userId, dateAdded });
+        items.push({
+          id: productId,
+          userId,
+          dateAdded,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          alt: product.alt,
+          seller: product.seller,
+          category: product.category,
+          description: product.description,
+        });
         this.setLocalWishlist(items);
       }
       return;
     }
     await this.createSQLiteConnection();
     await this.db!.run(
-      `INSERT OR IGNORE INTO wishlist (id, userId, dateAdded) VALUES (?, ?, ?)`,
-      [productId, userId, dateAdded]
+      `INSERT OR IGNORE INTO wishlist (id, userId, dateAdded, name, price, image, alt, seller, category, description)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [productId, userId, dateAdded, product.name, product.price, product.image, product.alt, product.seller, product.category, product.description]
     );
   }
 

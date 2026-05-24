@@ -13,7 +13,6 @@ export class WishlistService {
 
   constructor(
     private http: HttpClient,
-    private productService: ProductService,
     private sqliteService: SqliteService,
     private authService: AuthService,
   ) {}
@@ -34,29 +33,15 @@ export class WishlistService {
     return this.authService.currentUser$.pipe(
       switchMap(firebaseUser => {
         if (!firebaseUser) return of([]);
-        return this.productService.getProducts().pipe(
-          switchMap(allProducts =>
-            from(this.sqliteService.getWishlistIds(firebaseUser.uid)).pipe(
-              map(entries => {
-                const favIds = entries.map(e => e.id);
-                return allProducts
-                  .filter(p => favIds.includes(String(p.id)))
-                  .map(p => ({
-                    ...p,
-                    dateAdded: entries.find(e => e.id === String(p.id))?.dateAdded ?? '',
-                  }));
-              })
-            )
-          )
-        );
+        return from(this.sqliteService.getWishlistProducts(firebaseUser.uid));
       })
     );
   }
 
-  async addToWishlist(productId: string): Promise<void> {
+  async addToWishlist(product: Product): Promise<void> {
     const firebaseUser = await firstValueFrom(this.authService.currentUser$);
     if (!firebaseUser) throw new Error('Usuario no autenticado');
-    await this.sqliteService.addToWishlist(productId, firebaseUser.uid);
+    await this.sqliteService.addToWishlist(String(product.id), firebaseUser.uid, product);
   }
 
   async removeFromWishlist(productId: string): Promise<void> {
